@@ -1,13 +1,12 @@
 <!doctype html>
-<html lang="tr">
+<html lang="en">
 
     <head>
-
         <meta charset="utf-8" />
-        <title>Giriş | E-Mentor App</title>
+        <title> Çıkış Yapıldı! | E-Mentor App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="" name="description" />
-        <meta content="endtag Teams" name="author" />
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
         <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -30,60 +29,29 @@
             <div class="container-fluid p-0">
                 <div class="row g-0">
                     <div class="col-xxl-4 col-lg-5 col-md-6">
-                        <div class="auth-full-page-content d-flex p-sm-5 p-4 border-end border-1 border-light">
+                        <div class="auth-full-page-content d-flex p-sm-5 p-4">
                             <div class="w-100">
-                                <div class="d-flex flex-column h-100 w-50 mx-auto">
-                                    <div class="mb-6 mb-md-5 text-center">
+                                <div class="d-flex flex-column h-100">
+                                    <div class="mb-4 mb-md-5 text-center">
                                         <a href="index.html" class="d-block auth-logo">
-                                            <img src="assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">Dason</span>
+                                            <img src="assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">E-Mentor</span>
                                         </a>
-                                        
                                     </div>
                                     <div class="auth-content my-auto">
                                         <div class="text-center">
-                                            <h5 class="mb-0">Hoşgeldin, yeni başarılar için hazır mısın?</h5>
-                                            <p class="text-muted mt-2">e-Mentor'a devam etmek için oturum açın.</p>
-                                        </div>
-                                        <form class="mt-4 pt-2" action="index.html">
-                                            <div class="form-floating form-floating-custom mb-4">
-                                                <input type="text" class="form-control"  id="input-username" placeholder="T.C. Kimlik No" pattern="^[1-9][0-9]{10}$"maxlength="11"nputmode="numeric"required>
-                                                <label for="input-username">T.C. Kimlik No</label>
-                                                <div class="form-floating-icon">
-                                                    <i data-feather="users"></i>
+                                            <div class="avatar-xl mx-auto">
+                                                <div class="avatar-title bg-light text-primary h1 rounded-circle">
+                                                    <i class="bx bxs-user"></i>
                                                 </div>
                                             </div>
 
-                                            <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                                <input type="password" class="form-control pe-5" id="password-input" placeholder="Enter Password">
-                                                
-                                                <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
-                                                    <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
-                                                </button>
-                                                <label for="input-password">Parola</label>
-                                                <div class="form-floating-icon">
-                                                    <i data-feather="lock"></i>
+                                            <div class="mt-4 pt-2">
+                                                <h5>Başarıyla çıkış yaptınız.</h5>
+                                                <p class="text-muted font-size-15">Kısa bir mola iyi gelir. <span class="fw-semibold text-dark">E-Mentor</span>'da tekrar buluşmak üzere! </p>
+                                                <div class="mt-4">
+                                                    <a href="auth-login.html" class="btn btn-primary w-100 waves-effect waves-light">Giriş Yap</a>
                                                 </div>
                                             </div>
-
-                                            <div class="row mb-4">
-                                                <div class="col">
-                                                    <div class="form-check font-size-15">
-                                                        <input class="form-check-input" type="checkbox" id="remember-check">
-                                                        <label class="form-check-label font-size-13" for="remember-check">
-                                                            Beni hatırla
-                                                        </label>
-                                                    </div>  
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="mb-3">
-                                                <button class="btn btn-primary w-100 waves-effect waves-light" type="submit">Giriş Yap</button>
-                                            </div>
-                                        </form>
-
-                                        <div class="mt-5 text-center">
-                                            <p class="text-muted mb-0">E-Mentor hesabın yok mu?<a href="auth-register.html"
-                                                    class="text-primary fw-semibold"> Hemen kayıt ol </a> </p>
                                         </div>
                                     </div>
                                     <div class="mt-4 mt-md-5 text-center">
@@ -96,7 +64,11 @@
                     </div>
                     <!-- end col -->
                     <div class="col-xxl-8 col-lg-7 col-md-6">
-                        <div class="auth-bg-student pt-md-5 p-4 d-flex">
+                        <div class="auth-bg pt-md-5 p-4 d-flex">
+                            <div class="bg-overlay"></div>
+                            <!-- end bubble effect -->
+                            
+                            
                         </div>
                     </div>
                     <!-- end col -->
@@ -267,7 +239,6 @@
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
-
         <!-- JAVASCRIPT -->
         <script src="assets/libs/jquery/jquery.min.js"></script>
         <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -277,7 +248,7 @@
         <script src="assets/libs/feather-icons/feather.min.js"></script>
         <!-- pace js -->
         <script src="assets/libs/pace-js/pace.min.js"></script>
-
+        <!-- password addon init -->
         <script src="assets/js/pages/pass-addon.init.js"></script>
 
         <script src="assets/js/pages/feather-icon.init.js"></script>

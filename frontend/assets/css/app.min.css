@@ -4800,68 +4800,24 @@ div.dt-button-collection {
     z-index: 1
 }
 
-.auth-bg-student {
-    background-image: url(../images/auth-bg-student.jpg);
+.auth-bg {
+    background-image: url(../images/auth-bg.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat
 }
 
-.auth-bg-student .bg-overlay {
+.auth-bg .bg-overlay {
     background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(43, 57, 64, .5)), to(#2b3940));
     background: linear-gradient(to bottom, rgba(43, 57, 64, .5) 30%, #2b3940 100%);
     opacity: 1
 }
 
 @media (min-width:768px) {
-    .auth-bg-student {
+    .auth-bg {
         height: 100vh
     }
 }
-
-
-
-
-.auth-bg-parent {
-    background-image: url(../images/auth-bg-parents.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat
-}
-
-.auth-bg-parent .bg-overlay {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(43, 57, 64, .5)), to(#2b3940));
-    background: linear-gradient(to bottom, rgba(43, 57, 64, .5) 30%, #2b3940 100%);
-    opacity: 1
-}
-
-@media (min-width:768px) {
-    .auth-bg-parent {
-        height: 100vh
-    }
-}
-
-.auth-bg-teacher {
-    background-image: url(../images/auth-bg-teacher.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat
-}
-
-.auth-bg-teacher .bg-overlay {
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgba(43, 57, 64, .5)), to(#2b3940));
-    background: linear-gradient(to bottom, rgba(43, 57, 64, .5) 30%, #2b3940 100%);
-    opacity: 1
-}
-
-@media (min-width:768px) {
-    .auth-bg-teacher {
-        height: 100vh
-    }
-}
-
-
-
 
 
 .auth-pass-inputgroup input[type=text]+.btn .mdi-eye-outline:before {
