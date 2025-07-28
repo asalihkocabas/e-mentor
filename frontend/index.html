@@ -409,171 +409,200 @@
                 <div class="container-fluid">
 
                     <!-- start page title -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0 font-size-18">Hoşgeldin Ahmet!</h4>
-
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                                        <li class="breadcrumb-item active">Welcome !</li>
-                                    </ol>
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-8">
+                                <div class="card">
+                                    <div class="card-header bg-white border-bottom-0 py-3">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h5 class="mb-0">Duyurular</h5>
+                                            <div class="btn-group btn-group-sm">
+                                                <button type="button" class="btn btn-outline-primary active">Hepsi</button>
+                                                <button type="button" class="btn btn-outline-secondary">1 Ay</button>
+                                                <button type="button" class="btn btn-outline-secondary">6 Ay</button>
+                                                <button type="button" class="btn btn-outline-secondary">1 Yıl</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card-body p-0">
+                                        <div class="list-group list-group-flush">
+                                            <!-- Duyuru 1 -->
+                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Matematik</span>
+                                                    <small class="text-muted">11 Temmuz, 22:12</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Matematik ödevinizi 5 Mayıs Çarşamba gününe kadar teslim ediniz.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 2 -->
+                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Fen Bilimleri</span>
+                                                    <small class="text-muted">9 Temmuz, 17:38</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Fen Bilimleri laboratuvar gezisi 12 Mayıs Pazartesi günü gerçekleştirilecektir.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 3 -->
+                                            <a href="/Ders/Grup/731972#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
+                                                    <small class="text-muted">7 Temmuz, 20:14</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Okul bahçesinde 15 Mayıs Çarşamba bahar şenliği düzenlenecektir.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 4 -->
+                                            <a href="/Ders/Grup/731972#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Sosyal Bilgiler</span>
+                                                    <small class="text-muted">6 Temmuz, 13:39</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Sosyal Bilgiler sunumlarınız 10 Mayıs Cuma gününe ertelenmiştir.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 5 (Ödev) -->
+                                            <a href="/Ders/Grup/731972#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
+                                                    <small class="text-muted">4 Temmuz, 18:03</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Kütüphane kitap iade süresi 7 Mayıs Perşembe günüdür.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 6 -->
+                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Beden Eğitimi</span>
+                                                    <small class="text-muted">22 Haziran, 09:57</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Basketbol turnuvası kayıtları 3 Mayıs Cuma gününe kadar alınmaktadır.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 7 -->
+                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Fen Bilimleri</span>
+                                                    <small class="text-muted">17 Haziran, 16:41</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Bilim projeleri başvuruları 20 Mayıs tarihine kadar devam edecek.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 8 -->
+                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">İngilizce</span>
+                                                    <small class="text-muted">28 Mayıs, 09:57</small>
+                                                </div>
+                                                <small class="text-muted fs-5">İngilizce kelime sınavı Perşembe günü yapılacaktır.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 9 (Ödev) -->
+                                            <a href="/Ders/Grup/731145#Odev" class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Görsel Sanatlar</span>
+                                                    <small class="text-muted">18 Mayıs, 17:46</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Görsel Sanatlar resim yarışması teması “Doğa” olarak belirlendi.</small>
+                                            </a>
+                                            
+                                            <!-- Duyuru 10 (Sistem) -->
+                                            <div class="list-group-item list-group-item-action border-0 py-3">
+                                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                                    <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
+                                                    <small class="text-muted">13 Eylül, 00:00</small>
+                                                </div>
+                                                <small class="text-muted fs-5">Okul meclisi seçimleri 18 Mayıs Pazartesi günü gerçekleşecektir.</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="card-footer bg-white border-top-0 py-3 text-center">
+                                        <a href="#" class="text-primary">Tüm Duyuruları Görüntüle</a>
+                                    </div>
                                 </div>
-
+                            </div>
+                            
+                            <div class="col-xl-4">
+                                <!-- Profil Kartı -->
+                                <div class="card mb-4">
+                                    <div class="card-body text-center">
+                                        <img src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d" 
+                                             class="rounded-circle mb-3" width="120" height="120" alt="Profil Fotoğrafı">
+                                        <h5 class="mb-1">KAAN BUĞRA TAŞ</h5>
+                                        
+                                        <div class="d-flex flex-column gap-2">
+                                            <div class="d-flex justify-content-between border-bottom pb-2">
+                                                <span>Numara</span>
+                                                <strong>1071</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between border-bottom pb-2">
+                                                <span>Sınıf:</span>
+                                                <strong>6/A</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between border-bottom pb-2">
+                                                <span>Kulübü</span>
+                                                <strong>Sivil Savunma</strong>
+                                            </div>
+                                            <div class="d-flex justify-content-between">
+                                                <span>Tamamlanan ödevler</span>
+                                                <strong class="text-success">24</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Hızlı Linkler -->
+                                <div class="col-xl-12">
+                                    <div class="card">
+                                      <div class="card-body">
+                                  
+                                        <!-- Nav tabs: sadece 2 düğme -->
+                                        <ul class="nav nav-tabs nav-tabs-custom nav-justified mb-3" role="tablist">
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab" aria-selected="true">
+                                              Devamsızlık
+                                            </a>
+                                          </li>
+                                          <li class="nav-item" role="presentation">
+                                            <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab" aria-selected="false">
+                                              Ortalaması
+                                            </a>
+                                          </li>
+                                        </ul>
+                                  
+                                        <!-- Tab içerikleri -->
+                                        <div class="tab-content">
+                                  
+                                          <!-- Birinci tab: 2x2 grid -->
+                                          <div class="tab-pane active" id="tab1" role="tabpanel">
+                                            <div class="row g-3">
+                                              <div class="col-6">
+                                                <div class="p-3 border rounded text-center">7 Gün</div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                  
+                                          <!-- İkinci tab: istediğiniz içeriği buraya koyabilirsiniz -->
+                                          <div class="tab-pane" id="tab2" role="tabpanel">
+                                            <div class="row g-3 justify-content-end">
+                                                <div class="col-6">
+                                                  <div class="p-3 border rounded text-center">75,35</div>
+                                                </div>
+                                              </div>
+                                          </div>
+                                  
+                                        </div><!-- /.tab-content -->
+                                  
+                                      </div><!-- /.card-body -->
+                                    </div><!-- /.card -->
+                                  </div><!-- /.col-xl-6 -->
+                                  
                             </div>
                         </div>
                     </div>
-                    <!-- end page title -->
-
-
-
-                    <body>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-xl-8">
-                                    <div class="card h-100">
-                                        <div class="card-body d-flex flex-column">
-                                            <div class="d-flex flex-wrap align-items-center mb-4">
-                                                <h5 class="card-title me-2">Duyurular</h5>
-                                                <div class="ms-auto">
-                                                    <div>
-                                                        <button type="button" class="btn btn-soft-primary btn-sm">
-                                                            Hepsi
-                                                        </button>
-                                                        <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                            1 Ay
-                                                        </button>
-                                                        <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                            6 Ay
-                                                        </button>
-                                                        <button type="button" class="btn btn-soft-secondary btn-sm">
-                                                            1 Yıl
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end card -->
-                                    </div>
-                                    <!-- end col -->
-                                </div>
-                                <!-- end row-->
-
-                                <div class="col-xl-4">
-                                    <!-- card -->
-                                    <div class="card">
-                                        <!-- card body -->
-                                        <div class="card-body">
-                                            <div class="d-flex flex-wrap align-items-center mb-4">
-                                                <h5 class="card-title me-2">Sales by Locations</h5>
-                                                <div class="ms-auto">
-                                                    <div class="dropdown">
-                                                        <a class="dropdown-toggle text-reset" href="#"
-                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">
-                                                            <span class="text-muted font-size-12">Sort By:</span> <span
-                                                                class="fw-medium">World<i
-                                                                    class="mdi mdi-chevron-down ms-1"></i></span>
-                                                        </a>
-
-                                                        <div class="dropdown-menu dropdown-menu-end"
-                                                            aria-labelledby="dropdownMenuButton1">
-                                                            <a class="dropdown-item" href="#">USA</a>
-                                                            <a class="dropdown-item" href="#">Russia</a>
-                                                            <a class="dropdown-item" href="#">Australia</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div id="sales-by-locations" data-colors='["--bs-success"]'
-                                                style="height: 253px"></div>
-
-                                            <div class="px-2 py-2">
-                                                <p class="mb-1">USA <span class="float-end">75%</span></p>
-                                                <div class="progress mt-2" style="height: 6px;">
-                                                    <div class="progress-bar progress-bar-striped bg-primary"
-                                                        role="progressbar" style="width: 75%" aria-valuenow="75"
-                                                        aria-valuemin="0" aria-valuemax="75">
-                                                    </div>
-                                                </div>
-
-                                                <p class="mt-3 mb-1">Russia <span class="float-end">55%</span></p>
-                                                <div class="progress mt-2" style="height: 6px;">
-                                                    <div class="progress-bar progress-bar-striped bg-primary"
-                                                        role="progressbar" style="width: 55%" aria-valuenow="55"
-                                                        aria-valuemin="0" aria-valuemax="55">
-                                                    </div>
-                                                </div>
-
-                                                <p class="mt-3 mb-1">Australia <span class="float-end">85%</span></p>
-                                                <div class="progress mt-2" style="height: 6px;">
-                                                    <div class="progress-bar progress-bar-striped bg-primary"
-                                                        role="progressbar" style="width: 85%" aria-valuenow="85"
-                                                        aria-valuemin="0" aria-valuemax="85">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end card body -->
-                                    </div>
-                                    <!-- end card -->
-                                </div>
-                                <!-- end col -->
-                            </div>
-                            <!-- end row-->
-
-
-
-
-
-                            <div class="offset-xl-8">
-                                <div class="card">
-                                    <div class="card-header align-items-center d-flex">
-                                        <h4 class="card-title mb-0 flex-grow-1">Chat</h4>
-                                        <div class="flex-shrink-0">
-                                            <select class="form-select form-select-sm mb-0 my-n1">
-                                                <option value="Today" selected="">Today</option>
-                                                <option value="Yesterday">Yesterday</option>
-                                                <option value="Week">Last Week</option>
-                                                <option value="Month">Last Month</option>
-                                            </select>
-                                        </div>
-                                    </div><!-- end card header -->
-
-                                    <div class="card-body px-0">
-                                        <div class="px-3 chat-conversation" data-simplebar style="max-height: 350px;">
-                                            <ul class="list-unstyled mb-0">
-                                                <li class="chat-day-title">
-                                                    <span class="title">Today</span>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-
-                                        <div class="px-3">
-                                            <div class="row">
-                                                <div class="col">
-                                                    <div class="position-relative">
-                                                        <input type="text" class="form-control border bg-light-subtle"
-                                                            placeholder="Enter Message...">
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <button type="submit"
-                                                        class="btn btn-primary chat-send w-md waves-effect waves-light"><span
-                                                            class="d-none d-sm-inline-block me-2">Send</span> <i
-                                                            class="mdi mdi-send float-end"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
-                            </div>
-                            <!-- end col -->
-                        </div><!-- end row -->
                 </div>
                 <!-- container-fluid -->
             </div>
