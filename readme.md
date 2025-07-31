@@ -29,7 +29,7 @@ Bu proje, **BTK Akademi Hackathon 2025** kapsamında geliştirilmiştir.
 
 ## 👥 Ekip
 
-- [Ahmet Salih Kocabaş](https://github.com/asalihocabas) – Developer
+- [Ahmet Salih Kocabaş](https://github.com/asalihkocabas) – Developer
 - [Kaan Buğra Taş](https://github.com/kavurr) – Developer
 
 ---
