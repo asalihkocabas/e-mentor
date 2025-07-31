@@ -18,12 +18,10 @@ Bu proje, **BTK Akademi Hackathon 2025** kapsamında geliştirilmiştir.
 
 ## 🛠️ Teknolojiler
 
-- **Frontend**: HTML, CSS, JavaScript, Bootstrap 5 (Dason Tema)
-- **Backend**: Python (Flask)
+- **Frontend**: HTML, CSS, JavaScript, Bootstrap 5
+- **Backend**: Python
 - **Database**: PostgreSQL
 - **AI API**: Google Gemini API
-
----
 
 ---
 
@@ -31,13 +29,6 @@ Bu proje, **BTK Akademi Hackathon 2025** kapsamında geliştirilmiştir.
 
 - [Ahmet Salih Kocabaş](https://github.com/asalihkocabas) – Developer
 - [Kaan Buğra Taş](https://github.com/kavurr) – Developer
-
----
-
-## 📅 Hackathon Takvimi
-
-- Başlangıç: 24 Temmuz 2025
-- Teslim: 6 Ağustos 2025
 
 ---
 
