@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Ana Sayfa | E-Mentor Sistemi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="E-Mentor Öğretmen Paneli" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
+
+    <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body data-topbar="dark">
+
+<div id="layout-wrapper">
+
+
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm.svg" alt="" height="30">
+                            </span>
+                        <span class="logo-lg">
+                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Dason</span>
+                            </span>
+                    </a>
+                </div>
+
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+
+            <div class="d-flex">
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Öğretmen Adı</span>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış Yap</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <div class="vertical-menu">
+
+        <div data-simplebar class="h-100">
+
+            <div id="sidebar-menu">
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title" data-key="t-menu">Menü</li>
+
+                    <li class="mm-active">
+                        <a href="index.html">
+                            <i data-feather="home"></i>
+                            <span data-key="t-dashboard">Ana Sayfa</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-title" data-key="t-apps">Yönetim</li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i data-feather="users"></i>
+                            <span data-key="t-classes">Sınıflarım</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="siniflarim.html" data-key="t-class-list">Sınıf Listesi</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i data-feather="clipboard"></i>
+                            <span data-key="t-exams">Sınav İşlemleri</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="sinav-olustur.html" data-key="t-create-exam">Sınav Oluştur</a></li>
+                            <li><a href="sonuc-girisi.html" data-key="t-enter-results">Sonuç Girişi</a></li>
+                            <li><a href="raporlar.html" data-key="t-reports">Sınav Raporları</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i data-feather="send"></i>
+                            <span data-key="t-announcements">Duyurular</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="duyuru-ekle.html" data-key="t-add-announcement">Duyuru Ekle</a></li>
+                            <li><a href="duyuru-yonetimi.html" data-key="t-manage-announcements">Duyuru Yönetimi</a></li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a href="javascript: void(0);" class="has-arrow">
+                            <i data-feather="folder"></i>
+                            <span data-key="t-content">İçerik Yönetimi</span>
+                        </a>
+                        <ul class="sub-menu" aria-expanded="false">
+                            <li><a href="dosya-yukle.html" data-key="t-upload-file">Dosya Yükle</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="menu-title" data-key="t-tools">Araçlar</li>
+
+                    <li>
+                        <a href="ders-programi.html">
+                            <i data-feather="calendar"></i>
+                            <span data-key="t-schedule">Ders Programı</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="yardim.html">
+                            <i data-feather="help-circle"></i>
+                            <span data-key="t-help">Yardım & Destek</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-content">
+
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">Hoş Geldiniz!</h4>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item active">Ana Sayfa</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <span class="text-muted mb-3 lh-1 d-block">Toplam Öğrenci</span>
+                                        <h4 class="mb-3">
+                                            <span class="counter-value" data-target="120">0</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <span class="text-muted mb-3 lh-1 d-block">Genel Başarı Oranı</span>
+                                        <h4 class="mb-3">
+                                            %<span class="counter-value" data-target="75.5">0</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <span class="text-muted mb-3 lh-1 d-block">Aktif Ödev Sayısı</span>
+                                        <h4 class="mb-3">
+                                            <span class="counter-value" data-target="4">0</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card card-h-100">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1">
+                                        <span class="text-muted mb-3 lh-1 d-block">Bugünkü Ders Saati</span>
+                                        <h4 class="mb-3">
+                                            <span class="counter-value" data-target="6">0</span>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header align-items-center d-flex">
+                                <h4 class="card-title mb-0 flex-grow-1">En Başarılı Öğrencileriniz</h4>
+                            </div>
+                            <div class="card-body px-0" data-simplebar style="max-height: 386px;">
+                                <div class="px-3">
+                                    <div class="d-flex align-items-center pb-4">
+                                        <div class="avatar-md me-4"><img src="assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle"></div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="font-size-15 mb-1"><a href="" class="text-dark">Ayşe Yılmaz</a></h5>
+                                            <span class="text-muted">10-A Sınıfı</span>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <span class="badge rounded-pill bg-success-subtle text-success font-size-12 fw-medium">95.0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header align-items-center d-flex">
+                                <h4 class="card-title mb-0 flex-grow-1">Desteğe İhtiyaç Duyanlar</h4>
+                            </div>
+                            <div class="card-body px-0" data-simplebar style="max-height: 386px;">
+                                <div class="px-3">
+                                    <div class="d-flex align-items-center pb-4">
+                                        <div class="avatar-md me-4"><img src="assets/images/users/avatar-3.jpg" class="img-fluid rounded-circle"></div>
+                                        <div class="flex-grow-1">
+                                            <h5 class="font-size-15 mb-1"><a href="" class="text-dark">Ali Veli</a></h5>
+                                            <span class="text-muted">10-A Sınıfı</span>
+                                        </div>
+                                        <div class="flex-shrink-0">
+                                            <span class="badge rounded-pill bg-danger-subtle text-danger font-size-12 fw-medium">55.0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title mb-0">Yaklaşan Etkinlikler</h4>
+                            </div>
+                            <div class="card-body" data-simplebar style="max-height: 386px;">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                        <span class="avatar-title rounded-circle bg-danger-subtle text-danger">
+                                                            <i class="bx bx-calendar-event"></i>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6>10-A Matematik Sınavı</h6>
+                                                <p class="text-muted mb-0">15 Ağustos 2025, 10:00</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                        <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
+                                                            <i class="bx bxs-file-plus"></i>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6>Fizik Projesi Son Teslim</h6>
+                                                <p class="text-muted mb-0">18 Ağustos 2025</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                        <span class="avatar-title rounded-circle bg-info-subtle text-info">
+                                                            <i class="bx bx-send"></i>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6>Duyuru: Veli Toplantısı</h6>
+                                                <p class="text-muted mb-0">22 Ağustos 2025'te yayınlanacak</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="d-flex">
+                                            <div class="flex-shrink-0 me-3">
+                                                <div class="avatar-xs">
+                                                        <span class="avatar-title rounded-circle bg-warning-subtle text-warning">
+                                                            <i class="bx bxs-user-detail"></i>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <h6>Genel Veli Toplantısı</h6>
+                                                <p class="text-muted mb-0">25 Ağustos 2025, 18:00</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <script>document.write(new Date().getFullYear())</script> © Dason.
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end d-none d-sm-block">
+                            Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/libs/pace-js/pace.min.js"></script>
+
+<script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+
+<script src="assets/js/pages/dashboard.init.js"></script>
+
+<script src="assets/js/app.js"></script>
+
+</body>
+
+</html>
