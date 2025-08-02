@@ -32,15 +32,21 @@ include '../partials/sidebar.php';
                                 <div class="table-responsive">
                                     <table class="table table-hover align-middle table-nowrap">
                                         <thead class="table-light">
-                                        <tr><th>Öğrenci No</th><th>Adı Soyadı</th><th>Son Sınav Puanı</th><th>Devamsızlık (Gün)</th><th class="text-center">İşlemler</th></tr>
+                                        <tr>
+                                            <th>Öğrenci No</th>
+                                            <th>Adı Soyadı</th>
+                                            <th>Son Sınav Puanı</th>
+                                            <th>Devamsızlık (Gün)</th>
+                                            <th class="text-center">İşlemler</th>
+                                        </tr>
                                         </thead>
                                         <tbody>
                                         <tr>
                                             <td>101</td>
-                                            <td><img src="../assets/images/users/avatar-2.jpg" alt="" class="avatar-xs rounded-circle me-2"> <a href="#" class="text-body fw-bold">Ayşe Yılmaz</a></td>
+                                            <td><img src="../assets/images/users/avatar-2.jpg" alt="" class="avatar-xs rounded-circle me-2"> <a href="ogrenci-detay.php" class="text-body fw-bold">Ayşe Yılmaz</a></td>
                                             <td><span class="badge bg-success-subtle text-success p-2">95.00</span></td>
                                             <td>2</td>
-                                            <td class="text-center"><a href="#" class="btn btn-primary btn-sm">Detay</a></td>
+                                            <td class="text-center"><a href="ogrenci-detay.php" class="btn btn-primary btn-sm">Detay</a></td>
                                         </tr>
                                         </tbody>
                                     </table>

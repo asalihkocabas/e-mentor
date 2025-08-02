@@ -1,82 +1,8 @@
-<!doctype html>
-<html lang="tr">
-
-<head>
-
-    <meta charset="utf-8" />
-    <title>Sınav Takvimi | E-Mentor App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Öğrenci Sınav Takvimi" name="description" />
-    <meta content="Themesbrand" name="author" />
-    <link rel="shortcut icon" href="../assets/images/favicon.ico">
-
-    <link rel="stylesheet" href="../assets/css/preloader.min.css" type="text/css" />
-
-    <link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
-
-</head>
-
-<body data-topbar="dark">
-<div id="layout-wrapper">
-    <header id="page-topbar">
-        <div class="navbar-header">
-            <div class="d-flex">
-                <div class="navbar-brand-box">
-                    <a href="index.php" class="logo logo-light">
-                            <span class="logo-sm">
-                                <img src="../assets/images/logo-sm.svg" alt="" height="30">
-                            </span>
-                        <span class="logo-lg">
-                                <img src="../assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">E-Mentor</span>
-                            </span>
-                    </a>
-                </div>
-                <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
-                    <i class="fa fa-fw fa-bars"></i>
-                </button>
-            </div>
-            <div class="d-flex">
-                <div class="dropdown d-inline-block">
-                    <button type="button" class="btn header-item bg-light-subtle border-start border-end"
-                            id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                        <img class="rounded-circle header-profile-user" src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d"
-                             alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Kaan</span>
-                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                    </button>
-                    <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="apps-contacts-profile.html"><i
-                                class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../cıkıs-yap.html"><i
-                                class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <div class="vertical-menu">
-        <div data-simplebar class="h-100">
-            <div id="sidebar-menu">
-                <ul class="metismenu list-unstyled" id="side-menu">
-                    <li class="menu-title" data-key="t-menu">Menü</li>
-                    <li><a href="index.php"><i data-feather="home"></i><span data-key="t-dashboard">Ana Sayfa</span></a></li>
-                    <li><a href="derslerim.php"><i data-feather="book"></i><span data-key="t-courses">Derslerim</span></a></li>
-                    <li><a href="#"><i data-feather="award"></i><span data-key="t-results">Sınav Sonuçlarım</span></a></li>
-                    <li><a href="ders-programi.php"><i data-feather="calendar"></i><span data-key="t-schedule">Ders Programım</span></a></li>
-                    <li class="mm-active"><a href="sinav-takvimi.html"><i data-feather="clock"></i><span data-key="t-exam-schedule">Sınav Takvimi</span></a></li>
-                    <li><a href="#"><i data-feather="folder"></i><span data-key="t-library">Kütüphane</span></a></li>
-                    <li><a href="#"><i data-feather="send"></i><span data-key="t-announcements">Duyurular</span></a></li>
-                    <li class="menu-title" data-key="t-support">Destek</li>
-                    <li><a href="#"><i data-feather="help-circle"></i><span data-key="t-help">Yardım</span></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<?php
+$page_title = "Sınav Takvimi | E-Mentor Öğrenci Paneli";
+include '../partials/header.php';
+include '../partials/sidebar.php';
+?>
 
     <div class="main-content">
         <div class="page-content">
@@ -88,7 +14,7 @@
                             <h4 class="mb-sm-0 font-size-18">Sınav Takvimi</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">E-Mentor</a></li>
+                                    <li class="breadcrumb-item"><a href="index.php">Ana Sayfa</a></li>
                                     <li class="breadcrumb-item active">Sınav Takvimi</li>
                                 </ol>
                             </div>
@@ -177,28 +103,14 @@
                 </div>
             </div>
         </div>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-6"><script>document.write(new Date().getFullYear())</script> © E-Mentor.</div>
-                </div>
-            </div>
-        </footer>
+        <script>
+            // Sayfa yüklendiğinde bugünün tarihini ilgili alana yazdır
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('today-date').innerText = new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+            });
+        </script>
     </div>
-</div>
 
-<script src="../assets/libs/jquery/jquery.min.js"></script>
-<script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="../assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="../assets/libs/simplebar/simplebar.min.js"></script>
-<script src="../assets/libs/node-waves/waves.min.js"></script>
-<script src="../assets/libs/feather-icons/feather.min.js"></script>
-<script src="../assets/libs/pace-js/pace.min.js"></script>
-<script src="../assets/js/app.js"></script>
-<script>
-    // Sayfa yüklendiğinde bugünün tarihini ilgili alana yazdır
-    document.getElementById('today-date').innerText = new Date().toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
-</script>
-</body>
-</html>
+<?php
+include '../partials/footer.php';
+?>

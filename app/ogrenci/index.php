@@ -30,7 +30,7 @@ include '../partials/sidebar.php';
                             </ul>
                         </div>
 
-                        <div class="card">
+                        <div class="card mb-4">
                             <div class="card-body">
                                 <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
                                     <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab">Devamsızlık</a></li>
@@ -52,6 +52,24 @@ include '../partials/sidebar.php';
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card">
+                            <div class="card-header"><h4 class="card-title mb-0">Ders Başarı Durumu</h4></div>
+                            <div class="card-body" data-simplebar style="max-height: 250px;">
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between"><span>Matematik</span><span class="text-success fw-bold">95.00</span></div>
+                                    <div class="progress mt-1" style="height: 6px;"><div class="progress-bar bg-success" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between"><span>Fen Bilimleri</span><span class="text-primary fw-bold">82.50</span></div>
+                                    <div class="progress mt-1" style="height: 6px;"><div class="progress-bar bg-primary" style="width: 82.5%;"></div></div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between"><span>Sosyal Bilgiler</span><span class="text-warning fw-bold">78.00</span></div>
+                                    <div class="progress mt-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 78%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-xl-8">
@@ -67,27 +85,27 @@ include '../partials/sidebar.php';
                                 </div>
                             </div>
                             <div class="card-body p-0">
-                                <div class="list-group list-group-flush" data-simplebar style="max-height: 520px;">
+                                <div class="list-group list-group-flush" data-simplebar style="max-height: 700px;">
                                     <a href="#" class="list-group-item list-group-item-action border-0 py-3">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Matematik</span>
                                             <small class="text-muted">11 Temmuz, 22:12</small>
                                         </div>
-                                        <p class="mb-1 text-muted">Matematik ödevinizi 5 Mayıs Çarşamba gününe kadar teslim ediniz.</p>
+                                        <small class="text-muted fs-5">Matematik ödevinizi 5 Mayıs Çarşamba gününe kadar teslim ediniz.</small>
                                     </a>
                                     <a href="#" class="list-group-item list-group-item-action border-0 py-3">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Fen Bilimleri</span>
                                             <small class="text-muted">9 Temmuz, 17:38</small>
                                         </div>
-                                        <p class="mb-1 text-muted">Fen Bilimleri laboratuvar gezisi 12 Mayıs Pazartesi günü gerçekleştirilecektir.</p>
+                                        <small class="text-muted fs-5">Fen Bilimleri laboratuvar gezisi 12 Mayıs Pazartesi günü gerçekleştirilecektir.</small>
                                     </a>
                                     <a href="#" class="list-group-item list-group-item-action border-0 py-3">
                                         <div class="d-flex justify-content-between align-items-center mb-1">
                                             <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
                                             <small class="text-muted">7 Temmuz, 20:14</small>
                                         </div>
-                                        <p class="mb-1 text-muted">Okul bahçesinde 15 Mayıs Çarşamba bahar şenliği düzenlenecektir.</p>
+                                        <small class="text-muted fs-5">Okul bahçesinde 15 Mayıs Çarşamba bahar şenliği düzenlenecektir.</small>
                                     </a>
                                 </div>
                             </div>

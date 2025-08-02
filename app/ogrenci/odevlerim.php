@@ -109,6 +109,13 @@ include '../partials/sidebar.php';
                                                     <td><span class="text-muted fst-italic">"Sunumun harikaydı, tebrikler!"</span></td>
                                                     <td class="text-center"><a href="#" class="btn btn-sm btn-light">Sonucu Gör</a></td>
                                                 </tr>
+                                                <tr>
+                                                    <td><strong>Sayı Kümeleri Testi</strong></td>
+                                                    <td>Matematik</td>
+                                                    <td><span class="badge bg-danger font-size-13">Tekrar Gerekli</span></td>
+                                                    <td><span class="text-muted fst-italic">"Konuyu tekrar gözden geçirmeni..."</span></td>
+                                                    <td class="text-center"><a href="#" class="btn btn-sm btn-light">Sonucu Gör</a></td>
+                                                </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -118,7 +125,6 @@ include '../partials/sidebar.php';
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
