@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        
+        <meta charset="utf-8" />
+        <title>Starter Page | Dason - Admin & Dashboard Template</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="Themesbrand" name="author" />
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+        <!-- preloader css -->
+        <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
+
+        <!-- Bootstrap Css -->
+        <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+        <!-- Icons Css -->
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <!-- App Css-->
+        <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+    </head>
+
+    <body data-topbar="dark">
+
+    <!-- <body data-layout="horizontal"> -->
+
+       <!-- Begin page -->
+    <div id="layout-wrapper">
+
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+                <div class="d-flex">
+                    <!-- LOGO -->
+                    <div class="navbar-brand-box">
+                        <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm.svg" alt="" height="30">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span
+                                    class="logo-txt">Dason</span>
+                            </span>
+                        </a>
+
+                        <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm.svg" alt="" height="30">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span
+                                    class="logo-txt">E-Mentor</span>
+                            </span>
+                        </a>
+                    </div>
+
+                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                        <i class="fa fa-fw fa-bars"></i>
+                    </button>
+
+                    <!-- App Search-->
+                    <form class="app-search d-none d-lg-block">
+                        <div class="position-relative">
+                            <input type="search" class="form-control" placeholder="Ara...">
+                            <button class="btn btn-primary" type="button"><i
+                                    class="bx bx-search-alt align-middle"></i></button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="d-flex">
+
+                    <div class="dropdown d-inline-block d-lg-none ms-2">
+                        <button type="button" class="btn header-item" id="page-header-search-dropdown"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i data-feather="search" class="icon-lg"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                            aria-labelledby="page-header-search-dropdown">
+
+                            <form class="p-3">
+                                <div class="form-group m-0">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Ara..."
+                                            aria-label="Search Result">
+
+                                        <button class="btn btn-primary" type="submit"><i
+                                                class="mdi mdi-magnify"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-none d-sm-inline-block">
+                        <div class="dropdown-menu dropdown-menu-end">
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
+                                <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span
+                                    class="align-middle">English</span>
+                            </a>
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
+                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Spanish</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
+                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">German</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
+                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Italian</span>
+                            </a>
+
+                            <!-- item-->
+                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
+                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
+                                <span class="align-middle">Russian</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-none d-sm-inline-block">
+                        <button type="button" class="btn header-item" id="mode-setting-btn">
+                            <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
+                            <i data-feather="sun" class="icon-lg layout-mode-light"></i>
+                        </button>
+                    </div>
+
+                    <div class="dropdown d-none d-lg-inline-block ms-1">
+                        <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i data-feather="grid" class="icon-lg"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
+                            <div class="p-2">
+                                <div class="row g-0">
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/github.png" alt="Github">
+                                            <span>GitHub</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                            <span>Bitbucket</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                            <span>Dribbble</span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="row g-0">
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                            <span>Dropbox</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
+                                            <span>Mail Chimp</span>
+                                        </a>
+                                    </div>
+                                    <div class="col">
+                                        <a class="dropdown-icon-item" href="#">
+                                            <img src="assets/images/brands/slack.png" alt="slack">
+                                            <span>Slack</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item noti-icon position-relative"
+                            id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i data-feather="bell" class="icon-lg"></i>
+                            <span class="badge bg-success rounded-pill">5</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+                            aria-labelledby="page-header-notifications-dropdown">
+                            <div class="p-3">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h6 class="m-0"> Notifications </h6>
+                                    </div>
+                                    <div class="col-auto">
+                                        <a href="#!" class="small text-reset text-decoration-underline"> Unread (3)</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-simplebar style="max-height: 230px;">
+                                <a href="#!" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm"
+                                                alt="user-pic">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">James Lemire</h6>
+                                            <div class="font-size-13 text-muted">
+                                                <p class="mb-1">It will seem like simplified English.</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>1 hours
+                                                        ago</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#!" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 avatar-sm me-3">
+                                            <span class="avatar-title bg-primary rounded-circle font-size-16">
+                                                <i class="bx bx-cart"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">Your order is placed</h6>
+                                            <div class="font-size-13 text-muted">
+                                                <p class="mb-1">If several languages coalesce the grammar</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>3 min
+                                                        ago</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#!" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 avatar-sm me-3">
+                                            <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                <i class="bx bx-badge-check"></i>
+                                            </span>
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">Your item is shipped</h6>
+                                            <div class="font-size-13 text-muted">
+                                                <p class="mb-1">If several languages coalesce the grammar</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>3 min
+                                                        ago</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="#!" class="text-reset notification-item">
+                                    <div class="d-flex">
+                                        <div class="flex-shrink-0 me-3">
+                                            <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm"
+                                                alt="user-pic">
+                                        </div>
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">Salena Layfield</h6>
+                                            <div class="font-size-13 text-muted">
+                                                <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
+                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>1 hours
+                                                        ago</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="p-2 border-top d-grid">
+                                <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
+                                    <i class="mdi mdi-arrow-right-circle me-1"></i> <span>View More..</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item right-bar-toggle me-2">
+                            <i data-feather="settings" class="icon-lg"></i>
+                        </button>
+                    </div>
+
+                    <div class="dropdown d-inline-block">
+                        <button type="button" class="btn header-item bg-light-subtle border-start border-end"
+                            id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <img class="rounded-circle header-profile-user" src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d"
+                                alt="Header Avatar">
+                            <span class="d-none d-xl-inline-block ms-1 fw-medium">Kaan</span>
+                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <!-- item-->
+                            <a class="dropdown-item" href="apps-contacts-profile.html"><i
+                                    class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="auth-logout.html"><i
+                                    class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <!-- Sidebar Menü -->
+                <div id="sidebar-menu">
+                    <!-- Sol Menü Başlangıcı -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <!-- Menü Başlığı -->
+                        <li class="menu-title" data-key="t-menu">Menü</li>
+
+                        <!-- Ana Sayfa -->
+                        <li>
+                            <a href="index.html">
+                                <i data-feather="home"></i>
+                                <span data-key="t-dashboard">Ana Sayfa</span>
+                            </a>
+                        </li>
+                        <!-- Dersler -->
+                        <li>
+                            <a href="ecommerce-products.html">
+                                <i data-feather="book"></i>
+                                <span data-key="t-dersler">Dersler</span>
+                            </a>
+                        </li>
+
+                        <!-- Ders Programı -->
+                        <li>
+                            <a href="apps-calendar.html">
+                                <i data-feather="calendar"></i>
+                                <span data-key="t-lesson-schedule">Ders Programı</span>
+                            </a>
+                        </li>
+
+                        <!-- Görevler ve Ödevler -->
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="trello"></i>
+                                <span data-key="t-homework">Görevler ve Ödevler</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="tasks-list.html" data-key="t-assigned-homework">Verilen Ödevler</a></li>
+                                <li><a href="tasks-kanban.html" data-key="t-completed-homework">Tamamlanan Ödevler</a>
+                                </li>
+                                <li><a href="tasks-create.html" data-key="t-homework-results">Ödev Sonuçları</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Sınav Takvimi -->
+                        <li>
+                            <a href="pages-timeline.html">
+                                <i data-feather="clock"></i>
+                                <span data-key="t-exam-schedule">Sınav Takvimi</span>
+                            </a>
+                        </li>
+
+                        <!-- Kütüphane -->
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="book-open"></i>
+                                <span data-key="t-library">Kütüphane</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="apps-contacts-grid.html" data-key="t-achievements">Kazanımlar</a></li>
+                                <li><a href="apps-contacts-grid.html" data-key="t-previous-exams">Çıkmış Sorular</a>
+                                </li>
+                                <li><a href="apps-contacts-list.html" data-key="t-materials">Ders Materyalleri</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Yardım -->
+                        <li>
+                            <a href="apps-chat.html">
+                                <i data-feather="help-circle"></i>
+                                <span data-key="t-help">Yardım</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="main-content">
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                                    <h4 class="mb-sm-0 font-size-18">Matematik</h4>
+
+                                    <div class="page-title-right">
+                                        <ol class="breadcrumb m-0">
+                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dersler</a></li>
+                                            <li class="breadcrumb-item active">Matematik</li>
+                                        </ol>
+                                    </div>
+
+                                </div>
+                            </div>  
+                        </div>
+                        <!-- end page title -->
+                        <!-- Sağ panel: Ders Not Bilgileri -->
+<d<div class="col-xl-6 col-lg-7 col-12">
+    <div class="card shadow-sm">
+      <div class="card-header bg-white border-0">
+        <h5 class="mb-0 fw-semibold">Ders Not Bilgileri</h5>
+      </div>
+  
+      <div class="table-responsive">
+        <table class="table table-hover mb-0 align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Çalışma Tipi</th>
+              <th>Not</th>
+              <th class="text-end">Detay</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <!-- 1. satır -->
+            <tr>
+              <td>Sınav 1</td>
+              <td>90</td>
+  
+              <!-- Detay hücresi -->
+              <td class="text-end">
+                <div class="btn-group">
+                  <button type="button"
+                          class="btn btn-primary btn-sm dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Ayrıntılı Detay &nbsp;<i class="mdi mdi-chevron-down"></i>
+                  </button>
+  
+                  <ul class="dropdown-menu dropdown-menu-end dropdownmenu-primary">
+                    <li><a class="dropdown-item" href="#">Soru/Puan Detay</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Ai Destek</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+  
+            <tr>
+              <td>Sınav 2</td>
+              <td>
+                70<br>
+              </td>
+              <!-- Detay hücresi -->
+              <td class="text-end">
+                <div class="btn-group">
+                  <button type="button"
+                          class="btn btn-primary btn-sm dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Ayrıntılı Detay &nbsp;<i class="mdi mdi-chevron-down"></i>
+                  </button>
+  
+                  <ul class="dropdown-menu dropdown-menu-end dropdownmenu-primary">
+                    <li><a class="dropdown-item" href="#">Soru/Puan Detay</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Ai Destek</a></li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+                <td>Proje</td>
+                <td>
+                  65<br>
+                </td>
+                <!-- Detay hücresi -->
+              <td class="text-end">
+                <div class="btn-group">
+                  <button type="button"
+                          class="btn btn-primary btn-sm dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Ayrıntılı Detay &nbsp;<i class="mdi mdi-chevron-down"></i>
+                  </button>
+  
+                  <ul class="dropdown-menu dropdown-menu-end dropdownmenu-primary">
+                    <li><a class="dropdown-item" href="#">Soru/Puan Detay</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Ai Destek</a></li>
+                  </ul>
+                </div>
+              </td>
+              </tr>
+
+              <tr>
+                <td>Performans Ödevi 1</td>
+                <td>
+                  100<br>
+                </td>
+                <!-- Detay hücresi -->
+              <td class="text-end">
+                <div class="btn-group">
+                  <button type="button"
+                          class="btn btn-primary btn-sm dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Ayrıntılı Detay &nbsp;<i class="mdi mdi-chevron-down"></i>
+                  </button>
+  
+                  <ul class="dropdown-menu dropdown-menu-end dropdownmenu-primary">
+                    <li><a class="dropdown-item" href="#">Soru/Puan Detay</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Ai Destek</a></li>
+                  </ul>
+                </div>
+              </td>
+              </tr>
+
+              <tr>
+                <td>Performans Ödevi 2</td>
+                <td>
+                  90<br>
+                </td>
+                <!-- Detay hücresi -->
+              <td class="text-end">
+                <div class="btn-group">
+                  <button type="button"
+                          class="btn btn-primary btn-sm dropdown-toggle"
+                          data-bs-toggle="dropdown" aria-expanded="false">
+                    Ayrıntılı Detay &nbsp;<i class="mdi mdi-chevron-down"></i>
+                  </button>
+  
+                  <ul class="dropdown-menu dropdown-menu-end dropdownmenu-primary">
+                    <li><a class="dropdown-item" href="#">Soru/Puan Detay</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Ai Destek</a></li>
+                  </ul>
+                </div>
+              </td>
+              </tr>
+
+              <tr>
+                <td>Sözlü</td>
+                <td>
+                  80<br>
+                </td>
+                <!-- Detay hücresi -->
+<td class="text-end">
+    <div class="btn-group">
+      <button type="button"
+              class="btn btn-outline-primary btn-sm dropdown-toggle"
+              data-bs-toggle="dropdown" aria-expanded="false">
+        Ayrıntılı Detay <i class="mdi mdi-chevron-down"></i>
+      </button>
+  
+      <ul class="dropdown-menu dropdown-menu-end">
+        <!-- Soru / Puan Detay -->
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-bs-toggle="modal"
+             data-bs-target="#modalScoreDetail">
+            Soru / Puan Detay
+          </a>
+        </li>
+  
+        <li><hr class="dropdown-divider"></li>
+  
+        <!-- AI Destek -->
+        <li>
+          <a class="dropdown-item"
+             href="#"
+             data-bs-toggle="modal"
+             data-bs-target="#modalAiSupport">
+            AI Destek
+          </a>
+        </li>
+      </ul>
+    </div>
+  </td>
+  <div class="modal fade" id="modalScoreDetail" tabindex="-1"
+  aria-labelledby="modalScoreLabel" aria-hidden="true"
+  data-bs-scroll="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+ <div class="modal-content">
+   <div class="modal-header">
+     <h5 class="modal-title" id="modalScoreLabel">Sınav Soru Puan Detay</h5>
+     <button type="button" class="btn-close" data-bs-dismiss="modal"
+             aria-label="Kapat"></button>
+   </div>
+   
+<div class="modal-body p-0">
+
+    <ul class="list-group list-group-flush">
+  
+      <!-- Tek satır şablonu -->
+      <li class="list-group-item d-flex align-items-center">
+        <!-- SORU -->
+        <span class="flex-grow-1">Soru&nbsp;1</span>
+        <!-- PUAN : orta — sabit genişlik + ortalı  -->
+        <span class="text-center fw-semibold"
+              style="width:70px;">5</span>
+        <!-- KONU -->
+        <span class="text-end text-muted">Dört&nbsp;İşlem</span>
+      </li>
+  
+      <!-- Devamını kopyala-yapıştır -->
+      <li class="list-group-item d-flex align-items-center">
+        <span class="flex-grow-1">Soru&nbsp;2</span>
+        <span class="text-center fw-semibold" style="width:70px;">5</span>
+        <span class="text-end text-muted">Kesirler</span>
+      </li>
+
+      <li class="list-group-item d-flex align-items-center">
+        <span class="flex-grow-1">Soru&nbsp;3</span>
+        <span class="text-center fw-semibold" style="width:70px;">4</span>
+        <span class="text-end text-muted">Oran&nbsp;–&nbsp;Orantı</span>
+      </li>
+  
+      <li class="list-group-item d-flex align-items-center">
+        <span class="flex-grow-1">Soru&nbsp;4</span>
+        <span class="text-center fw-semibold" style="width:70px;">5</span>
+        <span class="text-end text-muted">Problemler</span>
+      </li>
+  
+      <li class="list-group-item d-flex align-items-center">
+        <span class="flex-grow-1">Soru&nbsp;5</span>
+        <span class="text-center fw-semibold" style="width:70px;">5</span>
+        <span class="text-end text-muted">Geometri&nbsp;–&nbsp;Açılar</span>
+      </li>
+  
+    </ul>
+  
+  </div>
+  
+
+   <div class="modal-footer">
+     <button type="button" class="btn btn-secondary"
+             data-bs-dismiss="modal">Kapat</button>
+   </div>
+ </div>
+</div>
+</div>
+<div class="modal fade" id="modalAiSupport" tabindex="-1"
+     aria-labelledby="modalAiLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAiLabel">AI Destek</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Kapat"></button>
+      </div>
+
+      <div class="modal-body">
+        <p>Buraya yapay zekâ tarafından oluşturulan geri bildirim,
+           ipuçları veya ek kaynaklar gelecek.</p>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+          </tbody>
+  
+          <!-- Başarı notu bölümü -->
+          <tfoot class="table-light">
+            <tr>
+              <th colspan="2" class="text">Başarı Ortalaması</th>
+              <th class="text-end">78</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div><!-- /.table-responsive -->
+    </div><!-- /.card -->
+  </div><!-- /.col -->
+  
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <script>document.write(new Date().getFullYear())</script> © Dason.
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="text-sm-end d-none d-sm-block">
+                                    Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+        
+        <!-- Right Sidebar -->
+        <div class="right-bar">
+            <div data-simplebar class="h-100">
+                <div class="rightbar-title d-flex align-items-center p-3">
+
+                    <h5 class="m-0 me-2">Theme Customizer</h5>
+
+                    <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
+                        <i class="mdi mdi-close noti-icon"></i>
+                    </a>
+                </div>
+
+                <!-- Settings -->
+                <hr class="m-0" />
+
+                <div class="p-4">
+                    <h6 class="mb-3">Select Custome Colors</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input theme-color" type="radio" name="theme-mode"
+                            id="theme-default" value="default" onchange="document.documentElement.setAttribute('data-theme-mode', 'default')" checked>
+                        <label class="form-check-label" for="theme-default">Default</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input theme-color" type="radio" name="theme-mode"
+                            id="theme-red" value="red" onchange="document.documentElement.setAttribute('data-theme-mode', 'red')">
+                        <label class="form-check-label" for="theme-red">Red</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input theme-color" type="radio" name="theme-mode"
+                            id="theme-purple" value="purple" onchange="document.documentElement.setAttribute('data-theme-mode', 'purple')">
+                        <label class="form-check-label" for="theme-purple">Purple</label>
+                    </div>
+
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-vertical" value="vertical">
+                        <label class="form-check-label" for="layout-vertical">Vertical</label>
+                    </div>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout"
+                            id="layout-horizontal" value="horizontal">
+                        <label class="form-check-label" for="layout-horizontal">Horizontal</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-light" value="light">
+                        <label class="form-check-label" for="layout-mode-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-mode"
+                            id="layout-mode-dark" value="dark">
+                        <label class="form-check-label" for="layout-mode-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-fuild" value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
+                        <label class="form-check-label" for="layout-width-fuild">Fluid</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-width"
+                            id="layout-width-boxed" value="boxed" onchange="document.body.setAttribute('data-layout-size', 'boxed'),document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="layout-width-boxed">Boxed</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-fixed" value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
+                        <label class="form-check-label" for="layout-position-fixed">Fixed</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-position"
+                            id="layout-position-scrollable" value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
+                        <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-light" value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
+                        <label class="form-check-label" for="topbar-color-light">Light</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="topbar-color"
+                            id="topbar-color-dark" value="dark" onchange="document.body.setAttribute('data-topbar', 'dark')">
+                        <label class="form-check-label" for="topbar-color-dark">Dark</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-default" value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
+                        <label class="form-check-label" for="sidebar-size-default">Default</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-compact" value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
+                        <label class="form-check-label" for="sidebar-size-compact">Compact</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-size"
+                            id="sidebar-size-small" value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
+                        <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
+
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-light" value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
+                        <label class="form-check-label" for="sidebar-color-light">Light</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-dark" value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
+                        <label class="form-check-label" for="sidebar-color-dark">Dark</label>
+                    </div>
+                    <div class="form-check sidebar-setting">
+                        <input class="form-check-input" type="radio" name="sidebar-color"
+                            id="sidebar-color-brand" value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
+                        <label class="form-check-label" for="sidebar-color-brand">Brand</label>
+                    </div>
+
+                    <h6 class="mt-4 mb-3 pt-2">Direction</h6>
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-ltr" value="ltr">
+                        <label class="form-check-label" for="layout-direction-ltr">LTR</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="layout-direction"
+                            id="layout-direction-rtl" value="rtl">
+                        <label class="form-check-label" for="layout-direction-rtl">RTL</label>
+                    </div>
+
+           
+
+                </div>
+
+            </div> <!-- end slimscroll-menu-->
+        </div>
+        <!-- /Right-bar -->
+
+        <!-- Right bar overlay-->
+        <div class="rightbar-overlay"></div>
+
+        <!-- JAVASCRIPT -->
+        <script src="assets/libs/jquery/jquery.min.js"></script>
+        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/libs/metismenu/metisMenu.min.js"></script>
+        <script src="assets/libs/simplebar/simplebar.min.js"></script>
+        <script src="assets/libs/node-waves/waves.min.js"></script>
+        <script src="assets/libs/feather-icons/feather.min.js"></script>
+        <!-- pace js -->
+        <script src="assets/libs/pace-js/pace.min.js"></script>
+
+        <script src="assets/js/app.js"></script>
+
+    </body>
+</html>
