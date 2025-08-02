@@ -328,15 +328,10 @@
                     
                                     <!-- Görevler ve Ödevler -->
                                     <li>
-                                        <a href="javascript: void(0);" class="has-arrow">
+                                        <a href="tasks-list.html">
                                             <i data-feather="trello"></i>
                                             <span data-key="t-homework">Görevler ve Ödevler</span>
                                         </a>
-                                        <ul class="sub-menu" aria-expanded="false">
-                                            <li><a href="tasks-list.html" data-key="t-assigned-homework">Verilen Ödevler</a></li>
-                                            <li><a href="tasks-kanban.html" data-key="t-completed-homework">Tamamlanan Ödevler</a></li>
-                                            <li><a href="tasks-create.html" data-key="t-homework-results">Ödev Sonuçları</a></li>
-                                        </ul>
                                     </li>
                     
                                     <!-- Sınav Takvimi -->
@@ -374,617 +369,244 @@
             <!-- ============================================================== -->
             <!-- Start right Content here -->
             <!-- ============================================================== -->
-            <div class="main-content">
+            <!-- ========= main-content (YENİ) ========= -->
+<div class="main-content">
 
-                <div class="page-content">
-                    <div class="container-fluid">
-
-                        <!-- start page title -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                    <h4 class="mb-sm-0 font-size-18">Task List</h4>
-
-                                    <div class="page-title-right">
-                                        <ol class="breadcrumb m-0">
-                                            <li class="breadcrumb-item"><a href="javascript: void(0);">Tasks</a></li>
-                                            <li class="breadcrumb-item active">Task List</li>
-                                        </ol>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <!-- end page title -->
-
-                        <div class="row">
-                            <div class="col-lg-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Upcoming</h4>
-                                        <div class="table-responsive">
-                                            <table class="table table-nowrap align-middle mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width: 40px;">
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="upcomingtaskCheck01">
-                                                                <label class="form-check-label" for="upcomingtaskCheck01"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Create a Dason Dashboard UI</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 3
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Product Design</p>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-secondary-subtle text-secondary  font-size-11">Waiting</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 1
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="upcomingtaskCheck02" checked>
-                                                                <label class="form-check-label" for="upcomingtaskCheck02"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Create a New Landing UI</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 8
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Web Development</p>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-primary-subtle text-primary  font-size-11">Approved</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 4
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                A
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-6.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-    
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="upcomingtaskCheck03">
-                                                                <label class="form-check-label" for="upcomingtaskCheck03"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Create a Dason Logo</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 5
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Illustration</p>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-secondary-subtle text-secondary  font-size-11">Waiting</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 4
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-warning text-white font-size-16">
-                                                                                R
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">In Progress</h4>
-                                        <div class="table-responsive">
-                                            <table class="table table-nowrap align-middle mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width: 40px;">
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="inprogresstaskCheck01" checked>
-                                                                <label class="form-check-label" for="inprogresstaskCheck01"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Brand logo design</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 2
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Illustration</p>
-                                                        </td>
-                                                       
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-success-subtle text-success  font-size-11">Complete</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 2
-                                                            </p>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                        
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="inprogresstaskCheck02">
-                                                                <label class="form-check-label" for="inprogresstaskCheck02"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Create a Blog Template UI</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 6
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Web Development</p>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-warning-subtle text-warning  font-size-11">Pending</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 2
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-success text-white font-size-16">
-                                                                                A
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Completed</h4>
-                                        <div class="table-responsive">
-                                            <table class="table table-nowrap align-middle mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td style="width: 40px;">
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="completedtaskCheck01">
-                                                                <label class="form-check-label" for="completedtaskCheck01"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Redesign - Landing page</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 5
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Web Development</p>
-                                                        </td>
-                                                       
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-success-subtle text-success  font-size-11">Complete</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 3
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-danger text-white font-size-16">
-                                                                                K
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="completedtaskCheck02" checked>
-                                                                <label class="form-check-label" for="completedtaskCheck02"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Multipurpose Landing</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 1
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Product Design</p>
-                                                        </td>
-                                                        
-                                                        
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-success-subtle text-success  font-size-11">Complete</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 1
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-8.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-6.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check font-size-16">
-                                                                <input class="form-check-input" type="checkbox" id="completedtaskCheck03">
-                                                                <label class="form-check-label" for="completedtaskCheck03"></label>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Create a Blog Template UI</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-comment-outline align-middle text-muted font-size-16 me-1"></i> 5
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">Illustration</p>
-                                                        </td>
-                                                        
-                                                        <td>
-                                                            <div class="text-center">
-                                                                <span class="badge rounded-pill bg-success-subtle text-success  font-size-11">Complete</span>
-                                                            </div>
-                                                        </td>
-                                                        <td>
-                                                            <p class="ml-4 text-muted mb-0">
-                                                                <i class="mdi mdi-file-outline text-muted font-size-16  me-1"></i> 4
-                                                            </p>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-info text-white font-size-16">
-                                                                                D
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- end col -->
-
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3">Week Tasks</h4>
-
-                                        <div id="task-chart" data-colors='["--bs-primary", "--bs-success"]'  class="apex-charts" dir="ltr"></div>
-                                    </div>
-                                </div>
-
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-4">Recent Tasks</h4>
-
-                                        <div class="table-responsive">
-                                            <table class="table table-nowrap align-middle mb-0">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Brand logo design</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-4.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Create a Blog Template UI</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-1.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-info text-white font-size-16">
-                                                                                D
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h5 class="text-truncate font-size-14 m-0"><a href="javascript: void(0);" class="text-dark">Redesign - Landing page</a></h5>
-                                                        </td>
-                                                        <td>
-                                                            <div class="avatar-group">
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-8.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <img src="assets/images/users/avatar-7.jpg" alt="" class="rounded-circle avatar-sm">
-                                                                    </a>
-                                                                </div>
-                                                                <div class="avatar-group-item">
-                                                                    <a href="javascript: void(0);" class="d-inline-block">
-                                                                        <div class="avatar-sm">
-                                                                            <span class="avatar-title rounded-circle bg-danger text-white font-size-16">
-                                                                                P
-                                                                            </span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <!-- end table responsive -->
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        
-                    </div> <!-- container-fluid -->
-                </div>
-                <!-- End Page-content -->
-
-                
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <script>document.write(new Date().getFullYear())</script> © Dason.
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="text-sm-end d-none d-sm-block">
-                                    Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
+    <div class="page-content">
+      <div class="container-fluid">
+  
+        <!-- Sayfa başlığı -->
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+              <h3 class="mb-sm-0 fw-bold">
+                <i data-feather="trello" class="align-middle me-2"></i>
+                Görevler &amp; Ödevler
+              </h3>
+  
+              <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                  <li class="breadcrumb-item"><a href="#">Ana Sayfa</a></li>
+                  <li class="breadcrumb-item active">Görevler</li>
+                </ol>
+              </div>
             </div>
+          </div>
+        </div>
+        <!-- /Sayfa başlığı -->
+  
+        <!-- Özet göstergeler -->
+        <div class="row g-3 mb-4">
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body d-flex align-items-center">
+                <div class="avatar-lg bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center me-3">
+                  <i class="bx bx-task fs-2"></i>
+                </div>
+                <div>
+                  <p class="mb-1 text-muted">Verilen Ödev</p>
+                  <h4 class="mb-0">12</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body d-flex align-items-center">
+                <div class="avatar-lg bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center me-3">
+                  <i class="bx bx-time-five fs-2"></i>
+                </div>
+                <div>
+                  <p class="mb-1 text-muted">Yaklaşan Teslim</p>
+                  <h4 class="mb-0">3</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-body d-flex align-items-center">
+                <div class="avatar-lg bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center me-3">
+                  <i class="bx bx-check-circle fs-2"></i>
+                </div>
+                <div>
+                  <p class="mb-1 text-muted">Tamamlanan</p>
+                  <h4 class="mb-0">27</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /Özet göstergeler -->
+  
+        <!-- Sekmeler -->
+        <ul class="nav nav-pills mb-3" role="tablist">
+          <li class="nav-item">
+            <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-assign" type="button">
+              Verilen Ödevler
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-progress" type="button">
+              Devam Eden
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-complete" type="button">
+              Tamamlanan
+            </button>
+          </li>
+        </ul>
+  
+        <div class="tab-content">
+  
+          <!-- TAB :: Verilen Ödevler -->
+          <div class="tab-pane fade show active" id="tab-assign" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+  
+                <!-- Filtre/ekle araç çubuğu -->
+                <div class="d-lg-flex align-items-center justify-content-between mb-3">
+                  <h5 class="mb-2 mb-lg-0">Aktif Ödevler</h5>
+                  <div class="d-flex gap-2">
+                    <select class="form-select w-auto">
+                      <option>Tümü</option>
+                      <option>Matematik</option>
+                      <option>Fen</option>
+                      <option>Sosyal</option>
+                    </select>
+                  </div>
+                </div>
+  
+                <!-- Ödev tablosu -->
+                <div class="table-responsive">
+                  <table class="table align-middle table-nowrap mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th>#</th>
+                        <th>Konu</th>
+                        <th>Ders</th>
+                        <th>Teslim Tarihi</th>
+                        <th>Durum</th>
+                        <th style="width: 120px;">Aksiyon</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <!-- ÖRNEK SATIR -->
+                      <tr>
+                        <td>1</td>
+                        <td>Oran – Orantı Çalışma Kağıdı</td>
+                        <td>Matematik</td>
+                        <td><span class="badge bg-warning-subtle text-warning">2 gün kaldı</span></td>
+                        <td><span class="badge rounded-pill bg-secondary-subtle text-secondary">Beklemede</span></td>
+                        <td>
+                          <button class="btn btn-sm btn-outline-primary">
+                            Yükle
+                          </button>
+                        </td>
+                      </tr>
+                      <!-- /ÖRNEK -->
+                      <!-- Fazla satır ekleyebilirsiniz -->
+                    </tbody>
+                  </table>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+          <!-- /Verilen -->
+  
+          <!-- TAB :: Devam Eden -->
+          <div class="tab-pane fade" id="tab-progress" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="mb-3">Devam Eden Görevler</h5>
+  
+                <!-- Kanban tarzı basit liste -->
+                <div class="list-group">
+                  <div class="list-group-item d-flex align-items-center">
+                    <div class="flex-shrink-0 avatar-sm me-3">
+                      <span class="avatar-title rounded-circle bg-primary-subtle text-primary">
+                        M
+                      </span>
+                    </div>
+                    <div class="flex-grow-1">
+                      <h6 class="mb-1">Mıknatıs Deneyi Raporu</h6>
+                      <small class="text-muted">Fen • %40 tamamlandı</small>
+                      <div class="progress mt-2" style="height: 5px;">
+                        <div class="progress-bar" style="width:40%"></div>
+                      </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-success ms-3">
+                      Tamamla
+                    </button>
+                  </div>
+                  <!-- Devam eden diğerleri -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- /Devam Eden -->
+  
+          <!-- TAB :: Tamamlanan -->
+          <div class="tab-pane fade" id="tab-complete" role="tabpanel">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="mb-3">Tamamlanan Görevler</h5>
+  
+                <div class="table-responsive">
+                  <table class="table align-middle table-nowrap mb-0">
+                    <thead class="table-light">
+                      <tr>
+                        <th>#</th>
+                        <th>Ödev</th>
+                        <th>Ders</th>
+                        <th>Teslim Tarihi</th>
+                        <th>Puan</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>27</td>
+                        <td>Fotosentez Sunumu</td>
+                        <td>Fen</td>
+                        <td>12 May 2025</td>
+                        <td><span class="badge bg-success">95 / 100</span></td>
+                      </tr>
+                      <!-- Diğer tamamlananlar -->
+                    </tbody>
+                  </table>
+                </div>
+  
+              </div>
+            </div>
+          </div>
+          <!-- /Tamamlanan -->
+  
+        </div><!-- /tab-content -->
+  
+      </div><!-- /container-fluid -->
+    </div><!-- /page-content -->
+  
+    <!-- FOOTER (değişmedi) -->
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6">
+            <script>document.write(new Date().getFullYear())</script> © Dason.
+          </div>
+          <div class="col-sm-6">
+            <div class="text-sm-end d-none d-sm-block">
+              Design & Develop by <a href="#" class="text-decoration-underline">Themesbrand</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  
+  </div>
+  <!-- ========= /main-content (YENİ) ========= -->
+  
             <!-- end main content-->
 
         </div>
