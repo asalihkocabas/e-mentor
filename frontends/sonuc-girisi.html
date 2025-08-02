@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+
+  <meta charset="utf-8" />
+  <title>Aşamalı Sonuç Girişi | E-Mentor Sistemi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="İki aşamalı sınav sonucu giriş ekranı" name="description" />
+  <meta content="Themesbrand" name="author" />
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+  <link href="assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
+  <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+  <style>
+    .table th, .table td {
+      padding: 0.6rem;
+      vertical-align: middle;
+    }
+    .answer-input {
+      width: 65px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body data-topbar="dark">
+<div id="layout-wrapper">
+
+
+  <header id="page-topbar">
+    <div class="navbar-header">
+      <div class="d-flex">
+        <div class="navbar-brand-box">
+          <a href="index.html" class="logo logo-dark">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm.svg" alt="" height="30">
+                            </span>
+            <span class="logo-lg">
+                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Dason</span>
+                            </span>
+          </a>
+          <a href="index.html" class="logo logo-light">
+                            <span class="logo-sm">
+                                <img src="assets/images/logo-sm.svg" alt="" height="30">
+                            </span>
+            <span class="logo-lg">
+                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">Dason</span>
+                            </span>
+          </a>
+        </div>
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+          <i class="fa fa-fw fa-bars"></i>
+        </button>
+      </div>
+      <div class="d-flex">
+        <div class="dropdown d-inline-block">
+          <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+            <span class="d-none d-xl-inline-block ms-1 fw-medium">Öğretmen Adı</span>
+            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
+            <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış Yap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="vertical-menu">
+    <div data-simplebar class="h-100">
+      <div id="sidebar-menu">
+        <ul class="metismenu list-unstyled" id="side-menu">
+          <li class="menu-title" data-key="t-menu">Menü</li>
+          <li>
+            <a href="index.html">
+              <i data-feather="home"></i>
+              <span data-key="t-dashboard">Anasayfa</span>
+            </a>
+          </li>
+          <li class="mm-active">
+            <a href="javascript: void(0);" class="has-arrow waves-effect">
+              <i data-feather="box"></i>
+              <span data-key="t-forms">Sınav İşlemleri</span>
+            </a>
+            <ul class="sub-menu" aria-expanded="true">
+              <li><a href="#" key="t-form-elements">Yeni Sınav Oluştur</a></li>
+              <li><a href="#" key="t-form-validation">Sonuç Girişi</a></li>
+              <li><a href="#" key="t-form-reports">Raporlar</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid">
+
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+              <h4 class="mb-sm-0 font-size-18">Aşamalı Sonuç Girişi</h4>
+              <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                  <li class="breadcrumb-item"><a href="javascript: void(0);">Sınav İşlemleri</a></li>
+                  <li class="breadcrumb-item active">Sonuç Girişi</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <div class="mb-3">
+                  <label for="choices-exam-select" class="form-label">Öncelikle Sonuçları Girilecek Sınavı Seçiniz</label>
+                  <select class="form-control" name="choices-exam-select" id="choices-exam-select" data-trigger>
+                    <option value="">Sınav seçiniz...</option>
+                    <option value="exam1">9. Sınıf - Matematik - 1. Dönem 1. Sınav (5 Soru)</option>
+                    <option value="exam2">10. Sınıf - Fizik - 1. Dönem 2. Sınav (10 Soru)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Aşama 1: Öğrenci Cevapları Girişi</h4>
+                <p class="card-title-desc">Her öğrencinin işaretlediği şıkkı giriniz. (A, B, C, D veya BOŞ)</p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-bordered text-center">
+                    <thead class="table-light">
+                    <tr>
+                      <th>Öğrenci No</th>
+                      <th class="text-start">Adı Soyadı</th>
+                      <th>S-1</th>
+                      <th>S-2</th>
+                      <th>S-3</th>
+                      <th>S-4</th>
+                      <th>S-5</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>256</td>
+                      <td class="text-start">Ahmet Yılmaz</td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                    </tr>
+                    <tr>
+                      <td>312</td>
+                      <td class="text-start">Fatma Kaya</td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                    </tr>
+                    <tr>
+                      <td>458</td>
+                      <td class="text-start">Mehmet Çelik</td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                      <td><input type="text" class="form-control form-control-sm answer-input"></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                  <button type="button" class="btn btn-primary">Sonuçları Hesapla ve Görüntüle</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Aşama 2: Sınav Sonuçları</h4>
+                <p class="card-title-desc">Hesaplama sonrası gösterilecek sonuç tablosu.</p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table table-striped text-center">
+                    <thead class="table-light">
+                    <tr>
+                      <th>Öğrenci No</th>
+                      <th class="text-start">Adı Soyadı</th>
+                      <th>Doğru Sayısı</th>
+                      <th>Yanlış Sayısı</th>
+                      <th>Boş Sayısı</th>
+                      <th>Toplam Puan</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>256</td>
+                      <td class="text-start">Ahmet Yılmaz</td>
+                      <td class="text-success fw-bold">4</td>
+                      <td class="text-danger fw-bold">1</td>
+                      <td class="text-muted fw-bold">0</td>
+                      <td class="text-primary fw-bold">75.00</td>
+                    </tr>
+                    <tr>
+                      <td>312</td>
+                      <td class="text-start">Fatma Kaya</td>
+                      <td class="text-success fw-bold">3</td>
+                      <td class="text-danger fw-bold">2</td>
+                      <td class="text-muted fw-bold">0</td>
+                      <td class="text-primary fw-bold">50.00</td>
+                    </tr>
+                    <tr>
+                      <td>458</td>
+                      <td class="text-start">Mehmet Çelik</td>
+                      <td class="text-success fw-bold">5</td>
+                      <td class="text-danger fw-bold">0</td>
+                      <td class="text-muted fw-bold">0</td>
+                      <td class="text-primary fw-bold">100.00</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                  <button type="button" class="btn btn-success"><i class="bx bx-save me-1"></i> Sonuçları Onayla ve Kaydet</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6"><script>document.write(new Date().getFullYear())</script> © Dason.</div>
+          <div class="col-sm-6">
+            <div class="text-sm-end d-none d-sm-block">Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a></div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/libs/pace-js/pace.min.js"></script>
+<script src="assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sınav seçimi için Choices.js'i etkinleştir
+    new Choices('#choices-exam-select');
+  });
+</script>
+</body>
+</html>
