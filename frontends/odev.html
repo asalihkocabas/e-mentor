@@ -4,9 +4,9 @@
 <head>
 
   <meta charset="utf-8" />
-  <title>Kişiye Özel Ödev Atama | E-Mentor Sistemi</title>
+  <title>Yapay Zeka Destekli Ödev Atama | E-Mentor Sistemi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta content="Öğrenci eksikliklerine göre ödev atama sayfası" name="description" />
+  <meta content="Yapay zeka ile kişiye özel ödev atama sayfası" name="description" />
   <meta content="Themesbrand" name="author" />
   <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -68,7 +68,7 @@
         <div class="row">
           <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-              <h4 class="mb-sm-0 font-size-18">Kişiye Özel Ödev Atama</h4>
+              <h4 class="mb-sm-0 font-size-18">Yapay Zeka Destekli Ödev Atama</h4>
               <div class="page-title-right">
                 <ol class="breadcrumb m-0">
                   <li class="breadcrumb-item"><a href="javascript: void(0);">Ödev İşlemleri</a></li>
@@ -90,7 +90,6 @@
                     <select class="form-control" name="choices-exam-select" id="choices-exam-select">
                       <option value="">Sınav seçiniz...</option>
                       <option value="1">9. Sınıf - Matematik - 1. Dönem 1. Sınav</option>
-                      <option value="2">10. Sınıf - Fizik - 1. Dönem 2. Sınav</option>
                     </select>
                   </div>
                   <div class="col-md-4">
@@ -107,7 +106,7 @@
             <div class="card">
               <div class="card-header">
                 <h4 class="card-title">Adım 2: Öğrenci Analizi ve Ödev Atama</h4>
-                <p class="card-title-desc">Her öğrencinin eksik olduğu kazanımları görüntüleyin ve ilgili ödevleri atayın.</p>
+                <p class="card-title-desc">Her öğrencinin eksik olduğu kazanımları görüntüleyin ve yapay zeka ile ödev oluşturun.</p>
               </div>
               <div class="card-body">
                 <div class="accordion" id="studentAccordion">
@@ -127,30 +126,9 @@
                               <h6 class="mb-1">M.9.1.2.1</h6>
                               <p class="mb-0 text-muted">Üslü ifadeleri içeren denklemleri çözer.</p>
                             </div>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#assignHwModal"><i class="bx bx-plus me-1"></i> Ödev Ata</button>
-                          </li>
-                          <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <div>
-                              <h6 class="mb-1">M.9.1.3.2</h6>
-                              <p class="mb-0 text-muted">Köklü ifadelerle toplama ve çıkarma işlemlerini yapar.</p>
-                            </div>
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#assignHwModal"><i class="bx bx-plus me-1"></i> Ödev Ata</button>
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#assignHwModal"><i class="bx bxs-magic-wand me-1"></i> AI ile Ödev Oluştur</button>
                           </li>
                         </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="headingTwo">
-                      <button class="accordion-button fw-medium collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                        <img src="assets/images/users/avatar-3.jpg" alt="" class="avatar-xs rounded-circle me-2">
-                        Ali Veli - <span class="text-success ms-1">Zayıf Kazanım Yok</span>
-                        <span class="ms-auto badge bg-success">Sınav Notu: 95</span>
-                      </button>
-                    </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#studentAccordion">
-                      <div class="accordion-body">
-                        Bu öğrencinin bu sınavda eksik olarak tespit edilen bir kazanımı bulunmamaktadır.
                       </div>
                     </div>
                   </div>
@@ -166,40 +144,38 @@
       <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Ödev Ata: <span class="text-primary">M.9.1.2.1</span></h5>
+            <h5 class="modal-title">✨ Yapay Zeka ile Ödev Oluştur: <span class="text-primary">M.9.1.2.1</span></h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <p class="text-muted">Lütfen bu kazanım için kütüphaneden bir veya daha fazla içerik seçin.</p>
+            <p class="text-muted">İstediğiniz içerik türünü seçip "Oluştur" butonuna basın. Oluşturulan içeriği doğrudan öğrenciye atayabilirsiniz.</p>
 
-            <div class="table-responsive mb-4" style="max-height: 250px;">
-              <table class="table table-hover align-middle">
-                <thead class="table-light">
-                <tr>
-                  <th style="width: 50px;">Seç</th>
-                  <th>İçerik Adı</th>
-                  <th>Türü</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>uslu-ifadeler-konu-anlatimi.pdf</td>
-                  <td><span class="badge bg-info">Ders Notu</span></td>
-                </tr>
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>uslu-ifadeler-test-1.pdf</td>
-                  <td><span class="badge bg-primary">Kazanım Testi</span></td>
-                </tr>
-                <tr>
-                  <td><input class="form-check-input" type="checkbox"></td>
-                  <td>uslu-ifadeler-video-linki</td>
-                  <td><span class="badge bg-danger">Video</span></td>
-                </tr>
-                </tbody>
-              </table>
+            <div class="row align-items-end">
+              <div class="col-md-8">
+                <label class="form-label">İçerik Türü</label>
+                <div class="d-flex flex-wrap gap-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ai-content-type" id="ai-study-note" checked>
+                    <label class="form-check-label" for="ai-study-note">Çalışma Notu</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="ai-content-type" id="ai-questions">
+                    <label class="form-check-label" for="ai-questions">Örnek Soru</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 text-end">
+                <button type="button" class="btn btn-info"><i class="bx bxs-magic-wand me-1"></i> Oluştur</button>
+              </div>
             </div>
+
+            <div class="ai-output-container bg-light p-3 rounded mt-3">
+              <h6 class="text-primary">Yapay Zeka Çıktısı:</h6>
+              <p class="font-size-13 text-muted mb-2"><i>(Örnek Çalışma Notu)</i></p>
+              <p><strong>Üslü İfadeler:</strong> Bir sayının kendisi ile tekrarlı çarpımının kısa bir şekilde gösterilmesidir. Örneğin, 2 x 2 x 2 = 2³. Burada 2 taban, 3 ise üs (kuvvet) olarak adlandırılır...</p>
+            </div>
+
+            <hr class="my-4">
 
             <div class="row">
               <div class="col-md-6">
@@ -214,7 +190,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-light" data-bs-dismiss="modal">İptal</button>
-            <button type="button" class="btn btn-primary"><i class="bx bx-send me-1"></i> Seçili Ödevleri Ata</button>
+            <button type="button" class="btn btn-primary"><i class="bx bx-send me-1"></i> Oluşturulan Ödevi Ata</button>
           </div>
         </div>
       </div>
