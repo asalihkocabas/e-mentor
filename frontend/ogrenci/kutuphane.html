@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="utf-8" />
+    <title>Kütüphane | E-Mentor Sistemi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Ders materyalleri, testler ve çıkmış sorular" name="description" />
+    <meta content="Themesbrand" name="author" />
+    <link rel="shortcut icon" href="../assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="../assets/css/preloader.min.css" type="text/css" />
+
+    <link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+    <style>
+        .hover-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+            transition: transform .2s ease-in-out, box-shadow .2s ease-in-out;
+        }
+    </style>
+</head>
+
+<body data-topbar="dark">
+<div id="layout-wrapper">
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <div class="navbar-brand-box">
+                    <a href="../index.html" class="logo logo-light">
+                        <span class="logo-sm"><img src="../assets/images/logo-sm.svg" alt="" height="30"></span>
+                        <span class="logo-lg"><img src="../assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">E-Mentor</span></span>
+                    </a>
+                </div>
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn"><i class="fa fa-fw fa-bars"></i></button>
+            </div>
+            <div class="d-flex">
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d" alt="Header Avatar">
+                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Kaan Buğra</span>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="vertical-menu">
+        <div data-simplebar class="h-100">
+            <div id="sidebar-menu">
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title" data-key="t-menu">Menü</li>
+                    <li><a href="../index.html"><i data-feather="home"></i><span data-key="t-dashboard">Ana Sayfa</span></a></li>
+                    <li><a href="../derslerim.html"><i data-feather="book"></i><span data-key="t-courses">Derslerim</span></a></li>
+                    <li class="mm-active"><a href="kutuphane.html"><i data-feather="folder"></i><span data-key="t-library">Kütüphane</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">Kütüphane</h4>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">E-Mentor</a></li>
+                                    <li class="breadcrumb-item active">Kütüphane</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4 g-3">
+                    <div class="col-md-4">
+                        <a href="#tab-kazanimlar" class="text-decoration-none" data-bs-toggle="pill" role="tab">
+                            <div class="card h-100 shadow-sm border-0 hover-shadow">
+                                <div class="card-body text-center">
+                                    <div class="avatar-xl mx-auto mb-3"><span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-1"><i class="bx bx-task"></i></span></div>
+                                    <h5 class="fw-bold text-dark mb-1">Kazanım Testleri</h5>
+                                    <p class="text-muted mb-0">Konu eksiklerini kapat</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#tab-cikmislar" class="text-decoration-none" data-bs-toggle="pill" role="tab">
+                            <div class="card h-100 shadow-sm border-0 hover-shadow">
+                                <div class="card-body text-center">
+                                    <div class="avatar-xl mx-auto mb-3"><span class="avatar-title bg-warning-subtle text-warning rounded-circle fs-1"><i class="bx bx-question-mark"></i></span></div>
+                                    <h5 class="fw-bold text-dark mb-1">Çıkmış Sorular</h5>
+                                    <p class="text-muted mb-0">Sınavlara hazırlık yap</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#tab-materyaller" class="text-decoration-none" data-bs-toggle="pill" role="tab">
+                            <div class="card h-100 shadow-sm border-0 hover-shadow">
+                                <div class="card-body text-center">
+                                    <div class="avatar-xl mx-auto mb-3"><span class="avatar-title bg-success-subtle text-success rounded-circle fs-1"><i class="bx bx-book-open"></i></span></div>
+                                    <h5 class="fw-bold text-dark mb-1">Ders Kitapları</h5>
+                                    <p class="text-muted mb-0">Kaynaklarını incele</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <ul class="nav nav-pills nav-justified mb-3" role="tablist">
+                    <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-kazanimlar" type="button">Kazanım Testleri</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-cikmislar" type="button">Çıkmış Sorular</button></li>
+                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-materyaller" type="button">Ders Kitapları</button></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="tab-kazanimlar" role="tabpanel">
+                        <div class="row g-3">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card border-0 shadow-sm h-100"><div class="card-body d-flex flex-column">
+                                    <h6 class="fw-bold text-primary mb-2">Matematik • 7. Sınıf</h6>
+                                    <p class="flex-grow-1 mb-3">Oran-orantı konusundaki temel kavramları tanımlar ve günlük hayatta kullanır.</p>
+                                    <a href="#" class="btn btn-outline-primary w-100 mt-auto">Teste Başla</a>
+                                </div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-cikmislar" role="tabpanel">
+                        <div class="row g-3">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="card border-0 shadow-sm h-100 text-center"><div class="card-body d-flex flex-column">
+                                    <div class="avatar-lg mx-auto mb-3"><span class="avatar-title bg-danger text-white rounded-circle fs-4">2024</span></div>
+                                    <h6 class="fw-bold mb-2">LGS Matematik</h6>
+                                    <p class="text-muted small flex-grow-1">Tamamı çözümlü PDF</p>
+                                    <a href="#" class="btn btn-danger btn-sm mt-auto">İndir</a>
+                                </div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab-materyaller" role="tabpanel">
+                        <div class="row g-3">
+                            <div class="col-lg-4 col-md-6">
+                                <div class="card border-0 shadow-sm h-100">
+                                    <div class="bg-primary-subtle d-flex align-items-center justify-content-center" style="height:180px;"><i class="bx bxs-file-pdf fs-1 text-primary"></i></div>
+                                    <div class="card-body d-flex flex-column">
+                                        <h6 class="fw-bold mb-2">Matematik • Çarpanlar ve Katlar Ders Notu</h6>
+                                        <p class="text-muted flex-grow-1">Özet konu anlatımı + örnek sorular (PDF • 6 sayfa)</p>
+                                        <a href="#" class="btn btn-outline-primary w-100 mt-auto" download>İndir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6"><script>document.write(new Date().getFullYear())</script> © E-Mentor.</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</div>
+
+<script src="../assets/libs/jquery/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="../assets/libs/simplebar/simplebar.min.js"></script>
+<script src="../assets/libs/node-waves/waves.min.js"></script>
+<script src="../assets/libs/feather-icons/feather.min.js"></script>
+<script src="../assets/libs/pace-js/pace.min.js"></script>
+<script src="../assets/js/app.js"></script>
+
+</body>
+</html>
