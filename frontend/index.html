@@ -6,822 +6,207 @@
     <meta charset="utf-8" />
     <title>Öğrenci Paneli | E-Mentor </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="E-Mentor Öğrenci Paneli" name="description" />
     <meta content="Themesbrand" name="author" />
-    <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!-- plugin css -->
-    <link href="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-
-    <!-- preloader css -->
     <link rel="stylesheet" href="assets/css/preloader.min.css" type="text/css" />
 
-    <!-- Bootstrap Css -->
     <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <!-- Icons Css -->
     <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <!-- App Css-->
     <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
 
 </head>
 
 <body data-topbar="dark">
 
-    <!-- <body data-layout="horizontal"> -->
+<div id="layout-wrapper">
 
-    <!-- Begin page -->
-    <div id="layout-wrapper">
-
-
-        <header id="page-topbar">
-            <div class="navbar-header">
-                <div class="d-flex">
-                    <!-- LOGO -->
-                    <div class="navbar-brand-box">
-                        <a href="index.html" class="logo logo-dark">
+    <header id="page-topbar">
+        <div class="navbar-header">
+            <div class="d-flex">
+                <div class="navbar-brand-box">
+                    <a href="index.html" class="logo logo-light">
                             <span class="logo-sm">
                                 <img src="assets/images/logo-sm.svg" alt="" height="30">
                             </span>
-                            <span class="logo-lg">
-                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span
-                                    class="logo-txt">Dason</span>
+                        <span class="logo-lg">
+                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">E-Mentor</span>
                             </span>
-                        </a>
-
-                        <a href="index.html" class="logo logo-light">
-                            <span class="logo-sm">
-                                <img src="assets/images/logo-sm.svg" alt="" height="30">
-                            </span>
-                            <span class="logo-lg">
-                                <img src="assets/images/logo-sm.svg" alt="" height="24"> <span
-                                    class="logo-txt">E-Mentor</span>
-                            </span>
-                        </a>
-                    </div>
-
-                    <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
-                        <i class="fa fa-fw fa-bars"></i>
+                    </a>
+                </div>
+                <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+            <div class="d-flex">
+                <div class="dropdown d-inline-block">
+                    <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="rounded-circle header-profile-user" src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d" alt="Header Avatar">
+                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Kaan Buğra</span>
+                        <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
-
-                    <!-- App Search-->
-                    <form class="app-search d-none d-lg-block">
-                        <div class="position-relative">
-                            <input type="search" class="form-control" placeholder="Ara...">
-                            <button class="btn btn-primary" type="button"><i
-                                    class="bx bx-search-alt align-middle"></i></button>
-                        </div>
-                    </form>
-                </div>
-
-                <div class="d-flex">
-
-                    <div class="dropdown d-inline-block d-lg-none ms-2">
-                        <button type="button" class="btn header-item" id="page-header-search-dropdown"
-                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i data-feather="search" class="icon-lg"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                            aria-labelledby="page-header-search-dropdown">
-
-                            <form class="p-3">
-                                <div class="form-group m-0">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Ara..."
-                                            aria-label="Search Result">
-
-                                        <button class="btn btn-primary" type="submit"><i
-                                                class="mdi mdi-magnify"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış</a>
                     </div>
-
-                    <div class="dropdown d-none d-sm-inline-block">
-                        <div class="dropdown-menu dropdown-menu-end">
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="en">
-                                <img src="assets/images/flags/us.jpg" alt="user-image" class="me-1" height="12"> <span
-                                    class="align-middle">English</span>
-                            </a>
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp">
-                                <img src="assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12">
-                                <span class="align-middle">Spanish</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr">
-                                <img src="assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12">
-                                <span class="align-middle">German</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it">
-                                <img src="assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12">
-                                <span class="align-middle">Italian</span>
-                            </a>
-
-                            <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru">
-                                <img src="assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12">
-                                <span class="align-middle">Russian</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="dropdown d-none d-sm-inline-block">
-                        <button type="button" class="btn header-item" id="mode-setting-btn">
-                            <i data-feather="moon" class="icon-lg layout-mode-dark"></i>
-                            <i data-feather="sun" class="icon-lg layout-mode-light"></i>
-                        </button>
-                    </div>
-
-                    <div class="dropdown d-none d-lg-inline-block ms-1">
-                        <button type="button" class="btn header-item" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i data-feather="grid" class="icon-lg"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                            <div class="p-2">
-                                <div class="row g-0">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/github.png" alt="Github">
-                                            <span>GitHub</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
-                                            <span>Bitbucket</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/dribbble.png" alt="dribbble">
-                                            <span>Dribbble</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="row g-0">
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/dropbox.png" alt="dropbox">
-                                            <span>Dropbox</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
-                                            <span>Mail Chimp</span>
-                                        </a>
-                                    </div>
-                                    <div class="col">
-                                        <a class="dropdown-icon-item" href="#">
-                                            <img src="assets/images/brands/slack.png" alt="slack">
-                                            <span>Slack</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item noti-icon position-relative"
-                            id="page-header-notifications-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <i data-feather="bell" class="icon-lg"></i>
-                            <span class="badge bg-success rounded-pill">5</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
-                            aria-labelledby="page-header-notifications-dropdown">
-                            <div class="p-3">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        <h6 class="m-0"> Notifications </h6>
-                                    </div>
-                                    <div class="col-auto">
-                                        <a href="#!" class="small text-reset text-decoration-underline"> Unread (3)</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div data-simplebar style="max-height: 230px;">
-                                <a href="#!" class="text-reset notification-item">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0 me-3">
-                                            <img src="assets/images/users/avatar-3.jpg" class="rounded-circle avatar-sm"
-                                                alt="user-pic">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">James Lemire</h6>
-                                            <div class="font-size-13 text-muted">
-                                                <p class="mb-1">It will seem like simplified English.</p>
-                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>1 hours
-                                                        ago</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="text-reset notification-item">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0 avatar-sm me-3">
-                                            <span class="avatar-title bg-primary rounded-circle font-size-16">
-                                                <i class="bx bx-cart"></i>
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">Your order is placed</h6>
-                                            <div class="font-size-13 text-muted">
-                                                <p class="mb-1">If several languages coalesce the grammar</p>
-                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>3 min
-                                                        ago</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#!" class="text-reset notification-item">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0 avatar-sm me-3">
-                                            <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                <i class="bx bx-badge-check"></i>
-                                            </span>
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">Your item is shipped</h6>
-                                            <div class="font-size-13 text-muted">
-                                                <p class="mb-1">If several languages coalesce the grammar</p>
-                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>3 min
-                                                        ago</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#!" class="text-reset notification-item">
-                                    <div class="d-flex">
-                                        <div class="flex-shrink-0 me-3">
-                                            <img src="assets/images/users/avatar-6.jpg" class="rounded-circle avatar-sm"
-                                                alt="user-pic">
-                                        </div>
-                                        <div class="flex-grow-1">
-                                            <h6 class="mb-1">Salena Layfield</h6>
-                                            <div class="font-size-13 text-muted">
-                                                <p class="mb-1">As a skeptical Cambridge friend of mine occidental.</p>
-                                                <p class="mb-0"><i class="mdi mdi-clock-outline"></i> <span>1 hours
-                                                        ago</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="p-2 border-top d-grid">
-                                <a class="btn btn-sm btn-link font-size-14 text-center" href="javascript:void(0)">
-                                    <i class="mdi mdi-arrow-right-circle me-1"></i> <span>View More..</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item right-bar-toggle me-2">
-                            <i data-feather="settings" class="icon-lg"></i>
-                        </button>
-                    </div>
-
-                    <div class="dropdown d-inline-block">
-                        <button type="button" class="btn header-item bg-light-subtle border-start border-end"
-                            id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <img class="rounded-circle header-profile-user" src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d"
-                                alt="Header Avatar">
-                            <span class="d-none d-xl-inline-block ms-1 fw-medium">Kaan</span>
-                            <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <!-- item-->
-                            <a class="dropdown-item" href="apps-contacts-profile.html"><i
-                                    class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="auth-logout.html"><i
-                                    class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </header>
-
-        <!-- ========== Left Sidebar Start ========== -->
-        <div class="vertical-menu">
-            <div data-simplebar class="h-100">
-                <!-- Sidebar Menü -->
-                <div id="sidebar-menu">
-                    <!-- Sol Menü Başlangıcı -->
-                    <ul class="metismenu list-unstyled" id="side-menu">
-                        <!-- Menü Başlığı -->
-                        <li class="menu-title" data-key="t-menu">Menü</li>
-
-                        <!-- Ana Sayfa -->
-                        <li>
-                            <a href="index.html">
-                                <i data-feather="home"></i>
-                                <span data-key="t-dashboard">Ana Sayfa</span>
-                            </a>
-                        </li>
-                        <!-- Dersler -->
-                        <li>
-                            <a href="ecommerce-products.html">
-                                <i data-feather="book"></i>
-                                <span data-key="t-dersler">Dersler</span>
-                            </a>
-                        </li>
-
-                        <!-- Ders Programı -->
-                        <li>
-                            <a href="apps-calendar.html">
-                                <i data-feather="calendar"></i>
-                                <span data-key="t-lesson-schedule">Ders Programı</span>
-                            </a>
-                        </li>
-
-                        <!-- Görevler ve Ödevler -->
-                        <li>
-                            <a href="tasks-list.html">
-                                <i data-feather="trello"></i>
-                                <span data-key="t-homework">Görevler ve Ödevler</span>
-                            </a>
-                        </li>
-
-                        <!-- Sınav Takvimi -->
-                        <li>
-                            <a href="pages-timeline.html">
-                                <i data-feather="clock"></i>
-                                <span data-key="t-exam-schedule">Sınav Takvimi</span>
-                            </a>
-                        </li>
-
-                        <!-- Kütüphane -->
-                        <li>
-                            <a href="apps-contacts-grid.html">
-                                <i data-feather="clock"></i>
-                                <span data-key="t-exam-schedule">Kütüphane</span>
-                            </a>
-                        </li>
-
-                        <!-- Yardım -->
-                        <li>
-                            <a href="apps-chat.html">
-                                <i data-feather="help-circle"></i>
-                                <span data-key="t-help">Yardım</span>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>
+    </header>
 
-
-
-        <!-- ============================================================== -->
-        <!-- Start right Content here -->
-        <!-- ============================================================== -->
-        <div class="main-content">
-
-            <div class="page-content">
-                <div class="container-fluid">
-
-                    <!-- start page title -->
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-12 col-sm-12 col-12">
-                                <!-- Profil Kartı -->
-                                <div class="card mb-4">
-                                <div class="card-body text-center">
-                                    <img src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d"
-                                         class="rounded-circle mb-3" width="120" height="120" alt="Profil Fotoğrafı">
-                                    <h5 class="mb-1">KAAN BUĞRA TAŞ</h5>
-
-                                    <div class="d-flex flex-column gap-2">
-                                        <div class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Okul</span>
-                                            <strong>Atatürk Ortaokulu</strong>
-                                        </div>
-                                        <div class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Sınıf:</span>
-                                            <strong>6/A</strong>
-                                        </div>
-                                        <div class="d-flex justify-content-between border-bottom pb-2">
-                                            <span>Numara</span>
-                                            <strong>1234</strong>
-                                        </div>
-                                        <div class="d-flex justify-content-between">
-                                            <span>Rehber Öğretmeni</span>
-                                            <strong class="text-success">24</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                                <!-- Hızlı Linkler -->
-                                <div class="col-xl-12">
-                                    <div class="card">
-                                        <div class="card-body">
-
-                                            <!-- Nav tabs: sadece 2 düğme -->
-                                            <ul class="nav nav-tabs nav-tabs-custom nav-justified mb-3" role="tablist">
-                                                <li class="nav-item" role="presentation">
-                                                    <a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab" aria-selected="true">
-                                                        Devamsızlık
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item" role="presentation">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab" aria-selected="false">
-                                                        Ortalaması
-                                                    </a>
-                                                </li>
-                                            </ul>
-
-                                            <!-- Tab içerikleri -->
-                                            <div class="tab-content">
-
-                                                <!-- Birinci tab: 2x2 grid -->
-                                                <div class="tab-pane active" id="tab1" role="tabpanel">
-                                                    <div class="row g-3">
-                                                        <div class="col-6">
-                                                            <div class="p-3 border rounded text-center">Kullanılan Devamsızlık <span class="badge rounded-pill bg-danger-subtle text-danger fs-5 mt-2">3,5</span></div>
-                                                        </div><div class="col-6">
-                                                        <div class="p-3 border rounded text-center">Kalan Devamsızlık <span class="badge rounded-pill bg-success-subtle text-success fs-5 mt-2">26,5</span></div>
-
-                                                    </div>
-                                                    </div>
-                                                </div>
-
-                                                <!-- İkinci tab: istediğiniz içeriği buraya koyabilirsiniz -->
-                                                <div class="tab-pane" id="tab2" role="tabpanel">
-                                                    <div class="row g-3 ">
-                                                        <div class="col-6">
-                                                            <div class="p-3 border rounded text-center">Öğrenci Ortalaması<span class="badge rounded-pill bg-success-subtle text-success fs-5 mt-2">87,5</span></div>
-
-                                                        </div>
-                                                        <div class="col-6">
-                                                            <div class="p-3 border rounded text-center">Sınıf<br>Ortalaması<span class="badge rounded-pill bg-info-subtle text-info fs-5 mt-2">75,25</span></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div><!-- /.tab-content -->
-
-                                        </div><!-- /.card-body -->
-                                    </div><!-- /.card -->
-                                </div><!-- /.col-xl-6 -->
-                            </div>
-
-
-
-                            <div class="col-xl-9">
-                                <div class="card">
-                                    <div class="card-header bg-white border-bottom-0 py-3">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="mb-0">Duyurular</h5>
-                                            <div class="btn-group btn-group-sm">
-                                                <button type="button" class="btn btn-outline-primary active">Hepsi</button>
-                                                <button type="button" class="btn btn-outline-secondary">1 Ay</button>
-                                                <button type="button" class="btn btn-outline-secondary">6 Ay</button>
-                                                <button type="button" class="btn btn-outline-secondary">1 Yıl</button>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-body p-0">
-                                        <div class="list-group list-group-flush">
-                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Matematik</span>
-                                                    <small class="text-muted">11 Temmuz, 22:12</small>
-                                                </div>
-                                                <small class="text-muted fs-5">Matematik ödevinizi 5 Mayıs Çarşamba gününe kadar teslim ediniz.</small>
-                                            </a>
-
-                                            <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Fen Bilimleri</span>
-                                                    <small class="text-muted">9 Temmuz, 17:38</small>
-                                                </div>
-                                                <small class="text-muted fs-5">Fen Bilimleri laboratuvar gezisi 12 Mayıs Pazartesi günü gerçekleştirilecektir.</small>
-                                            </a>
-
-                                            <a href="/Ders/Grup/731972#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                                    <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
-                                                    <small class="text-muted">7 Temmuz, 20:14</small>
-                                                </div>
-                                                <small class="text-muted fs-5">Okul bahçesinde 15 Mayıs Çarşamba bahar şenliği düzenlenecektir.</small>
-                                            </a>
-
-                                            <a href="/Ders/Grup/731972#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                                    <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Sosyal Bilgiler</span>
-                                                    <small class="text-muted">6 Temmuz, 13:39</small>
-                                                </div>
-                                                <small class="text-muted fs-5">Sosyal Bilgiler sunumlarınız 10 Mayıs Cuma gününe ertelenmiştir.</small>
-                                            </a>
-
-                                            <a href="/Ders/Grup/731972#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                <div class="d-flex justify-content-between align-items-center mb-1">
-                                                    <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
-                                                    <small class="text-muted">4 Temmuz, 18:03</small>
-                                                </div>
-                                                <small class="text-muted fs-5">Kütüphane kitap iade süresi 7 Mayıs Perşembe günüdür.</small>
-                                            </a>
-
-
-
-                                            <div id="hidden-announcements" style="display: none;">
-
-                                                <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Beden Eğitimi</span>
-                                                        <small class="text-muted">22 Haziran, 09:57</small>
-                                                    </div>
-                                                    <small class="text-muted fs-5">Basketbol turnuvası kayıtları 3 Mayıs Cuma gününe kadar alınmaktadır.</small>
-                                                </a>
-
-
-                                                <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Fen Bilimleri</span>
-                                                        <small class="text-muted">17 Haziran, 16:41</small>
-                                                    </div>
-                                                    <small class="text-muted fs-5">Bilim projeleri başvuruları 20 Mayıs tarihine kadar devam edecek.</small>
-                                                </a>
-
-                                                <a href="/Ders/Grup/731145#Duyuru" class="list-group-item list-group-item-action border-0 py-3">
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">İngilizce</span>
-                                                        <small class="text-muted">28 Mayıs, 09:57</small>
-                                                    </div>
-                                                    <small class="text-muted fs-5">İngilizce kelime sınavı Perşembe günü yapılacaktır.</small>
-                                                </a>
-
-                                                <a href="/Ders/Grup/731145#Odev" class="list-group-item list-group-item-action border-0 py-3">
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Görsel Sanatlar</span>
-                                                        <small class="text-muted">18 Mayıs, 17:46</small>
-                                                    </div>
-                                                    <small class="text-muted fs-5">Görsel Sanatlar resim yarışması teması “Doğa” olarak belirlendi.</small>
-                                                </a>
-
-                                                <div class="list-group-item list-group-item-action border-0 py-3">
-                                                    <div class="d-flex justify-content-between align-items-center mb-1">
-                                                        <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
-                                                        <small class="text-muted">13 Eylül, 00:00</small>
-                                                    </div>
-                                                    <small class="text-muted fs-5">Okul meclisi seçimleri 18 Mayıs Pazartesi günü gerçekleşecektir.</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-footer bg-white border-top-0 py-3 text-center">
-                                        <a href="#" class="text-primary" id="show-all-announcements">Tüm Duyuruları Görüntüle</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <script>
-                                document.addEventListener('DOMContentLoaded', function() {
-                                    const showAllButton = document.getElementById('show-all-announcements');
-                                    const hiddenAnnouncements = document.getElementById('hidden-announcements');
-
-                                    showAllButton.addEventListener('click', function(event) {
-                                        event.preventDefault();
-
-                                        // Gizlenen bildirimleri göster
-                                        hiddenAnnouncements.style.display = 'block';
-
-                                        // Butonu gizle
-                                        showAllButton.style.display = 'none';
-                                    });
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <!-- container-fluid -->
-            </div>
-            <!-- End Page-content -->
-
-            <footer class="footer">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <script>document.write(new Date().getFullYear())</script> © Dason.
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end d-none d-sm-block">
-                                Design & Develop by <a href="#!" class="text-decoration-underline">Themesbrand</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-        </div>
-        <!-- end main content-->
-
-    </div>
-    <!-- END layout-wrapper -->
-
-
-    <!-- Right Sidebar -->
-    <div class="right-bar">
+    <div class="vertical-menu">
         <div data-simplebar class="h-100">
-            <div class="rightbar-title d-flex align-items-center p-3">
+            <div id="sidebar-menu">
+                <ul class="metismenu list-unstyled" id="side-menu">
+                    <li class="menu-title" data-key="t-menu">Menü</li>
 
-                <h5 class="m-0 me-2">Theme Customizer</h5>
-
-                <a href="javascript:void(0);" class="right-bar-toggle ms-auto">
-                    <i class="mdi mdi-close noti-icon"></i>
-                </a>
+                    <li class="mm-active"><a href="index.html"><i data-feather="home"></i><span data-key="t-dashboard">Ana Sayfa</span></a></li>
+                    <li><a href="#"><i data-feather="book"></i><span data-key="t-courses">Derslerim</span></a></li>
+                    <li><a href="#"><i data-feather="award"></i><span data-key="t-results">Sınav Sonuçlarım</span></a></li>
+                    <li><a href="ders-programi.html"><i data-feather="calendar"></i><span data-key="t-schedule">Ders Programım</span></a></li>
+                    <li><a href="#"><i data-feather="folder"></i><span data-key="t-library">Kütüphane</span></a></li>
+                    <li><a href="#"><i data-feather="send"></i><span data-key="t-announcements">Duyurular</span></a></li>
+                    <li class="menu-title" data-key="t-support">Destek</li>
+                    <li><a href="#"><i data-feather="help-circle"></i><span data-key="t-help">Yardım</span></a></li>
+                </ul>
             </div>
-
-            <!-- Settings -->
-            <hr class="m-0" />
-
-            <div class="p-4">
-                <h6 class="mb-3">Select Custome Colors</h6>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input theme-color" type="radio" name="theme-mode" id="theme-default"
-                        value="default" onchange="document.documentElement.setAttribute('data-theme-mode', 'default')"
-                        checked>
-                    <label class="form-check-label" for="theme-default">Default</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input theme-color" type="radio" name="theme-mode" id="theme-red"
-                        value="red" onchange="document.documentElement.setAttribute('data-theme-mode', 'red')">
-                    <label class="form-check-label" for="theme-red">Red</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input theme-color" type="radio" name="theme-mode" id="theme-purple"
-                        value="purple" onchange="document.documentElement.setAttribute('data-theme-mode', 'purple')">
-                    <label class="form-check-label" for="theme-purple">Purple</label>
-                </div>
-
-
-                <h6 class="mt-4 mb-3 pt-2">Layout</h6>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout" id="layout-vertical" value="vertical">
-                    <label class="form-check-label" for="layout-vertical">Vertical</label>
-                </div>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout" id="layout-horizontal"
-                        value="horizontal">
-                    <label class="form-check-label" for="layout-horizontal">Horizontal</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2">Layout Mode</h6>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-light"
-                        value="light">
-                    <label class="form-check-label" for="layout-mode-light">Light</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-mode" id="layout-mode-dark" value="dark">
-                    <label class="form-check-label" for="layout-mode-dark">Dark</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2">Layout Width</h6>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-width" id="layout-width-fuild"
-                        value="fuild" onchange="document.body.setAttribute('data-layout-size', 'fluid')">
-                    <label class="form-check-label" for="layout-width-fuild">Fluid</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-width" id="layout-width-boxed"
-                        value="boxed"
-                        onchange="document.body.setAttribute('data-layout-size', 'boxed'),document.body.setAttribute('data-sidebar-size', 'sm')">
-                    <label class="form-check-label" for="layout-width-boxed">Boxed</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2">Layout Position</h6>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-position" id="layout-position-fixed"
-                        value="fixed" onchange="document.body.setAttribute('data-layout-scrollable', 'false')">
-                    <label class="form-check-label" for="layout-position-fixed">Fixed</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-position" id="layout-position-scrollable"
-                        value="scrollable" onchange="document.body.setAttribute('data-layout-scrollable', 'true')">
-                    <label class="form-check-label" for="layout-position-scrollable">Scrollable</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2">Topbar Color</h6>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-light"
-                        value="light" onchange="document.body.setAttribute('data-topbar', 'light')">
-                    <label class="form-check-label" for="topbar-color-light">Light</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="topbar-color" id="topbar-color-dark" value="dark"
-                        onchange="document.body.setAttribute('data-topbar', 'dark')">
-                    <label class="form-check-label" for="topbar-color-dark">Dark</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Size</h6>
-
-                <div class="form-check sidebar-setting">
-                    <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-default"
-                        value="default" onchange="document.body.setAttribute('data-sidebar-size', 'lg')">
-                    <label class="form-check-label" for="sidebar-size-default">Default</label>
-                </div>
-                <div class="form-check sidebar-setting">
-                    <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-compact"
-                        value="compact" onchange="document.body.setAttribute('data-sidebar-size', 'md')">
-                    <label class="form-check-label" for="sidebar-size-compact">Compact</label>
-                </div>
-                <div class="form-check sidebar-setting">
-                    <input class="form-check-input" type="radio" name="sidebar-size" id="sidebar-size-small"
-                        value="small" onchange="document.body.setAttribute('data-sidebar-size', 'sm')">
-                    <label class="form-check-label" for="sidebar-size-small">Small (Icon View)</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2 sidebar-setting">Sidebar Color</h6>
-
-                <div class="form-check sidebar-setting">
-                    <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-light"
-                        value="light" onchange="document.body.setAttribute('data-sidebar', 'light')">
-                    <label class="form-check-label" for="sidebar-color-light">Light</label>
-                </div>
-                <div class="form-check sidebar-setting">
-                    <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-dark"
-                        value="dark" onchange="document.body.setAttribute('data-sidebar', 'dark')">
-                    <label class="form-check-label" for="sidebar-color-dark">Dark</label>
-                </div>
-                <div class="form-check sidebar-setting">
-                    <input class="form-check-input" type="radio" name="sidebar-color" id="sidebar-color-brand"
-                        value="brand" onchange="document.body.setAttribute('data-sidebar', 'brand')">
-                    <label class="form-check-label" for="sidebar-color-brand">Brand</label>
-                </div>
-
-                <h6 class="mt-4 mb-3 pt-2">Direction</h6>
-
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-ltr"
-                        value="ltr">
-                    <label class="form-check-label" for="layout-direction-ltr">LTR</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="layout-direction" id="layout-direction-rtl"
-                        value="rtl">
-                    <label class="form-check-label" for="layout-direction-rtl">RTL</label>
-                </div>
-
-
-
-            </div>
-
-        </div> <!-- end slimscroll-menu-->
+        </div>
     </div>
-    <!-- /Right-bar -->
 
-    <!-- Right bar overlay-->
-    <div class="rightbar-overlay"></div>
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18">Hoş Geldin, Kaan!</h4>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- JAVASCRIPT -->
-    <script src="assets/libs/jquery/jquery.min.js"></script>
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/metismenu/metisMenu.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <!-- pace js -->
-    <script src="assets/libs/pace-js/pace.min.js"></script>
+                <div class="row">
+                    <div class="col-xl-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d" class="rounded-circle mb-3" width="120" height="120" alt="Profil Fotoğrafı">
+                                <h5 class="mb-1">KAAN BUĞRA TAŞ</h5>
+                                <p class="text-muted">6/A Sınıfı</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between"><span>Okul:</span> <strong>Atatürk Ortaokulu</strong></li>
+                                <li class="list-group-item d-flex justify-content-between"><span>Numara:</span> <strong>1234</strong></li>
+                                <li class="list-group-item d-flex justify-content-between"><span>Rehber Öğretmen:</span> <strong>Zeynep Güler</strong></li>
+                            </ul>
+                        </div>
 
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#tab1" role="tab">Devamsızlık</a></li>
+                                    <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#tab2" role="tab">Ortalama</a></li>
+                                </ul>
+                                <div class="tab-content mt-3">
+                                    <div class="tab-pane active" id="tab1" role="tabpanel">
+                                        <div class="row g-3">
+                                            <div class="col-6"><div class="p-3 border rounded text-center">Kullanılan<br><span class="badge rounded-pill bg-danger font-size-15 mt-1">3,5</span></div></div>
+                                            <div class="col-6"><div class="p-3 border rounded text-center">Kalan<br><span class="badge rounded-pill bg-success font-size-15 mt-1">26,5</span></div></div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane" id="tab2" role="tabpanel">
+                                        <div class="row g-3">
+                                            <div class="col-6"><div class="p-3 border rounded text-center">Benim Ort.<br><span class="badge rounded-pill bg-success font-size-15 mt-1">87,5</span></div></div>
+                                            <div class="col-6"><div class="p-3 border rounded text-center">Sınıf Ort.<br><span class="badge rounded-pill bg-info font-size-15 mt-1">75,25</span></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-    <!-- apexcharts -->
-    <script src="assets/libs/apexcharts/apexcharts.min.js"></script>
+                        <div class="card">
+                            <div class="card-header"><h4 class="card-title mb-0">Ders Başarı Durumu</h4></div>
+                            <div class="card-body" data-simplebar style="max-height: 250px;">
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between"><span>Matematik</span><span class="text-success fw-bold">95.00</span></div>
+                                    <div class="progress mt-1" style="height: 6px;"><div class="progress-bar bg-success" style="width: 95%;"></div></div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between"><span>Fen Bilimleri</span><span class="text-primary fw-bold">82.50</span></div>
+                                    <div class="progress mt-1" style="height: 6px;"><div class="progress-bar bg-primary" style="width: 82.5%;"></div></div>
+                                </div>
+                                <div class="mb-4">
+                                    <div class="d-flex justify-content-between"><span>Sosyal Bilgiler</span><span class="text-warning fw-bold">78.00</span></div>
+                                    <div class="progress mt-1" style="height: 6px;"><div class="progress-bar bg-warning" style="width: 78%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- Plugins js-->
-    <script src="assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="assets/libs/admin-resources/jquery.vectormap/maps/jquery-jvectormap-world-mill-en.js"></script>
+                    <div class="col-xl-8">
+                        <div class="card">
+                            <div class="card-header bg-white border-bottom-0 py-3">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h5 class="mb-0">Duyurular</h5>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-outline-primary active">Hepsi</button>
+                                        <button type="button" class="btn btn-outline-secondary">Okul</button>
+                                        <button type="button" class="btn btn-outline-secondary">Ders</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="list-group list-group-flush" data-simplebar style="max-height: 700px;">
+                                    <a href="#" class="list-group-item list-group-item-action border-0 py-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Matematik</span>
+                                            <small class="text-muted">11 Temmuz, 22:12</small>
+                                        </div>
+                                        <small class="text-muted fs-5">Matematik ödevinizi 5 Mayıs Çarşamba gününe kadar teslim ediniz.</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action border-0 py-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <span class="badge fs-6 bg-primary bg-opacity-10 text-primary">Fen Bilimleri</span>
+                                            <small class="text-muted">9 Temmuz, 17:38</small>
+                                        </div>
+                                        <small class="text-muted fs-5">Fen Bilimleri laboratuvar gezisi 12 Mayıs Pazartesi günü gerçekleştirilecektir.</small>
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action border-0 py-3">
+                                        <div class="d-flex justify-content-between align-items-center mb-1">
+                                            <span class="badge fs-6 bg-warning bg-opacity-10 text-warning">İdare</span>
+                                            <small class="text-muted">7 Temmuz, 20:14</small>
+                                        </div>
+                                        <small class="text-muted fs-5">Okul bahçesinde 15 Mayıs Çarşamba bahar şenliği düzenlenecektir.</small>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-white border-top-0 py-3 text-center">
+                                <a href="#" class="text-primary">Tüm Duyuruları Görüntüle</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-    <script src="assets/js/pages/allchart.js"></script>
-    <!-- dashboard init -->
-    <script src="assets/js/pages/dashboard.init.js"></script>
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6"><script>document.write(new Date().getFullYear())</script> © E-Mentor.</div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
 
-    <script src="assets/js/app.js"></script>
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/libs/pace-js/pace.min.js"></script>
+<script src="assets/js/app.js"></script>
 
 </body>
-
 </html>
