@@ -1,99 +1,123 @@
-<?php 
-    session_start();
-    $_SESSION['user_role'] = 'teacher';
-    $page_title = "Öğrenci Detayları | E-Mentor Öğretmen Paneli";
-    include '../partials/header.php'; 
-    include '../partials/sidebar.php'; 
+<?php
+// Gerekli dosyaları ve session'ı başlat
+include '../config/init.php';
+
+// Bu sayfanın bir öğretmen sayfası olduğunu belirtmek ve oturum kontrolü yapmak için
+$_SESSION['user_role'] = 'teacher';
+
+// URL'den gelen sınıf ID'sini al ve güvenli hale getir
+$class_id = isset($_GET['class_id']) ? intval($_GET['class_id']) : 0;
+if ($class_id == 0) {
+    // Eğer class_id yoksa veya geçersizse, sınıflar sayfasına yönlendir
+    header("Location: siniflarim.php");
+    exit;
+}
+
+// Sınıf bilgilerini çek
+$stmt_class = $pdo->prepare("SELECT name FROM classes WHERE id = ?");
+$stmt_class->execute([$class_id]);
+$class = $stmt_class->fetch(PDO::FETCH_ASSOC);
+
+$page_title = ($class ? htmlspecialchars($class['name']) : 'Sınıf') . " Detayları | E-Mentor";
+
+include '../partials/header.php';
+include '../partials/sidebar.php';
+
+// Sınıftaki öğrencileri listele
+$stmt_students = $pdo->prepare("
+        SELECT sp.user_id, sp.full_name, sp.student_number 
+        FROM student_profiles sp 
+        WHERE sp.class_id = ? ORDER BY sp.full_name ASC
+    ");
+$stmt_students->execute([$class_id]);
+$students = $stmt_students->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<div class="main-content">
-    <div class="page-content">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Öğrenci Profili</h4>
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="siniflarim.php">Sınıflar</a></li>
-                                <li class="breadcrumb-item"><a href="sinif-detay.php">Sınıf Detayı</a></li>
-                                <li class="breadcrumb-item active">Öğrenci Profili</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex flex-column align-items-center">
-                                <img src="../assets/images/users/avatar-2.jpg" alt="" class="avatar-lg rounded-circle">
-                                <div class="mt-3 text-center">
-                                    <h4 class="mb-1">Ayşe Yılmaz</h4>
-                                    <p class="text-muted">Öğrenci No: 101</p>
-                                    <p class="text-muted mb-0">Sınıf: 10-A Bilişim Teknolojileri</p>
-                                </div>
-                            </div>
-                            <hr class="my-4">
-                            <div class="text-muted">
-                                <h5 class="font-size-16">İletişim Bilgileri</h5>
-                                <p><i class="bx bx-envelope me-2"></i>ayse.yilmaz@example.com</p>
-                                <p><i class="bx bx-phone me-2"></i>+90 555 123 4567</p>
+    <div class="main-content">
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+                            <h4 class="mb-sm-0 font-size-18"><?= htmlspecialchars($class['name'] ?? 'Sınıf'); ?> Detayları</h4>
+                            <div class="page-title-right">
+                                <ol class="breadcrumb m-0">
+                                    <li class="breadcrumb-item"><a href="index.php">Ana Sayfa</a></li>
+                                    <li class="breadcrumb-item"><a href="siniflarim.php">Sınıflarım</a></li>
+                                    <li class="breadcrumb-item active">Sınıf Detayı</li>
+                                </ol>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-xl-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
-                                <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#overview" role="tab">Genel Bakış</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#exam-results" role="tab">Sınav Sonuçları</a></li>
-                                <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#attendance" role="tab">Devamsızlık Kayıtları</a></li>
-                            </ul>
-
-                            <div class="tab-content p-3">
-                                <div class="tab-pane active" id="overview" role="tabpanel">
-                                    <h5 class="font-size-16 mb-4">Performans Özeti</h5>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <p class="mb-2">Genel Başarı Ortalaması: <span class="fw-bold text-success">88.75</span></p>
-                                            <div class="progress mb-4" style="height: 10px;"><div class="progress-bar bg-success" role="progressbar" style="width: 89%;"></div></div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <p class="mb-2">Son Sınav Puanı: <span class="fw-bold text-success">95.00</span></p>
-                                            <div class="progress mb-4" style="height: 10px;"><div class="progress-bar bg-primary" role="progressbar" style="width: 95%;"></div></div>
-                                        </div>
-                                    </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h4 class="card-title">Öğrenci Listesi (<?= count($students); ?> Öğrenci)</h4>
+                                    <a href="#" class="btn btn-primary btn-sm"><i class="bx bx-plus me-1"></i> Yeni Öğrenci Ekle</a>
                                 </div>
 
-                                <div class="tab-pane" id="exam-results" role="tabpanel">
-                                    <h5 class="font-size-16 mb-3">Sınav Geçmişi</h5>
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <thead><tr><th>Sınav Adı</th><th>Tarih</th><th>Puan</th><th>Sınıf Ort.</th></tr></thead>
-                                            <tbody>
-                                            <tr><td>Matematik 1. Dönem 1. Sınav</td><td>01.10.2024</td><td><span class="fw-bold text-success">95.00</span></td><td>82.50</td></tr>
-                                            <tr><td>Fizik 1. Dönem 1. Sınav</td><td>03.10.2024</td><td><span class="fw-bold text-warning">82.50</span></td><td>75.10</td></tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle table-nowrap">
+                                        <thead class="table-light">
+                                        <tr>
+                                            <th>Öğrenci No</th>
+                                            <th>Adı Soyadı</th>
+                                            <th>Son Sınav Puanı</th>
+                                            <th>Devamsızlık (Gün)</th>
+                                            <th class="text-center">İşlemler</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php if (empty($students)): ?>
+                                            <tr>
+                                                <td colspan="5" class="text-center">Bu sınıfta kayıtlı öğrenci bulunmamaktadır.</td>
+                                            </tr>
+                                        <?php else: ?>
+                                            <?php foreach ($students as $student):
+                                                // Her öğrenci için son sınav notunu çek (Örnek)
+                                                $stmt_score = $pdo->prepare("SELECT score FROM student_exam_scores WHERE student_id = ? ORDER BY id DESC LIMIT 1");
+                                                $stmt_score->execute([$student['user_id']]);
+                                                $last_score = $stmt_score->fetchColumn();
 
-                                <div class="tab-pane" id="attendance" role="tabpanel">
-                                    <h5 class="font-size-16 mb-3">Devamsızlık Listesi (Toplam: 2 gün)</h5>
-                                    <div class="table-responsive">
-                                        <table class="table table-hover">
-                                            <thead><tr><th>Tarih</th><th>Durum</th></tr></thead>
-                                            <tbody>
-                                            <tr><td>15.09.2024</td><td><span class="badge bg-danger-subtle text-danger">İzinsiz</span></td></tr>
-                                            <tr><td>22.09.2024</td><td><span class="badge bg-success-subtle text-success">İzinli (Raporlu)</span></td></tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                                // Avatar verisini al
+                                                $avatar = get_avatar_data($student['full_name']);
+                                                ?>
+                                                <tr>
+                                                    <td><?= htmlspecialchars($student['student_number']); ?></td>
+                                                    <td>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="avatar-xs me-2">
+                                                            <span class="avatar-title rounded-circle <?= $avatar['color_class'] ?> text-white font-size-16">
+                                                                <?= $avatar['initials'] ?>
+                                                            </span>
+                                                            </div>
+                                                            <a href="ogrenci-detay.php?student_id=<?= $student['user_id']; ?>" class="text-body fw-bold"><?= htmlspecialchars($student['full_name']); ?></a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <?php if ($last_score !== false): ?>
+                                                            <span class="badge p-2 <?= ($last_score >= 70) ? 'bg-success-subtle text-success' : 'bg-danger-subtle text-danger'; ?>">
+                                                            <?= number_format($last_score, 2); ?>
+                                                        </span>
+                                                        <?php else: ?>
+                                                            <span class="badge bg-light text-dark p-2">Girilmedi</span>
+                                                        <?php endif; ?>
+                                                    </td>
+                                                    <td>
+                                                        <?php echo rand(0, 5); // Devamsızlık için şimdilik rastgele bir sayı üretiyoruz ?>
+                                                    </td>
+                                                    <td class="text-center">
+                                                        <a href="ogrenci-detay.php?student_id=<?= $student['user_id']; ?>" class="btn btn-primary btn-sm">Profilini Görüntüle</a>
+                                                    </td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -102,8 +126,5 @@
             </div>
         </div>
     </div>
-</div>
 
-<?php 
-    include '../partials/footer.php'; 
-?>
+<?php include '../partials/footer.php'; ?>

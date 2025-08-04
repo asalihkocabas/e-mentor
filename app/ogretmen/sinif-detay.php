@@ -1,9 +1,33 @@
 <?php
-session_start();
+include '../config/init.php';
 $_SESSION['user_role'] = 'teacher';
-$page_title = "Sınıf Detayları | E-Mentor Öğretmen Paneli";
+
+// URL'den gelen sınıf ID'sini al ve güvenli hale getir
+$class_id = isset($_GET['class_id']) ? intval($_GET['class_id']) : 0;
+if ($class_id == 0) {
+    // Eğer class_id yoksa veya geçersizse, sınıflar sayfasına yönlendir
+    header("Location: siniflarim.php");
+    exit;
+}
+
+// Sınıf bilgilerini çek
+$stmt_class = $pdo->prepare("SELECT name FROM classes WHERE id = ?");
+$stmt_class->execute([$class_id]);
+$class = $stmt_class->fetch(PDO::FETCH_ASSOC);
+
+$page_title = ($class ? htmlspecialchars($class['name']) : 'Sınıf') . " Detayları | E-Mentor";
+
 include '../partials/header.php';
 include '../partials/sidebar.php';
+
+// Sınıftaki öğrencileri listele
+$stmt_students = $pdo->prepare("
+        SELECT sp.user_id, sp.full_name, sp.student_number 
+        FROM student_profiles sp 
+        WHERE sp.class_id = ? ORDER BY sp.full_name ASC
+    ");
+$stmt_students->execute([$class_id]);
+$students = $stmt_students->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
     <div class="main-content">
@@ -12,7 +36,7 @@ include '../partials/sidebar.php';
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0 font-size-18">10-A Sınıf Detayları</h4>
+                            <h4 class="mb-sm-0 font-size-18"><?= htmlspecialchars($class['name'] ?? 'Sınıf'); ?> Detayları</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="index.php">Ana Sayfa</a></li>
@@ -28,26 +52,27 @@ include '../partials/sidebar.php';
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Öğrenci Listesi</h4>
+                                <h4 class="card-title">Öğrenci Listesi (<?= count($students); ?> Öğrenci)</h4>
                                 <div class="table-responsive">
                                     <table class="table table-hover align-middle table-nowrap">
                                         <thead class="table-light">
-                                        <tr>
-                                            <th>Öğrenci No</th>
-                                            <th>Adı Soyadı</th>
-                                            <th>Son Sınav Puanı</th>
-                                            <th>Devamsızlık (Gün)</th>
-                                            <th class="text-center">İşlemler</th>
-                                        </tr>
+                                        <tr><th>Öğrenci No</th><th>Adı Soyadı</th><th>İşlemler</th></tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>101</td>
-                                            <td><img src="../assets/images/users/avatar-2.jpg" alt="" class="avatar-xs rounded-circle me-2"> <a href="ogrenci-detay.php" class="text-body fw-bold">Ayşe Yılmaz</a></td>
-                                            <td><span class="badge bg-success-subtle text-success p-2">95.00</span></td>
-                                            <td>2</td>
-                                            <td class="text-center"><a href="ogrenci-detay.php" class="btn btn-primary btn-sm">Detay</a></td>
-                                        </tr>
+                                        <?php foreach ($students as $student): ?>
+                                            <tr>
+                                                <td><?= htmlspecialchars($student['student_number']); ?></td>
+                                                <td>
+                                                    <div class="d-flex align-items-center">
+                                                        <?= generate_avatar($student['full_name']); ?>
+                                                        <a href="ogrenci-detay.php?student_id=<?= $student['user_id']; ?>" class="text-body fw-bold"><?= htmlspecialchars($student['full_name']); ?></a>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a href="ogrenci-detay.php?student_id=<?= $student['user_id']; ?>" class="btn btn-primary btn-sm">Profilini Görüntüle</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -55,7 +80,6 @@ include '../partials/sidebar.php';
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

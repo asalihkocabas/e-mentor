@@ -4,4 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 define('SIMULATED_NOW', '2024-10-28 10:15:00');
 require_once 'database.php';
+require_once 'helpers.php';
+
 ?>
