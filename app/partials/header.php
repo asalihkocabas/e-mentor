@@ -1,7 +1,30 @@
 <?php
-// Oturum yönetimi burada başlayacak
-// session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// --- GÜVENLİK KONTROLLERİ ---
+
+// 1. Giriş yapılmış mı?
+if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
+    $_SESSION['auth_error'] = "Lütfen devam etmek için giriş yapın.";
+    header("Location: ../index.php"); // Artık index.php'ye yönlendiriyoruz.
+    exit;
+}
+
+// 2. Doğru rolde mi?
+$folder = basename(dirname($_SERVER['PHP_SELF'])); // 'ogrenci' veya 'ogretmen'
+$user_role = $_SESSION['user_role'];
+
+if (($folder == 'ogrenci' && $user_role != 'student') || ($folder == 'ogretmen' && $user_role != 'teacher')) {
+    $_SESSION['auth_error'] = "Bu sayfaya erişim yetkiniz bulunmamaktadır.";
+    // Kullanıcıyı kendi ana sayfasına yönlendir
+    $redirect_path = ($user_role == 'teacher') ? '../ogretmen/index.php' : '../ogrenci/index.php';
+    header("Location: " . $redirect_path);
+    exit;
+}
 ?>
+
 <!doctype html>
 <html lang="tr">
 <head>
@@ -31,13 +54,13 @@
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img class="rounded-circle header-profile-user" src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d" alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ms-1 fw-medium">Kaan Buğra</span>
+                        <span class="d-none d-xl-inline-block ms-1 fw-medium"><?= htmlspecialchars($_SESSION['full_name']); ?></span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="../cıkıs-yap.html"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Çıkış</a>
+                        <a class="dropdown-item" href="../islemler/cikis-yap.php"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i>Güvenlif Çıkış</a>
                     </div>
                 </div>
             </div>

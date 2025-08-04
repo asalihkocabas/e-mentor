@@ -1,12 +1,12 @@
+<?php session_start(); // Hata mesajını alabilmek için session'ı başlat ?>
 <!doctype html>
 <html lang="tr">
 
 <head>
-
     <meta charset="utf-8" />
-    <title>Öğretmen Girişi | E-Mentor Sistemi</title>
+    <title>Öğrenci Girişi | E-Mentor Sistemi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="E-Mentor Sistemi Öğretmen Giriş Sayfası" name="description" />
+    <meta content="E-Mentor Öğrenci Giriş Sayfası" name="description" />
     <meta content="Themesbrand" name="author" />
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
@@ -19,7 +19,6 @@
 </head>
 
 <body>
-
 <div class="auth-page">
     <div class="container-fluid p-0">
         <div class="row g-0">
@@ -28,18 +27,26 @@
                     <div class="w-100">
                         <div class="d-flex flex-column h-100">
                             <div class="mb-4 mb-md-5 text-center">
-                                <a href="ogrenci/index.php" class="d-block auth-logo">
+                                <a href="index.php" class="d-block auth-logo">
                                     <img src="assets/images/logo-sm.svg" alt="" height="28"> <span class="logo-txt">E-Mentor</span>
                                 </a>
                             </div>
                             <div class="auth-content my-auto">
                                 <div class="text-center">
-                                    <h5 class="mb-0">Tekrar Hoş Geldiniz!</h5>
-                                    <p class="text-muted mt-2">Öğretmen paneline devam etmek için oturum açın.</p>
+                                    <h5 class="mb-0">Tekrar Hoş Geldin!</h5>
+                                    <p class="text-muted mt-2">Öğrenci paneline erişmek için giriş yap.</p>
                                 </div>
-                                <form class="mt-4 pt-2" action="ogrenci/index.php">
+
+                                <?php if (isset($_SESSION['login_error'])): ?>
+                                    <div class="alert alert-danger text-center mt-4" role="alert">
+                                        <?= $_SESSION['login_error']; ?>
+                                    </div>
+                                    <?php unset($_SESSION['login_error']); // Mesajı gösterdikten sonra temizle ?>
+                                <?php endif; ?>
+
+                                <form class="mt-4 pt-2" action="islemler/giris-yap.php" method="POST">
                                     <div class="form-floating form-floating-custom mb-4">
-                                        <input type="text" class="form-control" id="input-username" placeholder="T.C. Kimlik No" maxlength="11" inputmode="numeric" required>
+                                        <input type="text" class="form-control" id="input-username" name="tc_kimlik" placeholder="T.C. Kimlik No" required>
                                         <label for="input-username">T.C. Kimlik Numarası</label>
                                         <div class="form-floating-icon">
                                             <i data-feather="user"></i>
@@ -47,7 +54,7 @@
                                     </div>
 
                                     <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                        <input type="password" class="form-control pe-5" id="password-input" placeholder="Şifrenizi Girin">
+                                        <input type="password" class="form-control pe-5" id="password-input" name="password" placeholder="Şifrenizi Girin" required>
                                         <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon">
                                             <i class="mdi mdi-eye-outline font-size-18 text-muted"></i>
                                         </button>
@@ -56,6 +63,8 @@
                                             <i data-feather="lock"></i>
                                         </div>
                                     </div>
+
+                                    <input type="hidden" name="role" value="student">
 
                                     <div class="row mb-4">
                                         <div class="col">
@@ -67,7 +76,7 @@
                                             </div>
                                         </div>
                                         <div class="col text-end">
-                                            <a href="auth-recoverpw.html" class="text-muted text-decoration-underline font-size-13">Şifremi unuttum</a>
+                                            <a href="#" class="text-muted text-decoration-underline font-size-13">Şifremi unuttum</a>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -83,7 +92,7 @@
                 </div>
             </div>
             <div class="col-xxl-8 col-lg-7 col-md-6">
-                <div class="auth-bg pt-md-5 p-4 d-flex">
+                <div class="auth-bg bg-primary pt-md-5 p-4 d-flex">
                     <div class="bg-overlay"></div>
                     <div class="w-100">
                         <div class="d-flex h-100 flex-column justify-content-center">
@@ -91,8 +100,8 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-7">
                                         <div class="text-center">
-                                            <h4 class="mb-3 text-white">"Bir çocuğa öğretilen her şey, onun keşfedeceği bir şeyden çalınmıştır."</h4>
-                                            <p class="text-white-50 mb-0">Jean Piaget</p>
+                                            <h4 class="mb-3 text-white">"Geleceği tahmin etmenin en iyi yolu, onu yaratmaktır."</h4>
+                                            <p class="text-white-50 mb-0">Peter Drucker</p>
                                         </div>
                                     </div>
                                 </div>

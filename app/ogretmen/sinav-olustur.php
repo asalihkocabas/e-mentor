@@ -1,17 +1,33 @@
 <?php
+// Bu sayfanın bir öğretmen sayfası olduğunu belirtmek için session'ı ayarlıyoruz.
 session_start();
 $_SESSION['user_role'] = 'teacher';
-$page_title = "Yeni Sınav Oluştur | E-Mentor Öğretmen Paneli";
+
+$page_title = "Sınav Oluştur | E-Mentor Öğretmen Paneli";
+
+// Header, sidebar gibi ortak alanları çağırıyoruz.
 include '../partials/header.php';
 include '../partials/sidebar.php';
 ?>
-
+<head>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <link href="../assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
     <link rel="stylesheet" href="../assets/libs/twitter-bootstrap-wizard/prettify.css">
+
+    <link rel="stylesheet" href="../assets/css/preloader.min.css" type="text/css" />
+    <link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="../assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
     <style>
-        .twitter-bs-wizard-tab-content { overflow: visible; }
+        /* Choices.js dropdown menüsünün sihirbaz dışına taşabilmesi için eklendi */
+        .twitter-bs-wizard-tab-content {
+            overflow: visible;
+        }
     </style>
+</head>
+
 
     <div class="main-content">
         <div class="page-content">
@@ -22,14 +38,13 @@ include '../partials/sidebar.php';
                             <h4 class="mb-sm-0 font-size-18">Sınav Oluşturma Sihirbazı</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="index.php">Ana Sayfa</a></li>
+                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Sınav İşlemleri</a></li>
                                     <li class="breadcrumb-item active">Yeni Sınav Oluştur</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="card">
@@ -37,25 +52,32 @@ include '../partials/sidebar.php';
                                 <div id="progrss-wizard" class="twitter-bs-wizard">
                                     <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
                                         <li class="nav-item">
-                                            <a href="#exam-details" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Sınav Detayları"><i class="bx bx-detail"></i></div>
+                                            <a href="#exam-details" class="nav-link active" data-toggle="tab">
+                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Sınav Detayları">
+                                                    <i class="bx bx-detail"></i>
+                                                </div>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#add-questions" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Soru Ekleme"><i class="bx bx-pencil"></i></div>
+                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Soru Ekleme">
+                                                    <i class="bx bx-pencil"></i>
+                                                </div>
                                             </a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#review-and-save" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Önizleme ve Kaydet"><i class="bx bx-check-double"></i></div>
+                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Önizleme ve Kaydet">
+                                                    <i class="bx bx-check-double"></i>
+                                                </div>
                                             </a>
                                         </li>
                                     </ul>
-                                    <div id="bar" class="progress mt-4"><div class="progress-bar bg-success progress-bar-striped progress-bar-animated"></div></div>
-
+                                    <div id="bar" class="progress mt-4">
+                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"></div>
+                                    </div>
                                     <div class="tab-content twitter-bs-wizard-tab-content">
-                                        <div class="tab-pane" id="exam-details">
+                                        <div class="tab-pane active" id="exam-details">
                                             <div class="text-center my-4">
                                                 <h5>Sınav Detayları</h5>
                                                 <p class="card-title-desc">Lütfen sınavın temel bilgilerini seçiniz</p>
@@ -93,6 +115,8 @@ include '../partials/sidebar.php';
                                                                 <option value="">Sınıf seçiniz...</option>
                                                                 <option value="9. Sınıf">9. Sınıf</option>
                                                                 <option value="10. Sınıf">10. Sınıf</option>
+                                                                <option value="11. Sınıf">11. Sınıf</option>
+                                                                <option value="12. Sınıf">12. Sınıf</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -103,6 +127,9 @@ include '../partials/sidebar.php';
                                                                 <option value="">Ders seçiniz...</option>
                                                                 <option value="Matematik">Matematik</option>
                                                                 <option value="Fizik">Fizik</option>
+                                                                <option value="Kimya">Kimya</option>
+                                                                <option value="Biyoloji">Biyoloji</option>
+                                                                <option value="Türk Dili ve Edebiyatı">Türk Dili ve Edebiyatı</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -139,14 +166,44 @@ include '../partials/sidebar.php';
                                                         <div class="row">
                                                             <div class="col-lg-7">
                                                                 <label class="form-label">Seçenekler (Doğru olanı işaretleyiniz)</label>
-                                                                <div class="mb-2 input-group"><div class="input-group-text"><input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="A"></div><span class="input-group-text">A)</span><input type="text" class="form-control option-text" placeholder="Seçenek metni..."></div>
-                                                                <div class="mb-2 input-group"><div class="input-group-text"><input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="B"></div><span class="input-group-text">B)</span><input type="text" class="form-control option-text" placeholder="Seçenek metni..."></div>
-                                                                <div class="mb-2 input-group"><div class="input-group-text"><input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="C"></div><span class="input-group-text">C)</span><input type="text" class="form-control option-text" placeholder="Seçenek metni..."></div>
-                                                                <div class="mb-2 input-group"><div class="input-group-text"><input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="D"></div><span class="input-group-text">D)</span><input type="text" class="form-control option-text" placeholder="Seçenek metni..."></div>
+                                                                <div class="mb-2 input-group">
+                                                                    <div class="input-group-text">
+                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="A">
+                                                                    </div>
+                                                                    <span class="input-group-text">A)</span>
+                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
+                                                                </div>
+                                                                <div class="mb-2 input-group">
+                                                                    <div class="input-group-text">
+                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="B">
+                                                                    </div>
+                                                                    <span class="input-group-text">B)</span>
+                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
+                                                                </div>
+                                                                <div class="mb-2 input-group">
+                                                                    <div class="input-group-text">
+                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="C">
+                                                                    </div>
+                                                                    <span class="input-group-text">C)</span>
+                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
+                                                                </div>
+                                                                <div class="mb-2 input-group">
+                                                                    <div class="input-group-text">
+                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="D">
+                                                                    </div>
+                                                                    <span class="input-group-text">D)</span>
+                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
+                                                                </div>
                                                             </div>
                                                             <div class="col-lg-5">
-                                                                <div class="mb-3"><label for="question-points-1" class="form-label">Puan Değeri</label><input class="form-control question-points" type="number" value="10" id="question-points-1"></div>
-                                                                <div class="mb-3"><label for="question-objective-1" class="form-label">Kazanım</label><input type="text" class="form-control question-objective" id="question-objective-1" placeholder="Örn: M.9.1.1.1."></div>
+                                                                <div class="mb-3">
+                                                                    <label for="question-points-1" class="form-label">Puan Değeri</label>
+                                                                    <input class="form-control question-points" type="number" value="10" id="question-points-1">
+                                                                </div>
+                                                                <div class="mb-3">
+                                                                    <label for="question-objective-1" class="form-label">Kazanım</label>
+                                                                    <input type="text" class="form-control question-objective" id="question-objective-1" placeholder="Örn: M.9.1.1.1.">
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -163,15 +220,20 @@ include '../partials/sidebar.php';
                                                 <p class="card-title-desc">Lütfen bilgilerin doğruluğunu kontrol ediniz</p>
                                             </div>
                                             <div class="card border">
-                                                <div class="card-header bg-light"><h5 class="mb-0">Sınav Bilgileri</h5></div>
+                                                <div class="card-header bg-light">
+                                                    <h5 class="mb-0">Sınav Bilgileri</h5>
+                                                </div>
                                                 <div class="card-body">
                                                     <p><strong>Ders:</strong> <span id="preview-ders"></span></p>
                                                     <p><strong>Sınıf:</strong> <span id="preview-sinif"></span></p>
                                                     <p><strong>Sınav:</strong> <span id="preview-sinav-turu"></span></p>
                                                     <p><strong>Tarih:</strong> <span id="preview-tarih"></span></p>
-                                                    <hr><h5 class="font-size-15">Sorular:</h5>
-                                                    <div id="preview-soru-container"></div>
-                                                    <hr><p><strong>Toplam Soru:</strong> <span id="preview-toplam-soru"></span></p>
+                                                    <hr>
+                                                    <h5 class="font-size-15">Sorular:</h5>
+                                                    <div id="preview-soru-container">
+                                                    </div>
+                                                    <hr>
+                                                    <p><strong>Toplam Soru:</strong> <span id="preview-toplam-soru"></span></p>
                                                     <p><strong>Toplam Puan:</strong> <span id="preview-toplam-puan"></span></p>
                                                 </div>
                                             </div>
@@ -192,90 +254,120 @@ include '../partials/sidebar.php';
         <div class="modal fade confirmModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
-                    <div class="modal-header border-bottom-0"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
-                    <div class="modal-body"><div class="text-center"><div class="mb-3"><i class="bx bx-check-circle display-4 text-success"></i></div><h5>Sınav Başarıyla Kaydedildi!</h5></div></div>
-                    <div class="modal-footer justify-content-center"><button type="button" class="btn btn-primary w-md" data-bs-dismiss="modal">Harika!</button></div>
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <div class="mb-3">
+                                <i class="bx bx-check-circle display-4 text-success"></i>
+                            </div>
+                            <h5>Sınav Başarıyla Kaydedildi!</h5>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-center">
+                        <button type="button" class="btn btn-primary w-md" data-bs-dismiss="modal">Harika!</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
-    <script src="https://npmcdn.com/flatpickr/dist/l10n/tr.js"></script>
-    <script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
-    <script src="../assets/libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
-    <script src="../assets/libs/twitter-bootstrap-wizard/prettify.js"></script>
-    <script>
-        $(document).ready(function() {
-            const termChoice = new Choices('#choices-term');
-            const examTypeChoice = new Choices('#choices-exam-type');
-            const classLevelChoice = new Choices('#choices-class-level');
-            const courseChoice = new Choices('#choices-course');
 
-            flatpickr('#datepicker-datetime', {
-                enableTime: true,
-                locale: "tr",
-                dateFormat: "d.m.Y H:i"
-            });
+<?php include("../partials/footer.php"); ?>
 
-            $('#progrss-wizard').bootstrapWizard({
-                onTabShow: function(tab, navigation, index) {
-                    var $total = navigation.find('li').length;
-                    var $current = index + 1;
-                    var $percent = ($current / $total) * 100;
-                    $('#progrss-wizard .progress-bar').css({ width: $percent + '%' });
-                },
-                onNext: function(tab, navigation, nextIndex) {
-                    if (nextIndex === 2) {
-                        populatePreview();
-                    }
-                }
-            });
+<script>
+    $(document).ready(function() {
 
-            function populatePreview() {
-                const termValue = termChoice.getValue(true);
-                const examTypeValue = examTypeChoice.getValue(true);
-                const classLevelValue = classLevelChoice.getValue(true);
-                const courseValue = courseChoice.getValue(true);
-                const dateValue = document.getElementById('datepicker-datetime').value;
+        // Choices.js Kütüphanelerini Başlatma
+        const termChoice = new Choices('#choices-term');
+        const examTypeChoice = new Choices('#choices-exam-type');
+        const classLevelChoice = new Choices('#choices-class-level');
+        const courseChoice = new Choices('#choices-course');
 
-                document.getElementById('preview-ders').textContent = courseValue || 'Belirtilmemiş';
-                document.getElementById('preview-sinif').textContent = classLevelValue || 'Belirtilmemiş';
-                document.getElementById('preview-sinav-turu').textContent = `${termValue} - ${examTypeValue}` || 'Belirtilmemiş';
-                document.getElementById('preview-tarih').textContent = dateValue || 'Belirtilmemiş';
+        // Flatpickr (Tarih Seçici) Başlatma
+        flatpickr('#datepicker-datetime', {
+            enableTime: true,
+            locale: "tr", // Türkçe dil desteği
+            dateFormat: "d.m.Y H:i" // Türkiye formatı
+        });
 
-                const questionCards = document.querySelectorAll('.question-card');
-                const previewContainer = document.getElementById('preview-soru-container');
-                previewContainer.innerHTML = '';
-                let totalPoints = 0;
-
-                questionCards.forEach((card, index) => {
-                    const questionNumber = index + 1;
-                    const questionText = card.querySelector('.question-text').value;
-                    const questionPoints = parseInt(card.querySelector('.question-points').value, 10) || 0;
-                    const questionObjective = card.querySelector('.question-objective').value;
-                    totalPoints += questionPoints;
-                    const correctAnswerRadio = card.querySelector('.correct-answer-radio:checked');
-                    const correctAnswerValue = correctAnswerRadio ? correctAnswerRadio.value : null;
-                    let optionsHTML = '';
-                    const options = card.querySelectorAll('.option-text');
-                    const optionLabels = ['A', 'B', 'C', 'D'];
-                    options.forEach((option, optionIndex) => {
-                        const label = optionLabels[optionIndex];
-                        const isCorrect = (label === correctAnswerValue);
-                        const textClass = isCorrect ? 'text-success fw-bold' : '';
-                        const correctLabel = isCorrect ? ' (Doğru Cevap)' : '';
-                        optionsHTML += `<p class="ms-3 ${textClass}">${label}) ${option.value}${correctLabel}</p>`;
-                    });
-                    const questionHTML = `<div><p><strong>Soru ${questionNumber}:</strong> ${questionText} (${questionPoints} Puan)</p><p class="ms-3 text-muted"><em>Kazanım: ${questionObjective || 'Belirtilmemiş'}</em></p>${optionsHTML}</div>`;
-                    previewContainer.innerHTML += questionHTML;
+        // Form Sihirbazını Başlatma
+        $('#progrss-wizard').bootstrapWizard({
+            onTabShow: function(tab, navigation, index) {
+                var $total = navigation.find('li').length;
+                var $current = index + 1;
+                var $percent = ($current / $total) * 100;
+                $('#progrss-wizard .progress-bar').css({
+                    width: $percent + '%'
                 });
-                document.getElementById('preview-toplam-soru').textContent = questionCards.length;
-                document.getElementById('preview-toplam-puan').textContent = totalPoints;
+            },
+            // 3. adıma (önizleme) geçildiğinde çalışacak fonksiyon
+            onNext: function(tab, navigation, nextIndex) {
+                // Eğer bir sonraki adım önizleme adımı ise (index'i 2'dir)
+                if (nextIndex === 2) {
+                    populatePreview();
+                }
             }
         });
-    </script>
 
-<?php
-include '../partials/footer.php';
-?>
+        // Önizleme alanını dolduran ana fonksiyon
+        function populatePreview() {
+            // Adım 1'deki bilgileri al ve önizlemeye yaz
+            const termValue = termChoice.getValue(true);
+            const examTypeValue = examTypeChoice.getValue(true);
+            const classLevelValue = classLevelChoice.getValue(true);
+            const courseValue = courseChoice.getValue(true);
+            const dateValue = document.getElementById('datepicker-datetime').value;
+
+            document.getElementById('preview-ders').textContent = courseValue || 'Belirtilmemiş';
+            document.getElementById('preview-sinif').textContent = classLevelValue || 'Belirtilmemiş';
+            document.getElementById('preview-sinav-turu').textContent = `${termValue} - ${examTypeValue}` || 'Belirtilmemiş';
+            document.getElementById('preview-tarih').textContent = dateValue || 'Belirtilmemiş';
+
+            // Adım 2'deki soruları al ve önizlemeye yaz
+            const questionCards = document.querySelectorAll('.question-card');
+            const previewContainer = document.getElementById('preview-soru-container');
+            previewContainer.innerHTML = ''; // Önceki önizlemeyi temizle
+            let totalPoints = 0;
+
+            questionCards.forEach((card, index) => {
+                const questionNumber = index + 1;
+                const questionText = card.querySelector('.question-text').value;
+                const questionPoints = parseInt(card.querySelector('.question-points').value, 10) || 0;
+                const questionObjective = card.querySelector('.question-objective').value;
+
+                totalPoints += questionPoints;
+
+                // Doğru cevabın hangisi olduğunu bul
+                const correctAnswerRadio = card.querySelector('.correct-answer-radio:checked');
+                const correctAnswerValue = correctAnswerRadio ? correctAnswerRadio.value : null;
+
+                let optionsHTML = '';
+                const options = card.querySelectorAll('.option-text');
+                const optionLabels = ['A', 'B', 'C', 'D'];
+
+                options.forEach((option, optionIndex) => {
+                    const label = optionLabels[optionIndex];
+                    const isCorrect = (label === correctAnswerValue);
+                    const textClass = isCorrect ? 'text-success fw-bold' : '';
+                    const correctLabel = isCorrect ? ' (Doğru Cevap)' : '';
+                    optionsHTML += `<p class="ms-3 ${textClass}">${label}) ${option.value}${correctLabel}</p>`;
+                });
+
+                const questionHTML = `
+                        <div>
+                            <p><strong>Soru ${questionNumber}:</strong> ${questionText} (${questionPoints} Puan)</p>
+                            <p class="ms-3 text-muted"><em>Kazanım: ${questionObjective || 'Belirtilmemiş'}</em></p>
+                            ${optionsHTML}
+                        </div>
+                    `;
+                previewContainer.innerHTML += questionHTML;
+            });
+
+            // Toplam soru ve puanı güncelle
+            document.getElementById('preview-toplam-soru').textContent = questionCards.length;
+            document.getElementById('preview-toplam-puan').textContent = totalPoints;
+        }
+    });
+</script>
