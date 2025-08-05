@@ -1,29 +1,52 @@
 <?php
-    session_start();
-    $_SESSION['user_role'] = 'teacher';
-    $page_title = "Toplu Dosya Yükleme | E-Mentor Öğretmen Paneli";
-    include '../partials/header.php';
-    include '../partials/sidebar.php';
+include '../config/init.php';
+$_SESSION['user_role'] = 'teacher';
+$page_title = "Yeni İçerik Yükle | E-Mentor Öğretmen Paneli";
+
+include '../partials/header.php';
+include '../partials/sidebar.php';
+
+$teacher_id = $_SESSION['user_id'] ?? 1;
+
+// --- Formlar için gerekli verileri ve HTML seçeneklerini önceden hazırla ---
+
+// Dersler
+$stmt_courses = $pdo->prepare("SELECT id, name FROM courses ORDER BY name");
+$stmt_courses->execute();
+$course_options_html = '';
+foreach($stmt_courses->fetchAll(PDO::FETCH_ASSOC) as $c) {
+    $course_options_html .= "<option value='{$c['id']}'>" . htmlspecialchars($c['name']) . "</option>";
+}
+
+// Sınıflar
+$stmt_classes = $pdo->prepare("SELECT id, name FROM classes ORDER BY name");
+$stmt_classes->execute();
+$class_options_html = '';
+foreach($stmt_classes->fetchAll(PDO::FETCH_ASSOC) as $cl) {
+    $class_options_html .= "<option value='{$cl['id']}'>" . htmlspecialchars($cl['name']) . "</option>";
+}
+
+// Kazanımlar (Açıklamalarıyla Birlikte)
+$stmt_outcomes = $pdo->prepare("SELECT id, outcome_code, description FROM learning_outcomes ORDER BY outcome_code");
+$stmt_outcomes->execute();
+$outcome_options_html = '';
+foreach($stmt_outcomes->fetchAll(PDO::FETCH_ASSOC) as $o) {
+    $display_text = htmlspecialchars($o['outcome_code'] . " - " . $o['description']);
+    $outcome_options_html .= "<option value='{$o['id']}'>{$display_text}</option>";
+}
 ?>
 
-<link href="../assets/libs/dropzone/min/dropzone.min.css" rel="stylesheet" type="text/css" />
 <link href="../assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+<style>
+    /* Dropdown menülerin diğer elemanların üstünde kalmasını sağlar */
+    .choices__list--dropdown { z-index: 1060 !important; }
+</style>
 
 <div class="main-content">
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
-                    <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0 font-size-18">Toplu Dosya Yükleme</h4>
-                        <div class="page-title-right">
-                            <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="index.php">Ana Sayfa</a></li>
-                                <li class="breadcrumb-item active">Dosya Yükleme</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
+                <div class="col-12"><div class="page-title-box d-sm-flex align-items-center justify-content-between"><h4 class="mb-sm-0 font-size-18">Yeni İçerik Yükle</h4></div></div>
             </div>
 
             <div class="row">
@@ -31,72 +54,118 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Aşama 1: Yüklenecek Dosya Türünü Seçin</h4>
-                            <p class="card-title-desc">Yükleyeceğiniz dosya türüne göre ilgili alanlar aşağıda belirecektir.</p>
-                            <ul class="nav nav-tabs nav-tabs-custom nav-justified" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active" data-bs-toggle="tab" href="#kazanim-tab" role="tab">
-                                        <span class="d-block d-sm-none"><i class="bx bx-task font-size-18"></i></span>
-                                        <span class="d-none d-sm-block"><i class="bx bx-task me-2"></i> Kazanım Testleri</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#kitap-tab" role="tab">
-                                        <span class="d-block d-sm-none"><i class="bx bx-book-open font-size-18"></i></span>
-                                        <span class="d-none d-sm-block"><i class="bx bx-book-open me-2"></i> Ders Kitapları</span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-bs-toggle="tab" href="#soru-tab" role="tab">
-                                        <span class="d-block d-sm-none"><i class="bx bx-question-mark font-size-18"></i></span>
-                                        <span class="d-none d-sm-block"><i class="bx bx-question-mark me-2"></i> Çıkmış Sorular</span>
-                                    </a>
-                                </li>
-                            </ul>
+                            <select id="file-type-selector" class="form-select form-select-lg mb-3">
+                                <option value="">Lütfen bir tür seçin...</option>
+                                <option value="kazanim">Kazanım Testleri</option>
+                                <option value="kitap">Ders Kitapları</option>
+                                <option value="soru">Çıkmış Sorular</option>
+                            </select>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="tab-content pt-4">
-                <div class="tab-pane active" id="kazanim-tab" role="tabpanel">
+            <div id="upload-form-container" style="display: none;">
+                <form action="../islemler/icerik-kaydet.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="file_type" id="hidden-file-type">
+
                     <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title">Aşama 2: Kazanım Testlerini Yükleyin</h4>
-                            <p class="card-title-desc">Dosyaları sürükleyip bırakın ve ardından listeden her dosya için ilgili ders ve kazanımı seçin.</p>
+                        <div class="card-body text-center">
+                            <h4 class="card-title">Aşama 2: Dosyaları Seçin</h4>
+                            <label for="file-input" class="btn btn-primary btn-lg"><i class="bx bx-upload me-2"></i>Bilgisayardan Dosya Seç</label>
+                            <input type="file" id="file-input" name="file_uploads[]" multiple class="d-none">
                         </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-header"><h4 class="card-title">Aşama 3: Dosya Bilgilerini Düzenleyin</h4></div>
                         <div class="card-body">
-                            <form action="#" class="dropzone mb-4">
-                                <div class="fallback">
-                                    <input name="file" type="file" multiple="multiple">
-                                </div>
-                                <div class="dz-message needsclick">
-                                    <div class="mb-3"><i class="display-4 text-muted bx bx-cloud-upload"></i></div>
-                                    <h5>Dosyaları buraya sürükleyin veya yüklemek için tıklayın.</h5>
-                                </div>
-                            </form>
-                            <h5 class="font-size-16 mt-4">Aşama 3: Yüklenecek Dosyaları Düzenleyin</h5>
                             <div class="table-responsive">
-                                <table class="table table-hover align-middle">
+                                <table class="table align-middle">
+                                    <thead id="files-table-head" class="table-light"></thead>
+                                    <tbody id="files-table-body"></tbody>
                                 </table>
-                            </div>
-                            <div class="text-center mt-4">
-                                <button type="button" class="btn btn-primary"><i class="bx bx-upload me-1"></i> Tümünü Yükle</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab-pane" id="kitap-tab" role="tabpanel">
-                </div>
-                <div class="tab-pane" id="soru-tab" role="tabpanel">
-                </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success btn-lg"><i class="bx bx-library me-1"></i> Seçilenleri Kütüphaneye Ekle</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
-<script src="../assets/libs/dropzone/min/dropzone.min.js"></script>
+<?php include '../partials/footer.php'; ?>
 <script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
 
-<?php
-    include '../partials/footer.php';
-?>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const typeSelector = document.getElementById('file-type-selector');
+        const formContainer = document.getElementById('upload-form-container');
+        const fileInput = document.getElementById('file-input');
+        const tableHead = document.getElementById('files-table-head');
+        const tableBody = document.getElementById('files-table-body');
+        const hiddenFileType = document.getElementById('hidden-file-type');
+
+        const headers = {
+            kazanim: '<tr><th>Dosya Adı</th><th>Ders</th><th>Sınıf</th><th>Kazanım</th></tr>',
+            kitap: '<tr><th>Dosya Adı</th><th>Ders</th><th>Sınıf</th></tr>',
+            soru: '<tr><th>Dosya Adı</th><th>Sınav Türü</th><th>Yıl</th><th>Alanı</th></tr>',
+        };
+
+        // PHP'den gelen option'ları JavaScript'e aktar
+        const courseOptions = '<?php echo addslashes($course_options_html); ?>';
+        const classOptions = '<?php echo addslashes($class_options_html); ?>';
+        const outcomeOptions = '<?php echo addslashes($outcome_options_html); ?>';
+
+        typeSelector.addEventListener('change', function() {
+            const type = this.value;
+            tableBody.innerHTML = '';
+            fileInput.value = '';
+            if (type) {
+                tableHead.innerHTML = headers[type];
+                hiddenFileType.value = this.options[this.selectedIndex].text;
+                formContainer.style.display = 'block';
+            } else {
+                formContainer.style.display = 'none';
+            }
+        });
+
+        fileInput.addEventListener('change', function() {
+            tableBody.innerHTML = '';
+            const type = typeSelector.value;
+            const files = this.files;
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                let metaHtml = '';
+
+                if (type === 'kazanim') {
+                    metaHtml = `
+                    <td><select name="files[${i}][course_id]">${courseOptions}</select></td>
+                    <td><select name="files[${i}][class_id]">${classOptions}</select></td>
+                    <td><select name="files[${i}][outcome_id]">${outcomeOptions}</select></td>
+                `;
+                } else if (type === 'kitap') {
+                    metaHtml = `
+                    <td><select name="files[${i}][course_id]">${courseOptions}</select></td>
+                    <td><select name="files[${i}][class_id]">${classOptions}</select></td>
+                `;
+                } else if (type === 'soru') {
+                    metaHtml = `
+                    <td><select name="files[${i}][exam_type]"><option>LGS</option><option>YKS</option></select></td>
+                    <td><input type="number" name="files[${i}][year]" class="form-control form-control-sm" value="2024"></td>
+                    <td><select name="files[${i}][field]"><option>Sözel</option><option>Sayısal</option></select></td>
+                `;
+                }
+
+                const newRowHTML = `<tr data-index="${i}"><td>${file.name}</td>${metaHtml}</tr>`;
+                tableBody.insertAdjacentHTML('beforeend', newRowHTML);
+                tableBody.querySelectorAll(`tr[data-index="${i}"] select`).forEach(selectEl => new Choices(selectEl, { searchResultLimit: 15, shouldSort: false }));
+            }
+        });
+    });
+</script>

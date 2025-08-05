@@ -1,373 +1,144 @@
 <?php
-// Bu sayfanın bir öğretmen sayfası olduğunu belirtmek için session'ı ayarlıyoruz.
-session_start();
+include '../config/init.php';
 $_SESSION['user_role'] = 'teacher';
+$page_title = "Yeni Sınav Oluştur | E-Mentor Öğretmen Paneli";
 
-$page_title = "Sınav Oluştur | E-Mentor Öğretmen Paneli";
-
-// Header, sidebar gibi ortak alanları çağırıyoruz.
 include '../partials/header.php';
 include '../partials/sidebar.php';
+
+$teacher_id = $_SESSION['user_id'] ?? 1;
+
+// --- Veritabanından Gerekli Verileri Çekme ---
+$stmt_classes = $pdo->prepare("SELECT DISTINCT c.id, c.name, c.grade_level FROM classes c JOIN teacher_assignments ta ON c.id = ta.class_id WHERE ta.teacher_id = ? ORDER BY c.name");
+$stmt_classes->execute([$teacher_id]);
+$teacher_classes = $stmt_classes->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt_courses = $pdo->prepare("SELECT DISTINCT co.id, co.name FROM courses co JOIN teacher_assignments ta ON co.id = ta.course_id WHERE ta.teacher_id = ? ORDER BY co.name");
+$stmt_courses->execute([$teacher_id]);
+$teacher_courses = $stmt_courses->fetchAll(PDO::FETCH_ASSOC);
 ?>
-<head>
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <link href="../assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
-    <link rel="stylesheet" href="../assets/libs/twitter-bootstrap-wizard/prettify.css">
 
-    <link rel="stylesheet" href="../assets/css/preloader.min.css" type="text/css" />
-    <link href="../assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+<link href="../assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="../assets/libs/flatpickr/flatpickr.min.css">
+<style>
+    #questions-container:empty { min-height: 50px; }
+    .main-content { padding-bottom: 120px; }
+    .choices__list--dropdown, .dropdown-menu { z-index: 1060 !important; }
+</style>
 
-    <style>
-        /* Choices.js dropdown menüsünün sihirbaz dışına taşabilmesi için eklendi */
-        .twitter-bs-wizard-tab-content {
-            overflow: visible;
-        }
-    </style>
-</head>
+<div class="main-content">
+    <div class="page-content">
+        <div class="container-fluid">
+            <div class="row"><div class="col-12"><div class="page-title-box d-sm-flex align-items-center justify-content-between"><h4 class="mb-sm-0 font-size-18">Yeni Sınav Oluştur</h4></div></div></div>
 
+            <?php if (isset($_SESSION['form_message'])): ?>
+                <div class="alert alert-<?= $_SESSION['form_message_type']; ?> alert-dismissible fade show" role="alert">
+                    <?= htmlspecialchars($_SESSION['form_message']); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <?php unset($_SESSION['form_message'], $_SESSION['form_message_type']); endif; ?>
 
-    <div class="main-content">
-        <div class="page-content">
-            <div class="container-fluid">
+            <form id="create-exam-form" action="../islemler/sinav-kaydet.php" method="POST">
                 <div class="row">
                     <div class="col-12">
-                        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0 font-size-18">Sınav Oluşturma Sihirbazı</h4>
-                            <div class="page-title-right">
-                                <ol class="breadcrumb m-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">Sınav İşlemleri</a></li>
-                                    <li class="breadcrumb-item active">Yeni Sınav Oluştur</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
-                                <div id="progrss-wizard" class="twitter-bs-wizard">
-                                    <ul class="twitter-bs-wizard-nav nav nav-pills nav-justified">
-                                        <li class="nav-item">
-                                            <a href="#exam-details" class="nav-link active" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Sınav Detayları">
-                                                    <i class="bx bx-detail"></i>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#add-questions" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Soru Ekleme">
-                                                    <i class="bx bx-pencil"></i>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="#review-and-save" class="nav-link" data-toggle="tab">
-                                                <div class="step-icon" data-bs-toggle="tooltip" data-bs-placement="top" title="Önizleme ve Kaydet">
-                                                    <i class="bx bx-check-double"></i>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <div id="bar" class="progress mt-4">
-                                        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated"></div>
-                                    </div>
-                                    <div class="tab-content twitter-bs-wizard-tab-content">
-                                        <div class="tab-pane active" id="exam-details">
-                                            <div class="text-center my-4">
-                                                <h5>Sınav Detayları</h5>
-                                                <p class="card-title-desc">Lütfen sınavın temel bilgilerini seçiniz</p>
-                                            </div>
-                                            <form>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="choices-term" class="form-label">Dönem</label>
-                                                            <select class="form-control" name="choices-term" id="choices-term">
-                                                                <option value="1. Dönem">1. Dönem</option>
-                                                                <option value="2. Dönem">2. Dönem</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="choices-exam-type" class="form-label">Sınav Türü</label>
-                                                            <select class="form-control" name="choices-exam-type" id="choices-exam-type">
-                                                                <option value="1. Sınav">1. Sınav</option>
-                                                                <option value="2. Sınav">2. Sınav</option>
-                                                                <option value="Ara Sınav">Ara Sınav</option>
-                                                                <option value="Quiz">Quiz</option>
-                                                                <option value="Final">Final</option>
-                                                                <option value="Deneme Sınavı">Deneme Sınavı</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="choices-class-level" class="form-label">Sınıf Seviyesi</label>
-                                                            <select class="form-control" name="choices-class-level" id="choices-class-level">
-                                                                <option value="">Sınıf seçiniz...</option>
-                                                                <option value="9. Sınıf">9. Sınıf</option>
-                                                                <option value="10. Sınıf">10. Sınıf</option>
-                                                                <option value="11. Sınıf">11. Sınıf</option>
-                                                                <option value="12. Sınıf">12. Sınıf</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label for="choices-course" class="form-label">Ders</label>
-                                                            <select class="form-control" name="choices-course" id="choices-course">
-                                                                <option value="">Ders seçiniz...</option>
-                                                                <option value="Matematik">Matematik</option>
-                                                                <option value="Fizik">Fizik</option>
-                                                                <option value="Kimya">Kimya</option>
-                                                                <option value="Biyoloji">Biyoloji</option>
-                                                                <option value="Türk Dili ve Edebiyatı">Türk Dili ve Edebiyatı</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Sınav Tarihi ve Saati</label>
-                                                            <input type="text" class="form-control" id="datepicker-datetime" placeholder="Tarih ve saat seçin...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                                <li class="next"><a href="javascript: void(0);" class="btn btn-primary">İleri <i class="bx bx-chevron-right ms-1"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="add-questions">
-                                            <div class="text-center my-4">
-                                                <h5>Soru Ekleme</h5>
-                                                <p class="card-title-desc">Sınav sorularını ve detaylarını giriniz</p>
-                                            </div>
-                                            <form id="questions-form">
-                                                <div class="card border shadow-sm mb-4 question-card">
-                                                    <div class="card-header bg-light d-flex justify-content-between align-items-center">
-                                                        <h5 class="mb-0">Soru 1</h5>
-                                                        <button type="button" class="btn-close" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="mb-3">
-                                                            <label for="question-text-1" class="form-label">Soru Metni</label>
-                                                            <textarea id="question-text-1" class="form-control question-text" rows="3" placeholder="Soru metnini buraya yazınız..."></textarea>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-lg-7">
-                                                                <label class="form-label">Seçenekler (Doğru olanı işaretleyiniz)</label>
-                                                                <div class="mb-2 input-group">
-                                                                    <div class="input-group-text">
-                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="A">
-                                                                    </div>
-                                                                    <span class="input-group-text">A)</span>
-                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
-                                                                </div>
-                                                                <div class="mb-2 input-group">
-                                                                    <div class="input-group-text">
-                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="B">
-                                                                    </div>
-                                                                    <span class="input-group-text">B)</span>
-                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
-                                                                </div>
-                                                                <div class="mb-2 input-group">
-                                                                    <div class="input-group-text">
-                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="C">
-                                                                    </div>
-                                                                    <span class="input-group-text">C)</span>
-                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
-                                                                </div>
-                                                                <div class="mb-2 input-group">
-                                                                    <div class="input-group-text">
-                                                                        <input class="form-check-input correct-answer-radio" type="radio" name="correct-answer-1" value="D">
-                                                                    </div>
-                                                                    <span class="input-group-text">D)</span>
-                                                                    <input type="text" class="form-control option-text" placeholder="Seçenek metni...">
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-5">
-                                                                <div class="mb-3">
-                                                                    <label for="question-points-1" class="form-label">Puan Değeri</label>
-                                                                    <input class="form-control question-points" type="number" value="10" id="question-points-1">
-                                                                </div>
-                                                                <div class="mb-3">
-                                                                    <label for="question-objective-1" class="form-label">Kazanım</label>
-                                                                    <input type="text" class="form-control question-objective" id="question-objective-1" placeholder="Örn: M.9.1.1.1.">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                            <ul class="pager wizard twitter-bs-wizard-pager-link mt-4">
-                                                <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i> Geri</a></li>
-                                                <li class="next"><a href="javascript: void(0);" class="btn btn-primary">İleri <i class="bx bx-chevron-right ms-1"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane" id="review-and-save">
-                                            <div class="text-center my-4">
-                                                <h5>Önizleme ve Kaydet</h5>
-                                                <p class="card-title-desc">Lütfen bilgilerin doğruluğunu kontrol ediniz</p>
-                                            </div>
-                                            <div class="card border">
-                                                <div class="card-header bg-light">
-                                                    <h5 class="mb-0">Sınav Bilgileri</h5>
-                                                </div>
-                                                <div class="card-body">
-                                                    <p><strong>Ders:</strong> <span id="preview-ders"></span></p>
-                                                    <p><strong>Sınıf:</strong> <span id="preview-sinif"></span></p>
-                                                    <p><strong>Sınav:</strong> <span id="preview-sinav-turu"></span></p>
-                                                    <p><strong>Tarih:</strong> <span id="preview-tarih"></span></p>
-                                                    <hr>
-                                                    <h5 class="font-size-15">Sorular:</h5>
-                                                    <div id="preview-soru-container">
-                                                    </div>
-                                                    <hr>
-                                                    <p><strong>Toplam Soru:</strong> <span id="preview-toplam-soru"></span></p>
-                                                    <p><strong>Toplam Puan:</strong> <span id="preview-toplam-puan"></span></p>
-                                                </div>
-                                            </div>
-                                            <ul class="pager wizard twitter-bs-wizard-pager-link">
-                                                <li class="previous"><a href="javascript: void(0);" class="btn btn-primary"><i class="bx bx-chevron-left me-1"></i> Geri</a></li>
-                                                <li class="float-end"><a href="javascript: void(0);" class="btn btn-success" data-bs-toggle="modal" data-bs-target=".confirmModal">Sınavı Oluştur ve Kaydet <i class="bx bx-save ms-1"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <h4 class="card-title">Sınav Bilgileri</h4>
+                                <div class="row">
+                                    <div class="col-md-3 mb-3"><label class="form-label">Ders</label><select name="course_id" id="course-select" required><option value="">Seçiniz...</option><?php foreach($teacher_courses as $course): ?><option value="<?= $course['id'] ?>"><?= htmlspecialchars($course['name']) ?></option><?php endforeach; ?></select></div>
+                                    <div class="col-md-3 mb-3"><label class="form-label">Sınıflar</label><select name="class_ids[]" id="class-select" multiple required><?php foreach($teacher_classes as $class): ?><option value="<?= $class['id'] ?>" data-grade="<?= $class['grade_level'] ?>"><?= htmlspecialchars($class['name']) ?></option><?php endforeach; ?></select></div>
+                                    <div class="col-md-2 mb-3"><label class="form-label">Dönem</label><select class="form-control" name="exam_term"><option>1. Dönem</option><option>2. Dönem</option></select></div>
+                                    <div class="col-md-2 mb-3"><label class="form-label">Sınav Türü</label><select class="form-control" name="exam_type"><option>1. Yazılı</option><option>2. Yazılı</option><option>Quiz</option></select></div>
+                                    <div class="col-md-2 mb-3"><label class="form-label">Sınav Tarihi</label><input type="text" class="form-control" name="exam_date" id="exam-date" placeholder="Tarih seçin..." required></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="modal fade confirmModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header border-bottom-0">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <div class="mb-3">
-                                <i class="bx bx-check-circle display-4 text-success"></i>
+                    <div class="col-12">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="card-title mb-0">Sorular</h4>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"><i class="bx bx-plus me-1"></i> Yeni Soru Ekle</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#" id="add-mcq-btn">Çoktan Seçmeli</a>
+                                    <a class="dropdown-item" href="#" id="add-tf-btn">Doğru / Yanlış</a>
+                                    <a class="dropdown-item" href="#" id="add-open-btn">Açık Uçlu</a>
+                                </div>
                             </div>
-                            <h5>Sınav Başarıyla Kaydedildi!</h5>
+                        </div>
+                        <div id="questions-container"></div>
+                    </div>
+                </div>
+
+                <div class="sticky-bottom">
+                    <div class="card">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Toplam Puan: <span id="total-points" class="fw-bold text-danger">0</span> / 100</h5>
+                            <button type="submit" class="btn btn-primary btn-lg"><i class="bx bx-save me-2"></i>Sınavı Kaydet</button>
                         </div>
                     </div>
-                    <div class="modal-footer justify-content-center">
-                        <button type="button" class="btn btn-primary w-md" data-bs-dismiss="modal">Harika!</button>
-                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 
+    <footer class="footer"><div class="container-fluid"><div class="row"><div class="col-sm-6"><script>document.write(new Date().getFullYear())</script> © E-Mentor.</div></div></div></footer>
+</div>
+</div>
 
-<?php include("../partials/footer.php"); ?>
+<template id="mcq-template">
+    <div class="card question-card" data-type="mcq">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center"><h5 class="mb-0">Soru</h5><button type="button" class="btn-close remove-question-btn"></button></div>
+        <div class="card-body">
+            <input type="hidden" name="questions[counter][type]" value="mcq">
+            <div class="mb-3"><label class="form-label">Soru Metni</label><textarea class="form-control" rows="3" name="questions[counter][text]"></textarea></div>
+            <div class="row">
+                <div class="col-lg-7"><label class="form-label">Seçenekler</label><div class="options-container">
+                        <div class="input-group mb-2"><div class="input-group-text"><input class="form-check-input" type="radio" name="questions[counter][correct]" value="A"></div><span class="input-group-text">A)</span><input type="text" class="form-control" name="questions[counter][options][A]"></div>
+                        <div class="input-group mb-2"><div class="input-group-text"><input class="form-check-input" type="radio" name="questions[counter][correct]" value="B"></div><span class="input-group-text">B)</span><input type="text" class="form-control" name="questions[counter][options][B]"></div>
+                    </div><button type="button" class="btn btn-sm btn-outline-secondary add-option-btn mt-2">Şık Ekle</button><button type="button" class="btn btn-sm btn-outline-danger remove-option-btn mt-2 ms-2">Şık Sil</button></div>
+                <div class="col-lg-5"><div class="mb-3"><label class="form-label">Puan</label><input type="number" class="form-control question-points" name="questions[counter][points]" value="5"></div><div class="mb-3"><label class="form-label">Kazanım</label><select class="form-control question-objective" name="questions[counter][outcome_id]"><option value="">Önce Ders ve Sınıf Seçin</option></select></div></div>
+            </div>
+        </div>
+    </div>
+</template>
+<template id="tf-template">
+    <div class="card question-card" data-type="tf">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center"><h5 class="mb-0">Soru</h5><button type="button" class="btn-close remove-question-btn"></button></div>
+        <div class="card-body">
+            <input type="hidden" name="questions[counter][type]" value="tf">
+            <div class="mb-3"><label class="form-label">Önerme / Soru Metni</label><textarea class="form-control" rows="2" name="questions[counter][text]"></textarea></div>
+            <div class="row"><div class="col-lg-7"><label class="form-label">Doğru Cevap</label><div class="d-flex gap-3"><div class="form-check"><input class="form-check-input" type="radio" name="questions[counter][correct]" value="D" id="radio-d-counter"><label class="form-check-label" for="radio-d-counter">Doğru</label></div><div class="form-check"><input class="form-check-input" type="radio" name="questions[counter][correct]" value="Y" id="radio-y-counter"><label class="form-check-label" for="radio-y-counter">Yanlış</label></div></div></div>
+                <div class="col-lg-5"><div class="mb-3"><label class="form-label">Puan</label><input type="number" class="form-control question-points" name="questions[counter][points]" value="5"></div><div class="mb-3"><label class="form-label">Kazanım</label><select class="form-control question-objective" name="questions[counter][outcome_id]"><option value="">Önce Ders ve Sınıf Seçin</option></select></div></div></div>
+        </div>
+    </div>
+</template>
+<template id="open-template">
+    <div class="card question-card" data-type="open">
+        <div class="card-header bg-light d-flex justify-content-between align-items-center"><h5 class="mb-0">Soru</h5><button type="button" class="btn-close remove-question-btn"></button></div>
+        <div class="card-body">
+            <input type="hidden" name="questions[counter][type]" value="open">
+            <div class="mb-3"><label class="form-label">Açık Uçlu Soru</label><textarea class="form-control" rows="3" name="questions[counter][text]"></textarea></div>
+            <div class="mb-3"><label class="form-label">Doğru Cevap (Anahtar Kelimeler)</label><textarea class="form-control" rows="2" name="questions[counter][correct]" placeholder="Değerlendirme için anahtar kelimeleri girin..."></textarea></div>
+            <div class="row"><div class="col-lg-6"><div class="mb-3"><label class="form-label">Puan</label><input type="number" class="form-control question-points" name="questions[counter][points]" value="10"></div></div>
+                <div class="col-lg-6"><div class="mb-3"><label class="form-label">Kazanım</label><select class="form-control question-objective" name="questions[counter][outcome_id]"><option value="">Önce Ders ve Sınıf Seçin</option></select></div></div></div>
+        </div>
+    </div>
+</template>
 
-<script>
-    $(document).ready(function() {
+<script src="../assets/libs/jquery/jquery.min.js"></script>
+<script src="../assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="../assets/libs/simplebar/simplebar.min.js"></script>
+<script src="../assets/libs/node-waves/waves.min.js"></script>
+<script src="../assets/libs/feather-icons/feather.min.js"></script>
+<script src="../assets/libs/pace-js/pace.min.js"></script>
+<script src="../assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/tr.js"></script>
+<script src="../assets/libs/flatpickr/flatpickr.min.js"></script>
+<script src="../assets/js/pages/form-exam-create.js"></script>
+<script src="../assets/js/app.js"></script>
 
-        // Choices.js Kütüphanelerini Başlatma
-        const termChoice = new Choices('#choices-term');
-        const examTypeChoice = new Choices('#choices-exam-type');
-        const classLevelChoice = new Choices('#choices-class-level');
-        const courseChoice = new Choices('#choices-course');
-
-        // Flatpickr (Tarih Seçici) Başlatma
-        flatpickr('#datepicker-datetime', {
-            enableTime: true,
-            locale: "tr", // Türkçe dil desteği
-            dateFormat: "d.m.Y H:i" // Türkiye formatı
-        });
-
-        // Form Sihirbazını Başlatma
-        $('#progrss-wizard').bootstrapWizard({
-            onTabShow: function(tab, navigation, index) {
-                var $total = navigation.find('li').length;
-                var $current = index + 1;
-                var $percent = ($current / $total) * 100;
-                $('#progrss-wizard .progress-bar').css({
-                    width: $percent + '%'
-                });
-            },
-            // 3. adıma (önizleme) geçildiğinde çalışacak fonksiyon
-            onNext: function(tab, navigation, nextIndex) {
-                // Eğer bir sonraki adım önizleme adımı ise (index'i 2'dir)
-                if (nextIndex === 2) {
-                    populatePreview();
-                }
-            }
-        });
-
-        // Önizleme alanını dolduran ana fonksiyon
-        function populatePreview() {
-            // Adım 1'deki bilgileri al ve önizlemeye yaz
-            const termValue = termChoice.getValue(true);
-            const examTypeValue = examTypeChoice.getValue(true);
-            const classLevelValue = classLevelChoice.getValue(true);
-            const courseValue = courseChoice.getValue(true);
-            const dateValue = document.getElementById('datepicker-datetime').value;
-
-            document.getElementById('preview-ders').textContent = courseValue || 'Belirtilmemiş';
-            document.getElementById('preview-sinif').textContent = classLevelValue || 'Belirtilmemiş';
-            document.getElementById('preview-sinav-turu').textContent = `${termValue} - ${examTypeValue}` || 'Belirtilmemiş';
-            document.getElementById('preview-tarih').textContent = dateValue || 'Belirtilmemiş';
-
-            // Adım 2'deki soruları al ve önizlemeye yaz
-            const questionCards = document.querySelectorAll('.question-card');
-            const previewContainer = document.getElementById('preview-soru-container');
-            previewContainer.innerHTML = ''; // Önceki önizlemeyi temizle
-            let totalPoints = 0;
-
-            questionCards.forEach((card, index) => {
-                const questionNumber = index + 1;
-                const questionText = card.querySelector('.question-text').value;
-                const questionPoints = parseInt(card.querySelector('.question-points').value, 10) || 0;
-                const questionObjective = card.querySelector('.question-objective').value;
-
-                totalPoints += questionPoints;
-
-                // Doğru cevabın hangisi olduğunu bul
-                const correctAnswerRadio = card.querySelector('.correct-answer-radio:checked');
-                const correctAnswerValue = correctAnswerRadio ? correctAnswerRadio.value : null;
-
-                let optionsHTML = '';
-                const options = card.querySelectorAll('.option-text');
-                const optionLabels = ['A', 'B', 'C', 'D'];
-
-                options.forEach((option, optionIndex) => {
-                    const label = optionLabels[optionIndex];
-                    const isCorrect = (label === correctAnswerValue);
-                    const textClass = isCorrect ? 'text-success fw-bold' : '';
-                    const correctLabel = isCorrect ? ' (Doğru Cevap)' : '';
-                    optionsHTML += `<p class="ms-3 ${textClass}">${label}) ${option.value}${correctLabel}</p>`;
-                });
-
-                const questionHTML = `
-                        <div>
-                            <p><strong>Soru ${questionNumber}:</strong> ${questionText} (${questionPoints} Puan)</p>
-                            <p class="ms-3 text-muted"><em>Kazanım: ${questionObjective || 'Belirtilmemiş'}</em></p>
-                            ${optionsHTML}
-                        </div>
-                    `;
-                previewContainer.innerHTML += questionHTML;
-            });
-
-            // Toplam soru ve puanı güncelle
-            document.getElementById('preview-toplam-soru').textContent = questionCards.length;
-            document.getElementById('preview-toplam-puan').textContent = totalPoints;
-        }
-    });
-</script>
+</body>
+</html>
