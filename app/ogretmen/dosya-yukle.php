@@ -1,4 +1,5 @@
 <?php
+// Gerekli dosyaları ve session'ı başlat
 include '../config/init.php';
 $_SESSION['user_role'] = 'teacher';
 $page_title = "Yeni İçerik Yükle | E-Mentor Öğretmen Paneli";
@@ -10,23 +11,16 @@ $teacher_id = $_SESSION['user_id'] ?? 1;
 
 // --- Formlar için gerekli verileri ve HTML seçeneklerini önceden hazırla ---
 
-// Dersler
 $stmt_courses = $pdo->prepare("SELECT id, name FROM courses ORDER BY name");
 $stmt_courses->execute();
 $course_options_html = '';
-foreach($stmt_courses->fetchAll(PDO::FETCH_ASSOC) as $c) {
-    $course_options_html .= "<option value='{$c['id']}'>" . htmlspecialchars($c['name']) . "</option>";
-}
+foreach($stmt_courses->fetchAll(PDO::FETCH_ASSOC) as $c) { $course_options_html .= "<option value='{$c['id']}'>" . htmlspecialchars($c['name']) . "</option>"; }
 
-// Sınıflar
 $stmt_classes = $pdo->prepare("SELECT id, name FROM classes ORDER BY name");
 $stmt_classes->execute();
 $class_options_html = '';
-foreach($stmt_classes->fetchAll(PDO::FETCH_ASSOC) as $cl) {
-    $class_options_html .= "<option value='{$cl['id']}'>" . htmlspecialchars($cl['name']) . "</option>";
-}
+foreach($stmt_classes->fetchAll(PDO::FETCH_ASSOC) as $cl) { $class_options_html .= "<option value='{$cl['id']}'>" . htmlspecialchars($cl['name']) . "</option>"; }
 
-// Kazanımlar (Açıklamalarıyla Birlikte)
 $stmt_outcomes = $pdo->prepare("SELECT id, outcome_code, description FROM learning_outcomes ORDER BY outcome_code");
 $stmt_outcomes->execute();
 $outcome_options_html = '';
@@ -38,8 +32,8 @@ foreach($stmt_outcomes->fetchAll(PDO::FETCH_ASSOC) as $o) {
 
 <link href="../assets/libs/choices.js/public/assets/styles/choices.min.css" rel="stylesheet" type="text/css" />
 <style>
-    /* Dropdown menülerin diğer elemanların üstünde kalmasını sağlar */
     .choices__list--dropdown { z-index: 1060 !important; }
+    .table-responsive { overflow: visible !important; }
 </style>
 
 <div class="main-content">
@@ -56,9 +50,9 @@ foreach($stmt_outcomes->fetchAll(PDO::FETCH_ASSOC) as $o) {
                             <h4 class="card-title">Aşama 1: Yüklenecek Dosya Türünü Seçin</h4>
                             <select id="file-type-selector" class="form-select form-select-lg mb-3">
                                 <option value="">Lütfen bir tür seçin...</option>
-                                <option value="kazanim">Kazanım Testleri</option>
-                                <option value="kitap">Ders Kitapları</option>
-                                <option value="soru">Çıkmış Sorular</option>
+                                <option value="kazanim">Kazanım Testi</option>
+                                <option value="kitap">Ders Kitabı</option>
+                                <option value="soru">Çıkmış Soru</option>
                             </select>
                         </div>
                     </div>
@@ -116,7 +110,6 @@ foreach($stmt_outcomes->fetchAll(PDO::FETCH_ASSOC) as $o) {
             soru: '<tr><th>Dosya Adı</th><th>Sınav Türü</th><th>Yıl</th><th>Alanı</th></tr>',
         };
 
-        // PHP'den gelen option'ları JavaScript'e aktar
         const courseOptions = '<?php echo addslashes($course_options_html); ?>';
         const classOptions = '<?php echo addslashes($class_options_html); ?>';
         const outcomeOptions = '<?php echo addslashes($outcome_options_html); ?>';
@@ -125,9 +118,14 @@ foreach($stmt_outcomes->fetchAll(PDO::FETCH_ASSOC) as $o) {
             const type = this.value;
             tableBody.innerHTML = '';
             fileInput.value = '';
+
+            // DÜZELTME: Backend'e gönderilecek değeri ENUM ile uyumlu hale getiriyoruz.
+            if (type === 'kazanim') hiddenFileType.value = 'Kazanım Testi';
+            else if (type === 'kitap') hiddenFileType.value = 'Ders Kitabı';
+            else if (type === 'soru') hiddenFileType.value = 'Çıkmış Soru';
+
             if (type) {
                 tableHead.innerHTML = headers[type];
-                hiddenFileType.value = this.options[this.selectedIndex].text;
                 formContainer.style.display = 'block';
             } else {
                 formContainer.style.display = 'none';
