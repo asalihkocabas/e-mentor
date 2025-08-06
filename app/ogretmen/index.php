@@ -23,12 +23,12 @@ $stmt_gpa_avg->execute([$teacher_id]);
 $overall_success_rate = $stmt_gpa_avg->fetchColumn() ?: 0;
 
 // 3. En Başarılı 5 Öğrenci
-$stmt_top_students = $pdo->prepare("SELECT sp.full_name, c.name as class_name, sp.gpa FROM student_profiles sp JOIN classes c ON sp.class_id = c.id WHERE sp.class_id IN (SELECT class_id FROM teacher_assignments WHERE teacher_id = ?) ORDER BY sp.gpa DESC LIMIT 5");
+$stmt_top_students = $pdo->prepare("SELECT sp.user_id, sp.full_name, c.name as class_name, c.id as class_id, sp.gpa FROM student_profiles sp JOIN classes c ON sp.class_id = c.id WHERE sp.class_id IN (SELECT class_id FROM teacher_assignments WHERE teacher_id = ?) ORDER BY sp.gpa DESC LIMIT 5");
 $stmt_top_students->execute([$teacher_id]);
 $top_students = $stmt_top_students->fetchAll(PDO::FETCH_ASSOC);
 
 // 4. Desteğe İhtiyaç Duyan 5 Öğrenci
-$stmt_needy_students = $pdo->prepare("SELECT sp.full_name, c.name as class_name, sp.gpa FROM student_profiles sp JOIN classes c ON sp.class_id = c.id WHERE sp.gpa > 0 AND sp.class_id IN (SELECT class_id FROM teacher_assignments WHERE teacher_id = ?) ORDER BY sp.gpa ASC LIMIT 5");
+$stmt_needy_students = $pdo->prepare("SELECT sp.user_id, sp.full_name, c.name as class_name, c.id as class_id, sp.gpa FROM student_profiles sp JOIN classes c ON sp.class_id = c.id WHERE sp.gpa > 0 AND sp.class_id IN (SELECT class_id FROM teacher_assignments WHERE teacher_id = ?) ORDER BY sp.gpa ASC LIMIT 5");
 $stmt_needy_students->execute([$teacher_id]);
 $needy_students = $stmt_needy_students->fetchAll(PDO::FETCH_ASSOC);
 
@@ -82,7 +82,7 @@ $announcements = $stmt_announcements->fetchAll(PDO::FETCH_ASSOC);
                                             <span class="avatar-title rounded-circle <?= $avatar['color_class'] ?> text-white font-size-16"><?= $avatar['initials'] ?></span>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h5 class="font-size-15 mb-1"><a href="#" class="text-dark"><?= htmlspecialchars($student['full_name']); ?></a></h5>
+                                            <h5 class="font-size-15 mb-1"><a href="ogrenci-detay.php?student_id=<?= $student['user_id']; ?>&class_id=<?= $student['class_id']; ?>" class="text-dark"><?= htmlspecialchars($student['full_name']); ?></a></h5>
                                             <span class="text-muted"><?= htmlspecialchars($student['class_name']); ?></span>
                                         </div>
                                         <div class="flex-shrink-0"><span class="badge rounded-pill bg-success-subtle text-success font-size-12 fw-medium"><?= number_format($student['gpa'], 1); ?></span></div>
@@ -101,7 +101,7 @@ $announcements = $stmt_announcements->fetchAll(PDO::FETCH_ASSOC);
                                             <span class="avatar-title rounded-circle <?= $avatar['color_class'] ?> text-white font-size-16"><?= $avatar['initials'] ?></span>
                                         </div>
                                         <div class="flex-grow-1">
-                                            <h5 class="font-size-15 mb-1"><a href="#" class="text-dark"><?= htmlspecialchars($student['full_name']); ?></a></h5>
+                                            <h5 class="font-size-15 mb-1"><a href="ogrenci-detay.php?student_id=<?= $student['user_id']; ?>&class_id=<?= $student['class_id']; ?>" class="text-dark"><?= htmlspecialchars($student['full_name']); ?></a></h5>
                                             <span class="text-muted"><?= htmlspecialchars($student['class_name']); ?></span>
                                         </div>
                                         <div class="flex-shrink-0"><span class="badge rounded-pill bg-danger-subtle text-danger font-size-12 fw-medium"><?= number_format($student['gpa'], 1); ?></span></div>

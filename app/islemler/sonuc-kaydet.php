@@ -6,15 +6,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $class_id = $_POST['class_id'];
     $answers = $_POST['answers'] ?? [];
 
-    // Sınavdaki soruları ve doğru cevapları al (FETCH_ASSOC ile)
     $stmt_q = $pdo->prepare("SELECT id, correct_answer, points, type FROM questions WHERE exam_id = ?");
     $stmt_q->execute([$exam_id]);
-    // Soruları ID'leri anahtar olacak şekilde bir diziye dönüştür
     $questions_raw = $stmt_q->fetchAll(PDO::FETCH_ASSOC);
     $questions = [];
-    foreach($questions_raw as $q) {
-        $questions[$q['id']] = $q;
-    }
+    foreach($questions_raw as $q) { $questions[$q['id']] = $q; }
 
     try {
         $pdo->beginTransaction();
@@ -23,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $total_score = 0; $correct_count = 0; $incorrect_count = 0; $blank_count = 0;
 
             foreach ($student_answers as $question_id => $data) {
-                if (!isset($questions[$question_id])) continue; // Soru bulunamazsa atla
+                if (!isset($questions[$question_id])) continue;
                 $question_info = $questions[$question_id];
                 $is_correct = 0; $score_override = null; $selected_answer = ''; $written_answer = null;
 
@@ -35,10 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $selected_answer = strtoupper(trim($data['answer'] ?? ''));
                     if (empty($selected_answer)) {
                         $blank_count++;
-                    } elseif ($selected_answer == $question_info['correct_answer']) {
+                        $is_correct = 0;
+                    } elseif (trim($selected_answer) == trim($question_info['correct_answer'])) {
                         $is_correct = 1; $correct_count++; $total_score += $question_info['points'];
                     } else {
                         $incorrect_count++;
+                        $is_correct = 0;
                     }
                 }
 

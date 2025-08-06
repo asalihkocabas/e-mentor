@@ -1,7 +1,15 @@
 <?php
-$page_title = "Yardım Merkezi | E-Mentor Öğrenci Paneli";
+// Gerekli dosyaları ve session'ı başlat
+include '../config/init.php';
+$_SESSION['user_role'] = 'student';
+$page_title = "Yapay Zeka Destek | E-Mentor Öğrenci Paneli";
+
 include '../partials/header.php';
 include '../partials/sidebar.php';
+
+// Avatar için öğrencinin adını ve avatar verisini alalım
+$student_name = $_SESSION['full_name'] ?? 'Öğrenci';
+$avatar = get_avatar_data($student_name);
 ?>
 
     <div class="main-content">
@@ -10,126 +18,105 @@ include '../partials/sidebar.php';
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0 font-size-18">Yardım Merkezi</h4>
+                            <h4 class="mb-sm-0 font-size-18">Yapay Zeka Destek Asistanı</h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="index.php">Ana Sayfa</a></li>
-                                    <li class="breadcrumb-item active">Yardım</li>
+                                    <li class="breadcrumb-item active">GeminiAI</li>
                                 </ol>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <ul class="nav nav-pills nav-justified mb-4" role="tablist">
-                    <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#ai-panel" type="button">Yapay Zeka Asistanı</button></li>
-                    <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#faq-panel" type="button">Sık Sorulan Sorular</button></li>
-                </ul>
-
-                <div class="tab-content">
-                    <div class="tab-pane fade show active" id="ai-panel" role="tabpanel">
-                        <div class="row">
-                            <div class="col-xl-9 mx-auto">
-                                <div class="card">
-                                    <div class="card-header bg-light d-flex align-items-center">
-                                        <img src="../assets/images/logo-sm.svg" height="28" class="me-2" alt="">
-                                        <h5 class="mb-0 flex-grow-1">Gemini AI Yardım Asistanı</h5>
+                <div class="row">
+                    <div class="col-xl-9 mx-auto">
+                        <div class="card">
+                            <div class="card-header bg-light d-flex align-items-center">
+                                <img src="../assets/images/logo-sm.svg" height="28" class="me-2" alt="">
+                                <h5 class="mb-0 flex-grow-1">Gemini AI Asistanı</h5>
+                            </div>
+                            <div class="card-body" id="chatArea" style="height: 50vh; overflow-y: auto; display: flex; flex-direction: column-reverse;">
+                                <div class="d-flex mb-4">
+                                    <div class="flex-shrink-0">
+                                        <div class="avatar-sm"><span class="avatar-title bg-primary-subtle text-primary rounded-circle">AI</span></div>
                                     </div>
-                                    <div class="card-body" id="chatArea" style="height:420px; overflow-y:auto; display: flex; flex-direction: column-reverse;">
-                                        <div class="d-flex mb-4">
-                                            <div class="flex-shrink-0"><div class="avatar-sm"><span class="avatar-title bg-primary-subtle text-primary rounded-circle">AI</span></div></div>
-                                            <div class="flex-grow-1 ms-3">
-                                                <div class="p-3 border rounded bg-light">
-                                                    Merhaba 👋 Ben Gemini AI. Ders, sınav veya ödevlerinle ilgili yardıma mı ihtiyacın var?
-                                                </div>
-                                            </div>
+                                    <div class="flex-grow-1 ms-3">
+                                        <div class="p-3 border rounded bg-light">
+                                            Merhaba! Ben Gemini. Derslerinle, sınavlarınla veya anlamadığın bir konuyla ilgili sana nasıl yardımcı olabilirim?
                                         </div>
-                                    </div>
-                                    <div class="card-footer">
-                                        <form id="chatForm" class="d-flex">
-                                            <input id="userInput" type="text" class="form-control me-2" placeholder="Sorunu buraya yaz...">
-                                            <button class="btn btn-primary" type="submit"><i class="mdi mdi-send"></i></button>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="faq-panel" role="tabpanel">
-                        <div class="row">
-                            <div class="col-xl-10 mx-auto">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title mb-4">Sık Sorulan Sorular</h5>
-                                        <div class="accordion" id="faqAccordion">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Yanlış yaptığım bir sorunun konusunu nasıl öğrenebilirim?</button></h2>
-                                                <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                                                    <div class="accordion-body">
-                                                        "Derslerim" sayfasından ilgili dersi seçin. Not tablosunda, sonuçlarını görmek istediğiniz sınavın yanındaki "Detay" menüsünden "Soru/Kazanım Detay" seçeneğine tıklayın. Açılan pencerede her sorunun hangi kazanımla ilgili olduğunu ve doğru/yanlış durumunuzu görebilirsiniz.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">AI Destek nasıl çalışır?</button></h2>
-                                                <div id="q2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                                                    <div class="accordion-body">
-                                                        Sınav detaylarında veya burada, yapay zeka asistanımız Gemini'ye sorular sorarak konu özetleri, örnek sorular veya anlamadığınız yerler hakkında yardım isteyebilirsiniz.
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="card-footer">
+                                <form id="chatForm" class="d-flex">
+                                    <input id="userInput" type="text" class="form-control me-2" placeholder="Sorunu buraya yaz ve Enter'a bas..." autocomplete="off">
+                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-send"></i></button>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
-        <script>
-            // Basit sohbet simülasyonu
-            document.addEventListener('DOMContentLoaded', function() {
-                const chatForm = document.getElementById('chatForm');
-                if(chatForm) {
-                    chatForm.addEventListener('submit', function(e) {
-                        e.preventDefault();
-                        const input = document.getElementById('userInput');
-                        const messageText = input.value.trim();
-                        if (!messageText) return;
-
-                        const chatArea = document.getElementById('chatArea');
-
-                        // Kullanıcı mesajını ekle
-                        const userMessageHtml = `
-                    <div class="d-flex mb-4 justify-content-end">
-                        <div class="me-3">
-                            <div class="p-3 border rounded bg-primary text-white">${messageText}</div>
-                        </div>
-                        <div class="flex-shrink-0"><img src="https://fotograf.sabis.sakarya.edu.tr/Fotograf/196f69e4eed68a3717e67cc6db180f6d" class="avatar-sm rounded-circle" alt=""></div>
-                    </div>`;
-                        chatArea.insertAdjacentHTML('afterbegin', userMessageHtml);
-
-                        input.value = '';
-
-                        // AI'ın "yazıyor..." mesajı
-                        setTimeout(() => {
-                            const thinkingMessageHtml = `
-                        <div class="d-flex mb-4">
-                            <div class="flex-shrink-0"><div class="avatar-sm"><span class="avatar-title bg-primary-subtle text-primary rounded-circle">AI</span></div></div>
-                            <div class="flex-grow-1 ms-3">
-                                <div class="p-3 border rounded bg-light">Yanıt hazırlanıyor...</div>
-                            </div>
-                        </div>`;
-                            chatArea.insertAdjacentHTML('afterbegin', thinkingMessageHtml);
-                        }, 600);
-                    });
-                }
-            });
-        </script>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatForm = document.getElementById('chatForm');
+            const userInput = document.getElementById('userInput');
+            const chatArea = document.getElementById('chatArea');
+
+            // PHP'den gelen avatar verilerini JavaScript'e aktar
+            const studentAvatarHtml = `
+        <div class="avatar-sm">
+            <span class="avatar-title rounded-circle <?= $avatar['color_class'] ?> text-white">
+                <?= $avatar['initials'] ?>
+            </span>
+        </div>`;
+
+            chatForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const messageText = userInput.value.trim();
+                if (!messageText) return;
+
+                // Kullanıcı mesajını ekrana ekle (Dinamik Avatar ile)
+                const userMessageHtml = `
+            <div class="d-flex mb-4 justify-content-end">
+                <div class="me-3"><div class="p-3 border rounded bg-primary text-white">${messageText}</div></div>
+                <div class="flex-shrink-0">${studentAvatarHtml}</div>
+            </div>`;
+                chatArea.insertAdjacentHTML('afterbegin', userMessageHtml);
+                userInput.value = '';
+                userInput.focus();
+
+                // AI'ın "yazıyor..." mesajı
+                const thinkingMessageHtml = `<div class="d-flex mb-4" id="thinking-bubble"><div class="flex-shrink-0"><div class="avatar-sm"><span class="avatar-title bg-primary-subtle text-primary rounded-circle">AI</span></div></div><div class="flex-grow-1 ms-3"><div class="p-3 border rounded bg-light"><div class="spinner-grow spinner-grow-sm text-muted" role="status"><span class="visually-hidden">Loading...</span></div></div></div></div>`;
+                chatArea.insertAdjacentHTML('afterbegin', thinkingMessageHtml);
+
+                // AJAX ile backend'e bağlan
+                $.ajax({
+                    url: '../islemler/yardim-ai.php',
+                    type: 'POST',
+                    data: { prompt: messageText },
+                    dataType: 'json',
+                    success: function(response) {
+                        let aiResponseText = response.success ? response.message.replace(/\n/g, '<br>') : `<span class="text-danger">${response.message}</span>`;
+                        const aiMessageHtml = `<div class="d-flex mb-4"><div class="flex-shrink-0"><div class="avatar-sm"><span class="avatar-title bg-primary-subtle text-primary rounded-circle">AI</span></div></div><div class="flex-grow-1 ms-3"><div class="p-3 border rounded bg-light">${aiResponseText}</div></div></div>`;
+
+                        $('#thinking-bubble').remove();
+                        chatArea.insertAdjacentHTML('afterbegin', aiMessageHtml);
+                    },
+                    error: function() {
+                        const errorMessageHtml = `<div class="d-flex mb-4"><div class="flex-shrink-0"><div class="avatar-sm"><span class="avatar-title bg-danger-subtle text-danger rounded-circle">H</span></div></div><div class="flex-grow-1 ms-3"><div class="p-3 border rounded bg-light">Sunucuya bağlanırken bir hata oluştu. Lütfen tekrar deneyin.</div></div></div>`;
+                        $('#thinking-bubble').remove();
+                        chatArea.insertAdjacentHTML('afterbegin', errorMessageHtml);
+                    }
+                });
+            });
+        });
+    </script>
 
 <?php
 include '../partials/footer.php';

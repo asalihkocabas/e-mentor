@@ -1,18 +1,27 @@
 <?php
 require_once '../config/init.php';
 
+// API anahtarını ve modelini veritabanından çek
+$stmt = $pdo->query("SELECT setting_key, setting_value FROM system_settings WHERE setting_key IN ('gemini_api_key', 'gemini_model')");
+$settings = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+$apiKey = $settings['gemini_api_key'] ?? null;
+$modelName = $settings['gemini_model'] ?? 'gemini-1.5-flash-latest'; // Varsayılan model
+
 $user_prompt = $_POST['prompt'] ?? '';
+$user_role = $_SESSION['user_role'] ?? 'student';
 $response_data = ['success' => false, 'message' => 'Geçersiz istek.'];
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($user_prompt)) {
+if (!$apiKey) {
+    $response_data['message'] = 'HATA: Gemini API anahtarı sistemde kayıtlı değil.';
+} elseif ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($user_prompt)) {
 
-    // ----- GEMINI API Entegrasyonu -----
-    $apiKey = "AIzaSyDfHeFLY-3-q2sp-Bwzo0OXuQap-xJo7Z0";
+    $context = ($user_role == 'teacher')
+        ? "Bir öğretmenim ve E-Mentor adlı bir eğitim platformu kullanıyorum. Soruma bu bağlamda cevap ver: "
+        : "Bir 6. sınıf öğrencisiyim. Soruma bu bağlamda, anlayabileceğim bir dille cevap ver: ";
 
-    // Öğretmene özel, daha bağlamsal bir prompt oluşturuyoruz.
-    $prompt = "Bir öğretmenim ve E-Mentor adlı bir eğitim platformu kullanıyorum. Soruma bu bağlamda cevap ver: " . $user_prompt;
+    $prompt = $context . $user_prompt;
 
-    $apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" . $apiKey;
+    $apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/{$modelName}:generateContent?key=" . $apiKey;
     $data = ["contents" => [["parts" => [["text" => $prompt]]]]];
     $jsonData = json_encode($data);
 
@@ -32,11 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($user_prompt)) {
             $response_data['success'] = true;
             $response_data['message'] = $result['candidates'][0]['content']['parts'][0]['text'];
         } else {
-            $response_data['message'] = 'API\'den geçerli bir yanıt alınamadı. Lütfen API anahtarınızı kontrol edin.';
+            $response_data['message'] = 'API\'den geçerli bir yanıt alınamadı. Hata: ' . ($result['error']['message'] ?? 'Bilinmeyen hata');
         }
     }
     curl_close($ch);
-    // ----- GEMINI API Entegrasyonu Sonu -----
 }
 
 header('Content-Type: application/json');

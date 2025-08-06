@@ -73,12 +73,11 @@ $folder = basename(dirname($_SERVER['PHP_SELF']));
                     <li class="<?= ($currentPage == 'index.php') ? 'mm-active' : ''; ?>"><a href="index.php"><i data-feather="home"></i><span>Ana Sayfa</span></a></li>
                     <li class="<?= in_array($currentPage, ['derslerim.php', 'ders-detay.php']) ? 'mm-active' : ''; ?>"><a href="derslerim.php"><i data-feather="book"></i><span>Derslerim</span></a></li>
                     <li class="<?= ($currentPage == 'odevlerim.php') ? 'mm-active' : ''; ?>"><a href="odevlerim.php"><i data-feather="trello"></i><span>Ödevlerim</span></a></li>
-                    <li class="<?= ($currentPage == 'sinav-sonuclarim.php') ? 'mm-active' : ''; ?>"><a href="#"><i data-feather="award"></i><span>Sınav Sonuçlarım</span></a></li>
                     <li class="<?= ($currentPage == 'ders-programi.php') ? 'mm-active' : ''; ?>"><a href="ders-programi.php"><i data-feather="calendar"></i><span>Ders Programım</span></a></li>
                     <li class="<?= ($currentPage == 'sinav-takvimi.php') ? 'mm-active' : ''; ?>"><a href="sinav-takvimi.php"><i data-feather="clock"></i><span>Sınav Takvimi</span></a></li>
                     <li class="<?= ($currentPage == 'kutuphane.php') ? 'mm-active' : ''; ?>"><a href="kutuphane.php"><i data-feather="folder"></i><span>Kütüphane</span></a></li>
-                    <li class="menu-title" data-key="t-support">Destek</li>
-                    <li class="<?= ($currentPage == 'yardim.php') ? 'mm-active' : ''; ?>"><a href="yardim.php"><i data-feather="help-circle"></i><span>Yardım</span></a></li>
+                    <li class="menu-title" data-key="t-support">Yardım</li>
+                    <li class="<?= ($currentPage == 'yardim.php') ? 'mm-active' : ''; ?>"><a href="yardim.php"><i data-feather="help-circle"></i><span>GeminiAI</span></a></li>
 
                 <?php endif; ?>
             </ul>

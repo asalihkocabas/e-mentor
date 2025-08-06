@@ -21,7 +21,10 @@ $exams = $stmt_exams->fetchAll(PDO::FETCH_ASSOC);
     <div class="main-content">
         <div class="page-content">
             <div class="container-fluid">
-                <div class="row"><div class="col-12"><div class="page-title-box d-sm-flex align-items-center justify-content-between"><h4 class="mb-sm-0 font-size-18">Kişiye Özel Ödev Atama</h4></div></div></div>
+                <div class="row">
+                    <div class="col-12"><div class="page-title-box d-sm-flex align-items-center justify-content-between"><h4 class="mb-sm-0 font-size-18">Kişiye Özel Ödev Atama</h4></div></div>
+                </div>
+
                 <div id="form-notification" class="mb-3"></div>
 
                 <div class="row">
@@ -63,7 +66,12 @@ $exams = $stmt_exams->fetchAll(PDO::FETCH_ASSOC);
                     <input type="hidden" id="modal-student-id">
                     <input type="hidden" id="modal-outcome-id">
                     <div class="mb-3"><strong>Kazanım:</strong> <span id="modal-outcome-text" class="text-primary"></span></div>
-                    <p class="text-muted">Yapay zekadan bu kazanım için 5 adet soru oluşturmasını isteyin.</p>
+
+                    <div class="mb-3">
+                        <label for="homework-title" class="form-label fw-bold">Ödev Konusu / Başlığı</label>
+                        <input type="text" class="form-control" id="homework-title" placeholder="Örn: Üslü Sayılar Alıştırması">
+                    </div>
+
                     <div class="text-center mb-3"><button type="button" id="generate-ai-content-btn" class="btn btn-info"><i class="bx bxs-magic-wand me-1"></i> 5 Adet Soru Oluştur</button></div>
                     <div id="ai-output-container" class="bg-light p-3 rounded" style="display:none;">
                         <label for="ai-content" class="form-label fw-bold">Oluşturulan İçerik (Düzenleyebilirsiniz):</label>
@@ -140,6 +148,7 @@ $exams = $stmt_exams->fetchAll(PDO::FETCH_ASSOC);
                 $('#modal-outcome-text').text($(this).data('outcome-text'));
                 $('#ai-output-container').hide();
                 $('#ai-content').val('');
+                $('#homework-title').val('');
                 assignHwModal.show();
             });
 
@@ -166,12 +175,13 @@ $exams = $stmt_exams->fetchAll(PDO::FETCH_ASSOC);
                 const assignmentData = {
                     student_id: $('#modal-student-id').val(),
                     outcome_id: $('#modal-outcome-id').val(),
+                    title: $('#homework-title').val(),
                     ai_content: $('#ai-content').val(),
                     due_date: $('#due-date').val()
                 };
 
-                if(!assignmentData.student_id || !assignmentData.outcome_id || !assignmentData.ai_content || !assignmentData.due_date){
-                    alert('Lütfen önce içerik oluşturun ve bir teslim tarihi seçin.');
+                if(!assignmentData.title || !assignmentData.ai_content || !assignmentData.due_date){
+                    alert('Lütfen ödev konusunu, içeriğini ve teslim tarihini eksiksiz girin.');
                     return;
                 }
                 btn.prop('disabled', true).html('<span class="spinner-border spinner-border-sm"></span> Atanıyor...');
@@ -181,10 +191,8 @@ $exams = $stmt_exams->fetchAll(PDO::FETCH_ASSOC);
                         if(response.success){
                             assignHwModal.hide();
                             const studentId = assignmentData.student_id;
-                            const studentItem = $(`#student-item-${studentId} .list-group-item button[data-outcome-id="${assignmentData.outcome_id}"]`).closest('li');
-                            studentItem.fadeOut(400, function() { $(this).remove(); });
-
-                            $('#form-notification').html(`<div class="alert alert-success alert-dismissible fade show" role="alert">${response.message}<button type="button" class="btn-close" data-bs-dismiss="alert"></button></div>`);
+                            const assignedItem = $(`#student-item-${studentId} .assign-btn[data-outcome-id="${assignmentData.outcome_id}"]`).closest('li');
+                            assignedItem.html('<span class="text-success fw-bold"><i class="bx bx-check-circle me-2"></i>Bu kazanım için ödev atandı.</span>');
                         } else {
                             alert('Hata: ' + response.message);
                         }

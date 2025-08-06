@@ -71,7 +71,7 @@ $now = new DateTime(SIMULATED_NOW);
                                                 ?>
                                                 <tr>
                                                     <td><strong><?= htmlspecialchars($ann['title']) ?></strong></td>
-                                                    <td><span class="badge bg-primary-subtle text-primary"><?= htmlspecialchars($ann['category']) ?></span></td>
+                                                    <td><span class="badge p-2 bg-primary-subtle text-primary"><?= htmlspecialchars($ann['category']) ?></span></td>
                                                     <td><?= $publish_date->format('d.m.Y H:i') ?></td>
                                                     <td><span class="badge p-2 <?= $status_class ?>"><?= $status ?></span></td>
                                                     <td class="text-center">

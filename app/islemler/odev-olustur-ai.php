@@ -1,19 +1,22 @@
 <?php
 require_once '../config/init.php';
 
+// API anahtarını ve modelini veritabanından çek
+$stmt = $pdo->query("SELECT setting_key, setting_value FROM system_settings WHERE setting_key IN ('gemini_api_key', 'gemini_model')");
+$settings = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
+$apiKey = $settings['gemini_api_key'] ?? null;
+$modelName = $settings['gemini_model'] ?? 'gemini-1.5-flash-latest';
+
 $outcome_description = $_POST['description'] ?? '';
 $response_data = ['success' => false, 'content' => 'Kazanım açıklaması bulunamadı.'];
 
-if (!empty($outcome_description)) {
+if (!$apiKey) {
+    $response_data['content'] = 'HATA: Gemini API anahtarı sistemde kayıtlı değil.';
+} elseif (!empty($outcome_description)) {
 
-    // ----- GEMINI API Entegrasyonu -----
-    // Lütfen 'system_settings' tablosundan veya doğrudan buraya API anahtarınızı girin.
-    $apiKey = "AIzaSyDfHeFLY-3-q2sp-Bwzo0OXuQap-xJo7Z0";
-
-    // Gemini için otomatik prompt oluşturma
     $prompt = "Bir 6. sınıf öğrencisi için, '" . addslashes($outcome_description) . "' kazanımını pekiştirecek 5 adet çoktan seçmeli (4 şıklı) soru ve cevabını oluştur. Soruları ve şıkları listele. Cevap anahtarını en sona 'Cevap Anahtarı: 1-A, 2-C...' şeklinde ekle.";
 
-    $apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=" . $apiKey;
+    $apiUrl = "https://generativelanguage.googleapis.com/v1beta/models/{$modelName}:generateContent?key=" . $apiKey;
     $data = ["contents" => [["parts" => [["text" => $prompt]]]]];
     $jsonData = json_encode($data);
 
@@ -33,7 +36,7 @@ if (!empty($outcome_description)) {
             $response_data['success'] = true;
             $response_data['content'] = $result['candidates'][0]['content']['parts'][0]['text'];
         } else {
-            $response_data['content'] = 'API\'den geçerli bir yanıt alınamadı. Lütfen API anahtarınızı kontrol edin. Hata: ' . ($result['error']['message'] ?? 'Bilinmeyen hata');
+            $response_data['content'] = 'API\'den geçerli bir yanıt alınamadı. Hata: ' . ($result['error']['message'] ?? 'Bilinmeyen hata');
         }
     }
     curl_close($ch);

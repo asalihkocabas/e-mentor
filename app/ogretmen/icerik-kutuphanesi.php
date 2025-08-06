@@ -22,6 +22,7 @@ $stmt_content = $pdo->prepare("SELECT * FROM library_content WHERE uploader_id =
 $stmt_content->execute([$teacher_id]);
 $library_contents = $stmt_content->fetchAll(PDO::FETCH_ASSOC);
 ?>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 
     <div class="main-content">
         <div class="page-content">
@@ -59,15 +60,15 @@ $library_contents = $stmt_content->fetchAll(PDO::FETCH_ASSOC);
                                                 ?>
                                                 <tr>
                                                     <td><i class="bx bxs-file-pdf text-danger me-2"></i><strong><?= htmlspecialchars($content['file_name']) ?></strong></td>
-                                                    <td><span class="badge bg-primary-subtle text-primary"><?= htmlspecialchars($content['file_type']) ?></span></td>
+                                                    <td><span class="badge p-2 bg-primary-subtle text-primary"><?= htmlspecialchars($content['file_type']) ?></span></td>
                                                     <td>
                                                         <?php
                                                         // DÜZELTME 2: Metaveriyi anlamlı isimlerle gösteriyoruz
                                                         if(is_array($metadata)) {
-                                                            if(isset($metadata['course_id'])) echo "<span class='badge bg-light me-1'>Ders: " . htmlspecialchars($courses[$metadata['course_id']] ?? 'Bilinmiyor') . "</span>";
-                                                            if(isset($metadata['class_id'])) echo "<span class='badge bg-light me-1'>Sınıf: " . htmlspecialchars($classes[$metadata['class_id']] ?? 'Bilinmiyor') . "</span>";
-                                                            if(isset($metadata['exam_type'])) echo "<span class='badge bg-light me-1'>Sınav: " . htmlspecialchars($metadata['exam_type']) . "</span>";
-                                                            if(isset($metadata['year'])) echo "<span class='badge bg-light me-1'>Yıl: " . htmlspecialchars($metadata['year']) . "</span>";
+                                                            if(isset($metadata['course_id'])) echo "<span class='badge p-2 bg-light me-1'>Ders: " . htmlspecialchars($courses[$metadata['course_id']] ?? 'Bilinmiyor') . "</span>";
+                                                            if(isset($metadata['class_id'])) echo "<span class='badge p-2 bg-light me-1'>Sınıf: " . htmlspecialchars($classes[$metadata['class_id']] ?? 'Bilinmiyor') . "</span>";
+                                                            if(isset($metadata['exam_type'])) echo "<span class='badge p-2 bg-light me-1'>Sınav: " . htmlspecialchars($metadata['exam_type']) . "</span>";
+                                                            if(isset($metadata['year'])) echo "<span class='badge p-2 bg-light me-1'>Yıl: " . htmlspecialchars($metadata['year']) . "</span>";
                                                         }
                                                         ?>
                                                     </td>

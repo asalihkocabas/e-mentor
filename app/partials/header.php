@@ -2,12 +2,19 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+// config/init.php'yi burada çağırmamıza gerek yok çünkü her sayfa onu header'dan önce çağırıyor.
+// Ancak helpers.php'yi burada çağırmak güvenli olabilir.
+if (file_exists(__DIR__ . '/../config/helpers.php')) {
+    require_once __DIR__ . '/../config/helpers.php';
+}
+
 
 // --- GÜVENLİK KONTROLLERİ ---
 
 // 1. Giriş yapılmış mı?
 if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
     $_SESSION['auth_error'] = "Lütfen devam etmek için giriş yapın.";
+    // Not: Bu header'dan önce hiçbir HTML veya echo olmamalıdır.
     header("Location: ../index.php");
     exit;
 }
@@ -16,10 +23,17 @@ if (!isset($_SESSION['is_logged_in']) || $_SESSION['is_logged_in'] !== true) {
 $folder = basename(dirname($_SERVER['PHP_SELF'])); // 'ogrenci' veya 'ogretmen'
 $user_role = $_SESSION['user_role'];
 
-if (($folder == 'ogrenci' && $user_role != 'student') || ($folder == 'ogretmen' && $user_role != 'teacher')) {
+// Eğer bir öğrenci, öğretmen sayfasına girmeye çalışıyorsa...
+if ($folder == 'ogretmen' && $user_role != 'teacher') {
     $_SESSION['auth_error'] = "Bu sayfaya erişim yetkiniz bulunmamaktadır.";
-    $redirect_path = ($user_role == 'teacher') ? '../ogretmen/index.php' : '../ogrenci/index.php';
-    header("Location: " . $redirect_path);
+    header("Location: ../ogrenci/index.php"); // Onu öğrenci paneline yönlendir.
+    exit;
+}
+
+// Eğer bir öğretmen, öğrenci sayfasına girmeye çalışıyorsa...
+if ($folder == 'ogrenci' && $user_role != 'student') {
+    $_SESSION['auth_error'] = "Bu sayfaya erişim yetkiniz bulunmamaktadır.";
+    header("Location: ../ogretmen/index.php"); // Onu öğretmen paneline yönlendir.
     exit;
 }
 
@@ -56,7 +70,6 @@ $avatar = get_avatar_data($user_full_name);
             <div class="d-flex">
                 <div class="dropdown d-inline-block">
                     <button type="button" class="btn header-item bg-light-subtle border-start border-end" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-
                         <div class="d-flex align-items-center">
                             <div class="avatar-sm d-none d-xl-inline-block me-2">
                                 <span class="avatar-title rounded-circle <?= $avatar['color_class'] ?> text-white">
@@ -66,11 +79,8 @@ $avatar = get_avatar_data($user_full_name);
                             <span class="d-none d-xl-inline-block fw-medium"><?= htmlspecialchars($user_full_name); ?></span>
                             <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                         </div>
-
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-face-profile font-size-16 align-middle me-1"></i> Profil</a>
-                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="../islemler/cikis-yap.php"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i>Güvenli Çıkış</a>
                     </div>
                 </div>
