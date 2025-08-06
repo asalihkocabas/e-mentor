@@ -6,7 +6,7 @@ $student_id = $_SESSION['user_id'] ?? 0;
 $response = [];
 
 if ($exam_id > 0 && $student_id > 0) {
-    // Sadece yanlış cevaplanan soruları, detaylarıyla birlikte çek
+    // DÜZELTME: Sorguya q.options sütunu eklendi
     $stmt = $pdo->prepare("
         SELECT 
             q.question_text,

@@ -64,8 +64,8 @@ $classes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="card <?= $class['is_homeroom_teacher'] ? 'border border-success' : '' ?>">
                                     <div class="card-body">
                                         <div class="d-flex align-items-center mb-3">
-                                            <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-3"><i class="bx bxs-school"></i></span>
+                                            <div class="avatar-md flex-shrink-0">
+                                                <span class="avatar-title bg-primary-subtle text-primary rounded-circle fs-2"><i class="bx bxs-school"></i></span>
                                             </div>
                                             <div class="flex-grow-1 ms-3">
                                                 <p class="text-muted fw-medium mb-1"><?= htmlspecialchars($class['grade_level']); ?>. Sınıf</p>
@@ -73,7 +73,7 @@ $classes = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             </div>
                                             <?php if ($class['is_homeroom_teacher']): ?>
                                                 <div class="flex-shrink-0">
-                                                    <span class="badge bg-success">Rehber Sınıfınız</span>
+                                                    <span class="badge  fs-6 bg-success">Rehber Sınıfınız</span>
                                                 </div>
                                             <?php endif; ?>
                                         </div>

@@ -71,14 +71,14 @@ $assignments = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td>
                                                     <?php
                                                     $status_badge = '';
-                                                    if ($hw['status'] == 'assigned') $status_badge = '<span class="badge bg-warning-subtle text-warning">Teslim Bekleniyor</span>';
-                                                    elseif ($hw['status'] == 'submitted') $status_badge = '<span class="badge bg-info-subtle text-info">Teslim Edildi</span>';
-                                                    else $status_badge = '<span class="badge bg-success-subtle text-success">Değerlendirildi</span>';
+                                                    if ($hw['status'] == 'assigned') $status_badge = '<span class="badge fs-6 bg-warning-subtle text-warning">Teslim Bekleniyor</span>';
+                                                    elseif ($hw['status'] == 'submitted') $status_badge = '<span class="badge fs-6 bg-info-subtle text-info">Teslim Edildi</span>';
+                                                    else $status_badge = '<span class="badge  fs-6 bg-success-subtle text-success">Değerlendirildi</span>';
                                                     echo $status_badge;
                                                     ?>
                                                 </td>
                                                 <td class="text-center">
-                                                    <button class="btn btn-sm btn-primary grade-btn"
+                                                    <button class="btn btn-md btn-primary grade-btn"
                                                             data-id="<?= $hw['id'] ?>"
                                                             data-student-name="<?= htmlspecialchars($hw['full_name']) ?>"
                                                             data-submission-text="<?= htmlspecialchars($hw['student_submission_text'] ?? 'Metin gönderilmedi.') ?>"

@@ -79,15 +79,15 @@ $now = new DateTime(SIMULATED_NOW);
                                                     <td><span class="badge font-size-12 p-2 <?= $status_class ?>"><?= $status ?></span></td>
                                                     <td class="text-center">
                                                         <?php if ($status == 'Tamamlandı'): ?>
-                                                            <a href="#" class="btn btn-primary btn-sm" data-bs-toggle="tooltip" title="Raporu Gör"><i class="bx bx-bar-chart-alt-2"></i></a>
-                                                            <button class="btn btn-secondary btn-sm" disabled data-bs-toggle="tooltip" title="Analiz (Yakında)"><i class="bx bx-analyse"></i></button>
+                                                            <a href="#" class="btn btn-primary btn-md" data-bs-toggle="tooltip" title="Raporu Gör"><i class="bx bx-bar-chart-alt-2"></i></a>
+                                                            <button class="btn btn-secondary btn-md" disabled data-bs-toggle="tooltip" title="Analiz (Yakında)"><i class="bx bx-analyse"></i></button>
                                                         <?php elseif ($status == 'Not Girişi Bekleniyor'): ?>
-                                                            <a href="sonuc-girisi.php?exam_id=<?= $exam['id'] ?>" class="btn btn-success btn-sm" data-bs-toggle="tooltip" title="Sonuç Gir"><i class="bx bx-edit"></i> Sonuç Gir</a>
+                                                            <a href="sonuc-girisi.php?exam_id=<?= $exam['id'] ?>" class="btn btn-success btn-md" data-bs-toggle="tooltip" title="Sonuç Gir"><i class="bx bx-edit"></i> Sonuç Gir</a>
                                                         <?php else: ?>
-                                                            <button class="btn btn-info btn-sm change-date-btn" data-exam-id="<?= $exam['id'] ?>" data-bs-toggle="tooltip" title="Tarihi Değiştir"><i class="bx bx-calendar"></i></button>
+                                                            <button class="btn btn-info btn-md change-date-btn" data-exam-id="<?= $exam['id'] ?>" data-bs-toggle="tooltip" title="Tarihi Değiştir"><i class="bx bx-calendar"></i></button>
                                                             <form action="../islemler/sinav-sil.php" method="POST" class="d-inline" onsubmit="return confirm('Bu sınavı silmek istediğinizden emin misiniz?');">
                                                                 <input type="hidden" name="exam_id" value="<?= $exam['id'] ?>">
-                                                                <button type="submit" class="btn btn-danger btn-sm" data-bs-toggle="tooltip" title="Sınavı İptal Et"><i class="bx bx-trash"></i></button>
+                                                                <button type="submit" class="btn btn-danger btn-md" data-bs-toggle="tooltip" title="Sınavı İptal Et"><i class="bx bx-trash"></i></button>
                                                             </form>
                                                         <?php endif; ?>
                                                     </td>

@@ -5,7 +5,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['exam_id'], $_POST['new
     $exam_id = intval($_POST['exam_id']);
     $new_date_str = $_POST['new_exam_date'];
 
-    // Tarih formatını MySQL'e uygun hale getir
     $date = DateTime::createFromFormat('d-m-Y H:i', $new_date_str);
     $exam_date_mysql = $date ? $date->format('Y-m-d H:i:s') : null;
 

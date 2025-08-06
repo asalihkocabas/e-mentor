@@ -1,7 +1,6 @@
 <?php
 require_once '../config/init.php';
 
-// API anahtarını ve modelini veritabanından çek
 $stmt = $pdo->query("SELECT setting_key, setting_value FROM system_settings WHERE setting_key IN ('gemini_api_key', 'gemini_model')");
 $settings = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 $apiKey = $settings['gemini_api_key'] ?? null;

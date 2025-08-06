@@ -131,16 +131,7 @@ $simulated_date = new DateTime(SIMULATED_NOW);
 
 <div class="modal fade" id="soruDetayModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="soruDetayModalLabel">Sınav Analizi</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div id="kazanim-analiz-body"></div></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button></div></div></div></div>
 <div class="modal fade" id="soruInceleModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="soruInceleModalLabel">Soru Detayı</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body" id="soru-incele-body"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#soruDetayModal">Geri</button></div></div></div></div>
-
-<div class="modal fade" id="aiAnalysisModal" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header bg-info text-white"><h5 class="modal-title" id="aiAnalysisModalLabel">Yapay Zeka Sınav Analizi</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-            <div class="modal-body" id="ai-analysis-body" style="max-height: 70vh; overflow-y: auto;"></div>
-            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button></div>
-        </div>
-    </div>
-</div>
+<div class="modal fade" id="aiAnalysisModal" tabindex="-1"><div class="modal-dialog modal-lg modal-dialog-centered"><div class="modal-content"><div class="modal-header bg-info text-white"><h5 class="modal-title" id="aiAnalysisModalLabel">Yapay Zeka Sınav Analizi</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body" id="ai-analysis-body" style="max-height: 70vh; overflow-y: auto;"></div><div class="modal-footer"><button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button></div></div></div></div>
 
 <?php include '../partials/footer.php'; ?>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -149,6 +140,7 @@ $simulated_date = new DateTime(SIMULATED_NOW);
         const soruDetayModal = new bootstrap.Modal(document.getElementById('soruDetayModal'));
         const soruInceleModal = new bootstrap.Modal(document.getElementById('soruInceleModal'));
         const aiAnalysisModal = new bootstrap.Modal(document.getElementById('aiAnalysisModal'));
+        let currentAjaxRequest = null;
 
         $('.view-details-btn').on('click', function() {
             const examId = $(this).data('exam-id');
@@ -161,7 +153,7 @@ $simulated_date = new DateTime(SIMULATED_NOW);
                 url: '../islemler/get-sinav-analizi.php', type: 'POST', data: { exam_id: examId }, dataType: 'json',
                 success: function(response) {
                     let tableHtml = '<div class="table-responsive"><table class="table align-middle"><thead><tr><th>Soru</th><th>Kazanım</th><th class="text-center">Durumun</th><th class="text-center">İncele</th></tr></thead><tbody>';
-                    if(response.length === 0){
+                    if(!response || response.length === 0){
                         tableHtml += '<tr><td colspan="4" class="text-center">Bu sınav için detaylı analiz verisi bulunamadı.</td></tr>';
                     } else {
                         response.forEach((q, index) => {
@@ -193,9 +185,15 @@ $simulated_date = new DateTime(SIMULATED_NOW);
                             const isCorrect = (key == d.correct_answer);
                             const isSelected = (key == d.selected_answer);
                             let itemClass = ''; let badgeHtml = '';
-                            if (isCorrect) { itemClass = 'list-group-item-success'; badgeHtml = '<span class="badge bg-success">Doğru Cevap</span>'; }
-                            if (isSelected && !isCorrect) { itemClass = 'list-group-item-danger'; badgeHtml = '<span class="badge bg-warning text-dark">Senin Cevabın</span>'; }
-                            if (isSelected && isCorrect) { badgeHtml += '<span class="badge bg-primary ms-1">Senin Cevabın</span>'; }
+
+                            if (isCorrect) {
+                                itemClass = 'list-group-item-success';
+                                badgeHtml = '<span class="badge bg-success">Doğru Cevap</span>';
+                            }
+                            if (isSelected) {
+                                itemClass = isCorrect ? 'list-group-item-success' : 'list-group-item-danger';
+                                badgeHtml += (badgeHtml ? ' ' : '') + '<span class="badge bg-warning text-dark">Senin Cevabın</span>';
+                            }
                             optionsHtml += `<div class="list-group-item d-flex justify-content-between align-items-center ${itemClass}"><span>${key}) ${options[key]}</span><div>${badgeHtml}</div></div>`;
                         }
                         optionsHtml += '</div>';
@@ -208,20 +206,27 @@ $simulated_date = new DateTime(SIMULATED_NOW);
         $('.ai-analysis-btn').on('click', function() {
             const examId = $(this).data('exam-id');
             const examName = $(this).data('exam-name');
+            const aiAnalysisModal = new bootstrap.Modal(document.getElementById('aiAnalysisModal'));
             $('#aiAnalysisModalLabel').text(examName + ': Yapay Zeka Sınav Analizi');
             $('#ai-analysis-body').html('<div class="text-center my-3"><p>Yanlışların bulunuyor...</p><div class="spinner-border text-primary"></div></div>');
             aiAnalysisModal.show();
 
             $.ajax({
-                url: '../islemler/get-yanlis-sorular.php', type: 'POST', data: { exam_id: examId }, dataType: 'json',
+                url: '../islemler/get-yanlis-sorular.php',
+                type: 'POST', data: { exam_id: examId }, dataType: 'json',
                 success: function(yanlislar) {
                     if (yanlislar.length === 0) {
                         $('#ai-analysis-body').html('<div class="alert alert-success">Harika! Bu sınavda hiç yanlışın yok. Analiz edilecek bir hata bulunamadı.</div>');
                         return;
                     }
+
                     $('#ai-analysis-body').html('<div class="text-center my-3"><p>Yanlışların Gemini AI tarafından analiz ediliyor...</p><div class="spinner-border text-info"></div></div>');
+
                     $.ajax({
-                        url: '../islemler/sinav-analiz-ai.php', type: 'POST', data: { yanlis_sorular: JSON.stringify(yanlislar) }, dataType: 'json',
+                        url: '../islemler/sinav-analiz-ai.php',
+                        type: 'POST',
+                        data: { yanlis_sorular: JSON.stringify(yanlislar) },
+                        dataType: 'json',
                         timeout: 35000,
                         success: function(analiz) {
                             if (analiz.success) {
@@ -231,8 +236,10 @@ $simulated_date = new DateTime(SIMULATED_NOW);
                             }
                         },
                         error: function(jqXHR, textStatus) {
-                            let errorMsg = 'AI analizi alınırken bir sunucu hatası oluştu.';
-                            if (textStatus === 'timeout') { errorMsg = 'İstek zaman aşımına uğradı. Lütfen tekrar deneyin.'; }
+                            let errorMsg = 'AI analizi alınırken bir sunucu hatası oluştu. Lütfen geliştirici konsolunu kontrol edin.';
+                            if (textStatus === 'timeout') {
+                                errorMsg = 'İstek zaman aşımına uğradı. Sunucu meşgul veya internet bağlantınız yavaş olabilir. Lütfen tekrar deneyin.';
+                            }
                             $('#ai-analysis-body').html(`<div class="alert alert-danger">${errorMsg}</div>`);
                         }
                     });

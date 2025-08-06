@@ -71,13 +71,13 @@ $now = new DateTime(SIMULATED_NOW);
                                                 ?>
                                                 <tr>
                                                     <td><strong><?= htmlspecialchars($ann['title']) ?></strong></td>
-                                                    <td><span class="badge p-2 bg-primary-subtle text-primary"><?= htmlspecialchars($ann['category']) ?></span></td>
+                                                    <td><span class="badge p-2 fs-6 bg-primary-subtle text-primary"><?= htmlspecialchars($ann['category']) ?></span></td>
                                                     <td><?= $publish_date->format('d.m.Y H:i') ?></td>
-                                                    <td><span class="badge p-2 <?= $status_class ?>"><?= $status ?></span></td>
+                                                    <td><span class="badge p-2 fs-6 <?= $status_class ?>"><?= $status ?></span></td>
                                                     <td class="text-center">
                                                         <form action="../islemler/duyuru-sil.php" method="POST" class="d-inline" onsubmit="return confirm('Bu duyuruyu kalıcı olarak silmek istediğinizden emin misiniz?');">
                                                             <input type="hidden" name="announcement_id" value="<?= $ann['id'] ?>">
-                                                            <button type="submit" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" title="Sil"><i class="bx bx-trash"></i></button>
+                                                            <button type="submit" class="btn btn-md btn-danger" data-bs-toggle="tooltip" title="Sil"><i class="bx fs-4 bx-trash"></i></button>
                                                         </form>
                                                     </td>
                                                 </tr>
