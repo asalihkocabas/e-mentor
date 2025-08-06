@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <title>Sistem Yönetimi | E-Mentor Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
+  <link href="assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
+  <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+  <link href="assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+</head>
+<body data-topbar="dark">
+<div id="layout-wrapper">
+  <header id="page-topbar">
+    <div class="navbar-header">
+      <div class="d-flex">
+        <div class="navbar-brand-box">
+          <a href="index.html" class="logo logo-light">
+            <span class="logo-sm"><img src="assets/images/logo-sm.svg" alt="" height="30"></span>
+            <span class="logo-lg"><img src="assets/images/logo-sm.svg" alt="" height="24"> <span class="logo-txt">E-Mentor</span></span>
+          </a>
+        </div>
+        <button type="button" class="btn btn-sm px-3 font-size-16 header-item" id="vertical-menu-btn"><i class="fa fa-fw fa-bars"></i></button>
+      </div>
+      <div class="d-flex">
+      </div>
+    </div>
+  </header>
+  <div class="vertical-menu">
+    <div data-simplebar class="h-100">
+      <div id="sidebar-menu">
+        <ul class="metismenu list-unstyled" id="side-menu">
+          <li class="mm-active"><a href="#"><i data-feather="settings"></i><span>Sistem Yönetimi</span></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="page-content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+              <h4 class="mb-sm-0 font-size-18">Sistem Yönetim Paneli</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-body">
+            <ul class="nav nav-tabs nav-tabs-custom" role="tablist">
+              <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" href="#user-management">Kullanıcı Yönetimi</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#edu-management">Eğitim Yönetimi</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#settings">Sistem Ayarları</a></li>
+              <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" href="#status">Sistem Durumu</a></li>
+            </ul>
+
+            <div class="tab-content p-3">
+              <div class="tab-pane active" id="user-management" role="tabpanel">
+                <h5>Öğrenciler</h5>
+                <button class="btn btn-sm btn-primary mb-2">Yeni Öğrenci Ekle</button>
+                <h5 class="mt-4">Öğretmenler</h5>
+                <button class="btn btn-sm btn-primary mb-2">Yeni Öğretmen Ekle</button>
+              </div>
+
+              <div class="tab-pane" id="edu-management" role="tabpanel">
+                <h5>Okullar</h5>
+                <button class="btn btn-sm btn-primary mb-2">Yeni Okul Ekle</button>
+                <h5 class="mt-4">Sınıflar</h5>
+                <button class="btn btn-sm btn-primary mb-2">Yeni Sınıf Ekle</button>
+                <h5 class="mt-4">Dersler</h5>
+                <button class="btn btn-sm btn-primary mb-2">Yeni Ders Ekle</button>
+              </div>
+
+              <div class="tab-pane" id="settings" role="tabpanel">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label for="gemini-api-key" class="form-label">Gemini API Anahtarı</label>
+                    <input type="password" class="form-control" id="gemini-api-key" value="xxxxxxxxxxxx">
+                    <button class="btn btn-primary mt-2">Kaydet</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="status" role="tabpanel">
+                <ul class="list-group">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">Veritabanı Bağlantısı <span class="badge bg-success">BAĞLANDI</span></li>
+                  <li class="list-group-item d-flex justify-content-between align-items-center">Gemini API Erişimi <span class="badge bg-success">AKTİF</span></li>
+                  <li class="list-group-item"><strong>PHP Versiyonu:</strong> 8.1.2</li>
+                  <li class="list-group-item"><strong>Sunucu IP:</strong> 192.168.1.1</li>
+                  <li class="list-group-item"><strong>Hata Kayıtları (Debug):</strong> <a href="#">Logları Görüntüle</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-6"><script>document.write(new Date().getFullYear())</script> © E-Mentor.</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script src="assets/libs/jquery/jquery.min.js"></script>
+<script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="assets/libs/simplebar/simplebar.min.js"></script>
+<script src="assets/libs/node-waves/waves.min.js"></script>
+<script src="assets/libs/feather-icons/feather.min.js"></script>
+<script src="assets/libs/pace-js/pace.min.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
